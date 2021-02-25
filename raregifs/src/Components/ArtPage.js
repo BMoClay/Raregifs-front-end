@@ -6,7 +6,7 @@ function ArtPage() {
     const [artworks, setArtworks] = useState([])
 
     useEffect(() => {
-        fetch('http://[::1]:3000/artworks')
+        fetch('http://localhost:3000/artworks')
           .then(r => r.json())
           .then(artworks => setArtworks(artworks))
         }, [])  

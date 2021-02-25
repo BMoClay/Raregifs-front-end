@@ -6,7 +6,7 @@ function UploadArtForm({ onAddArtwork }){
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://[::1]:3000/artworks", {
+        fetch("http://localhost:3000/artworks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -37,6 +37,10 @@ function UploadArtForm({ onAddArtwork }){
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                 />
+                {/* <input
+                    type="hidden"
+                    value={name} 
+                /> */}
                 <button type="submit">Add Image</button>
             </form>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Login({ setUser }) {
+function Signup({ setUser }) {
 
     const [formData, setFormData] = useState({
         name: "",
@@ -13,7 +13,7 @@ function Login({ setUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/login", {
+        fetch("http://localhost:3000/signup", {
             method: "POST"
         })
             .then(res => res.json())
@@ -21,30 +21,33 @@ function Login({ setUser }) {
                 setUser(user)
             })
     }
+    const { name, password } = formData
  
   return (
-    <div className="login">
+    <div className="signup">
         <form onSubmit={handleSubmit}>
             <label>name</label>
             <input
                 type="text"
                 name="name"
                 autoComplete="off"
-                value={formData.name}
+                // value={formData.name}
+                value={name}
                 onChange={handleChange}
             />
             <label>password</label>
             <input
                 type="password"
                 name="password"
-                value={formData.password}
+                // value={formData.password}
+                value={password}
                 onChange={handleChange}
                 autoComplete="current-password"
             />
-            <input type="submit" value="Login" />
+            <input type="submit" value="Signup" />
         </form>  
     </div>
   );
 }
 
-export default Login;
+export default Signup;

@@ -1,11 +1,30 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function NavBar() {
+function NavBar({ user, setUser }) {
+    function logout(){
+        setUser(null);
+    }
 
     return(
-        <div>
-            <h1>navbar</h1>
-        </div>
+        <header>
+            <div>
+                <Link to="/">Raregifs</Link>
+            </div>
+            <div>
+                {user ? (
+                    <>
+                        <Link to="/upload">Upload</Link>
+                        <button onClick={logout} >logout</button>
+                    </>
+                ) : (
+                    <>
+                        <Link to="/login">Login</Link>
+                        <Link to="/signup">Signup</Link>
+                    </>
+                )}
+            </div>
+        </header>
     ) 
 }
 
