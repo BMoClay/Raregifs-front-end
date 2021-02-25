@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
+import React from 'react';
 import UploadArtForm from './UploadArtForm'
 import ArtList from './ArtList'
 
-function ArtPage({ user }) {
-    const [artworks, setArtworks] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:3000/artworks')
-          .then(r => r.json())
-          .then((artworksArray) => {
-              setArtworks(artworksArray);
-          });
-        }, [])  
-
-    function handleAddArtwork(newArtwork) {
-        const updatedArtworksArray = [...artworks, newArtwork];
-        setArtworks(updatedArtworksArray);
-    }
+function ArtPage({ user, artworks, setArtworks }) {
 
   return (
       <div className="art-page" >
-          <UploadArtForm user={user} onAddArtwork={handleAddArtwork}/>
+          <UploadArtForm user={user} artworks={artworks} setArtworks={setArtworks}/>
           <ArtList user={user} artworks={artworks} setArtworks={setArtworks} />
       </div>
   );

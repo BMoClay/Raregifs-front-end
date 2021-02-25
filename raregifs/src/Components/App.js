@@ -8,6 +8,7 @@ import Signup from './Signup';
 
 function App() {
   const [user, setUser] = useState(null)
+  const [artworks, setArtworks] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/me")
@@ -17,30 +18,38 @@ function App() {
     })
   }, [])
 
+  useEffect(() => {
+      fetch('http://localhost:3000/artworks')
+        .then(r => r.json())
+        .then((artworksArray) => {
+            setArtworks(artworksArray);
+        });
+      }, [])  
+
    return (
     <div className="app">
-        <NavBar user={user} setUser={setUser}/>
+        <NavBar user={user} setUser={setUser} />
             <Switch>
           
               <Route path="/login">
                 <Login setUser={setUser}/>
               </Route>
 
-              <Route path="/artworks">
-                <ArtPage setUser={setUser} />
+              {/* <Route path="/artworks"> */}
+              <Route path="/">
+                <ArtPage setUser={setUser} artworks={artworks} setArtworks={setArtworks}/>
               </Route>
 
               <Route path="/upload">
-                <Upload user={user} setUser={setUser}/>
+                <Upload user={user} setUser={setUser} artworks={artworks} setArtworks={setArtworks}/>
               </Route>
               
               <Route path="/signup">
-                <Signup user={user} setUser={setUser}/>
+                <Signup setUser={setUser}/>
               </Route>
 
             </Switch>
     </div>
   );
 }
-
 export default App;

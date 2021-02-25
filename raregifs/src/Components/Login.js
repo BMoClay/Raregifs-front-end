@@ -19,6 +19,9 @@ function Login({ setUser }) {
             .then(res => res.json())
             .then((user) => {
                 setUser(user)
+                // console.log(user) is
+                // coming back as null
+                // from my fake auth?
             })
     }
  
