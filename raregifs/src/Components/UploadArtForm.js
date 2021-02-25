@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 
-function UploadArtForm({ onAddArtwork }){
-    const [title, setTitle] = useState("")
-    const [image, setImage] = useState("")
+function UploadArtForm({ user, onAddArtwork }){
+// function UploadArtForm({ user, onAddArtwork, artworks, setArtworks }){
+    const [title, setTitle] = useState("");
+    const [image, setImage] = useState("");
+    // const { id } = user;
 
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+        // fetch(`http://localhost:3000/users/${id}`, {
         fetch("http://localhost:3000/artworks", {
             method: "POST",
             headers: {
@@ -19,6 +22,7 @@ function UploadArtForm({ onAddArtwork }){
             .then((res) => res.json())
             .then((newArtwork) => onAddArtwork(newArtwork));
     }
+
     return ( 
         <div className="upload-art-form">
             <h1>upload: jpeg or gif, square format, under 2MB</h1>
@@ -37,14 +41,10 @@ function UploadArtForm({ onAddArtwork }){
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                 />
-                {/* <input
-                    type="hidden"
-                    value={name} 
-                /> */}
                 <button type="submit">Add Image</button>
             </form>
         </div>
-    )
+    );
 }
 
 export default UploadArtForm;

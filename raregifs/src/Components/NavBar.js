@@ -14,7 +14,7 @@ function NavBar({ user, setUser }) {
             <div>
                 {user ? (
                     <>
-                        <Link to="/upload">Upload</Link>
+                        <Link to="/upload" user={user}>Upload</Link>
                         <button onClick={logout} >logout</button>
                     </>
                 ) : (
