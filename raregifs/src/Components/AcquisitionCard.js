@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
-function ArtCard({ artwork, user, onDeleteArtwork, onUpdateArtwork, acquisition, setAcquisition, onDeleteAcquisition }) {
+function AcquisitionCard({ user, acquisition, setAcquisition, onDeleteAcquisition }) {
     // const [acquisition, setAcquisition] = useState(acquisition)
-    const { title, image, id } = artwork
-    const [updatedTitle, setUpdatedTitle] = useState(title)
+    // const { user_id, artwork_id, title, image, id } = acquisition
 
     function handleAcquireClick(e) {
         const acquisition = {
@@ -53,14 +52,13 @@ function ArtCard({ artwork, user, onDeleteArtwork, onUpdateArtwork, acquisition,
             });
     }
 
-    console.log(artwork.user)
+    console.log(acquisition)
 
     return (
-        <div className="art-card">
-            {/* { user.id === artwork.user.id ? ( */}
+        <div className="acquisition-card">
                 { user ? (
                         <>
-                            <img src={image} alt={title} />
+                            <img src={acquisition.artwork.image} alt={title} />
                             <form onSubmit={handleUpdateArtworkSubmit}>
                                 <input
                                     type="text"
