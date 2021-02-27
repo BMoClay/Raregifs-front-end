@@ -10,6 +10,7 @@ function NavBar({ user, setUser }) {
         <header>
             <div>
                 <Link to="/">Raregifs</Link>
+                <Link to="/acquisitions">Collections</Link>
             </div>
             <div>
                 {user ? (

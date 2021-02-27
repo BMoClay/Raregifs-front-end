@@ -58,7 +58,7 @@ function ArtCard({ artwork, user, onDeleteArtwork, onUpdateArtwork, acquisition,
     return (
         <div className="art-card">
             {/* { user.id === artwork.user.id ? ( */}
-                { user ? (
+                { user && (user.id === artwork.user.id) }(
                         <>
                             <img src={image} alt={title} />
                             <form onSubmit={handleUpdateArtworkSubmit}>
@@ -101,6 +101,7 @@ function ArtCard({ artwork, user, onDeleteArtwork, onUpdateArtwork, acquisition,
                 <h3>{title}</h3>
                 <h3>{artwork.user.name}</h3>
                 <button onClick={handleAcquireClick}>acquire image</button>
+                <button onClick={handleDeleteAcquisitionClick}>remove acquisition from collection</button>
             </div>
         </div>
     );

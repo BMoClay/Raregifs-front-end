@@ -1,7 +1,7 @@
 import React from 'react'
 import ArtCard from './ArtCard'
 
-function ArtList({ artworks, user, onDeleteArtwork, onUpdateArtwork, acquisitions, onDeleteAcquisition }){
+function ArtList({ artworks, user, onDeleteArtwork, onUpdateArtwork, onDeleteAcquisition }){
   
     const artworksList =
     artworks.map((artwork) => {
@@ -9,7 +9,7 @@ function ArtList({ artworks, user, onDeleteArtwork, onUpdateArtwork, acquisition
             key={artwork.id} 
             user={user} 
             artwork={artwork}
-            // setArtworks={setArtworks} 
+            onDeleteAcquisition={onDeleteAcquisition}
             onDeleteArtwork={onDeleteArtwork}
             onUpdateArtwork={onUpdateArtwork}
             />

@@ -5,6 +5,7 @@ import ArtPage from './ArtPage';
 import Login from './Login';
 import Upload from './UploadArtForm';
 import Signup from './Signup';
+import Acquisitions from './AcquisitionsList';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -35,9 +36,7 @@ function App() {
           })
   }, [])
 
-  console.log(acquisitions)
-
-  function handleDeleteAcquisition(id) {
+  function handleDeleteAcquisitionClick(id) {
     const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
       setAcquisitions(updatedAcquisitionsArray);
   } 
@@ -67,16 +66,14 @@ function App() {
                 <Login setUser={setUser}/>
               </Route>
 
-              {/* <Route path="/artworks"> */}
               <Route path="/" >
                 <ArtPage 
                   user={user} 
                   setUser={setUser} 
                   artworks={artworks} 
                   setArtworks={setArtworks}
-                  acquisitions={acquisitions}
                   setAcquisitions={setAcquisitions}
-                  onDeleteAcquisition={handleDeleteAcquisition}
+                  onDeleteAcquisition={handleDeleteAcquisitionClick}
                   onDeleteArtwork={handleDeleteArtwork}
                   onUpdateArtwork={handleUpdateArtwork}
                   />
@@ -84,7 +81,10 @@ function App() {
 
               <Route path="/acquisitions">
                 <Acquisitions 
-                  user={user}
+                  user={user} 
+                  acquisitions={acquisitions}
+                  setAcquisitions={setAcquisitions}
+                  onDeleteAcquisition={handleDeleteAcquisitionClick} 
                 />
               </Route>
 
