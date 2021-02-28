@@ -4,8 +4,6 @@ function UploadArtForm({ currentUser, artworks, setArtworks }){
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
 
-    console.log(currentUser)
-
     function handleSubmitNewArtwork(e) {
         e.preventDefault();
         fetch("http://localhost:3000/artworks", {

@@ -10,6 +10,7 @@ import Storage from './Storage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
+  const [users, setUsers] = useState([])
   const [artworks, setArtworks] = useState([]);
   const [acquisitions, setAcquisitions] = useState([])
 
@@ -35,6 +36,14 @@ function App() {
           .then(acquisitionsArray => {
               setAcquisitions(acquisitionsArray);
           })
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/users')
+        .then(r => r.json())
+        .then(usersArray => {
+            setUsers(usersArray);
+        })
   }, [])
 
   function handleAddAcquisition(newAcquisition) {
@@ -80,17 +89,19 @@ function App() {
                   setAcquisitions={setAcquisitions}
                   onDeleteArtwork={handleDeleteArtwork}
                   onUpdateArtwork={handleUpdateArtwork}
-                  onDeleteAcquisition={handleDeleteAcquisitionClick}
+                  // onDeleteAcquisition={handleDeleteAcquisitionClick}
                   onAcquireArtwork={handleAddAcquisition}
                   />
               </Route>
               <Route exact path="/acquisitions">
-                <Acquisitions 
+                <Acquisitions
+                  users={users}
+                  // artworks={artworks}
                   currentUser={currentUser} 
                   acquisitions={acquisitions}
                   setAcquisitions={setAcquisitions}
                   onAcquireArtwork={handleAddAcquisition}
-                  onDeleteAcquisition={handleDeleteAcquisitionClick} 
+                  // onDeleteAcquisition={handleDeleteAcquisitionClick} 
                 />
               </Route>
               <Route exact path="/upload">

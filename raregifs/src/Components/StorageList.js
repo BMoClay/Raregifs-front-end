@@ -3,7 +3,7 @@ import ArtCard from './ArtCard'
 import AcquisitionCard from './AcquisitionCard'
 
 function StorageList({ 
-    // artworks, 
+    artworks, 
     currentUser, 
     onDeleteArtwork, 
     acquisitions, 
@@ -11,7 +11,10 @@ function StorageList({
     onUpdateArtwork,
     onDeleteAcquisition
 }){
+
+  console.log(artworks)
   console.log(currentUser)
+
     let myArtworksList =
     currentUser.artworks.map((artwork) => {
         return <ArtCard 
@@ -32,7 +35,7 @@ function StorageList({
             currentUser={currentUser} 
             acquisitions={acquisitions}
             setAcquisitions={setAcquisitions}
-            onDeleteAcquisitions={onDeleteAcquisition}
+            onDeleteAcquisition={onDeleteAcquisition}
             />
     })
     return(

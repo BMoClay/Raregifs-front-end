@@ -1,16 +1,35 @@
 import React from 'react'
+// import React, { useState } from 'react'
 import AcquisitionsList from './AcquisitionsList'
 
-function AcquisitionsPage({ currentUser, acquisitions, setAcquisitions, onAcquireArtwork, onDeleteAcquisition }){
+function AcquisitionsPage({ 
+    // artworks,
+    users, 
+    currentUser, 
+    acquisitions, 
+    setAcquisitions, 
+    onAcquireArtwork, 
+    // onDeleteAcquisition 
+}){
+    // const [collection, setCollection] = useState([])
 
-    console.log(currentUser)
+    // const thisCollection = users.map((user) => {
+    //     user.acquisitions.map((acquired_artwork) => {
+    //        setCollection(acquired_artwork)
+    //         return collection
+    //     })
+    // })
+    //     console.log(collection)
+
     return (
         <div className="acquisitions-page" >
             <AcquisitionsList 
+                // artworks={artworks}
+                users={users}
                 currentUser={currentUser}
                 acquisitions={acquisitions}  
                 setAcquisitions={setAcquisitions}
-                onDeleteAcquisition={onDeleteAcquisition}
+                // onDeleteAcquisition={onDeleteAcquisition}
                 onAcquireArtwork={onAcquireArtwork}
                 />
         </div>

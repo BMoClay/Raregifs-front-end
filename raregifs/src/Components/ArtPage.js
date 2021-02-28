@@ -1,12 +1,17 @@
-// import React, { useEffect, useState } from 'react'
 import React from 'react';
-// import UploadArtForm from './UploadArtForm'
-import ArtList from './ArtList'
+import ArtList from './ArtList';
 
-// function ArtPage({ user, artworks, setArtworks, onDeleteArtwork, onUpdateArtwork, acquisitions, setAcquisitions, onDeleteAcquisition }) {
-  function ArtPage({ currentUser, artworks, acquisitions, setAcquisitions, setArtworks, onDeleteArtwork, onUpdateArtwork,  onAcquireArtwork }) {
+  function ArtPage({ 
+    currentUser, 
+    artworks, 
+    acquisitions, 
+    setAcquisitions, 
+    setArtworks, 
+    onDeleteArtwork, 
+    onUpdateArtwork,  
+    onAcquireArtwork 
+  }) {
 
-  console.log(currentUser)
   return (
       <div className="art-page" >
         <ArtList 

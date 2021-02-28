@@ -1,22 +1,14 @@
 import React from 'react'
 
 function AcquisitionCard({ 
+    user,
     currentUser, 
-    acquisition, 
-    acquisitions, 
+    thisCollection,
+    acquisitions,
     setAcquisitions, 
-    onDeleteAcquisition 
 }) {
-    
-    const { id, artwork } = acquisition
-
-    console.log(artwork.user)
 
     function handleAcquireArtworkClick(e) {
-        // const acquisition = {
-        //   user_id: currentUser.id,
-        //   artwork_id: acquisition.artwork.id,
-        // }
         e.preventDefault();
         fetch('http://localhost:3000/acquisitions', {
           method: 'POST',
@@ -25,7 +17,7 @@ function AcquisitionCard({
           },
           body: JSON.stringify({
               user_id: currentUser.id,
-              artwork_id: acquisition.artwork.id
+              artwork_id: user.acquisition.artwork.id
           }),
         })
         .then(r => r.json())
@@ -34,25 +26,21 @@ function AcquisitionCard({
           setAcquisitions(updatedAcquisitionsArray)
         })
       }   
-
-    function handleDeleteAcquisitionClick() {
-        fetch(`http://localhost:3000/acquisitions/${id}`, {
-            method: "DELETE",
-        });
-        onDeleteAcquisition(id);
-    } 
-
-    console.log(artwork)
-
+      console.log(thisCollection)
+      console.log(currentUser)
+      console.log(thisCollection)
+      console.log(user)
+      console.log(user.acquisitions)
+    
     return (
         <div className="acquisition-card">
-            <img src={artwork.image} alt={artwork.title} />
-            <h3>{artwork.title}</h3>
-            <h3>{artwork.user.name}</h3>
+            <img src={user.acquisition.artwork.image} alt={user.acquisition.artwork.title} />
+            <h3>{user.acquisition.artwork.title}</h3>
+            <h3>{user.acquisition.artwork.user.name}</h3>
             <div>
                 {currentUser ? (
                     <>
-                    <button onClick={handleDeleteAcquisitionClick}>remove from collection</button>
+                    {/* <button onClick={handleDeleteAcquisitionClick}>remove from collection</button> */}
                     <button onClick={handleAcquireArtworkClick}>acquire image</button>
                     </>
                 ) : (
