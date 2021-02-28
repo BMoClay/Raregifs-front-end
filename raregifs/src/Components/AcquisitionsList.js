@@ -1,15 +1,20 @@
 import React from 'react'
-import ArtCard from './ArtCard'
+import AcquisitionCard from './AcquisitionCard'
 
-function AcquisitionsList({ user, acquisitions, onDeleteAcquisition }){
+function AcquisitionsList({ 
+    currentUser, 
+    acquisitions, 
+    setAcquisitions, 
+    onDeleteAcquisition 
+}){
 
     const acquisitionsList =
     acquisitions.map((acquisition) => {
-        return <ArtCard 
+        return <AcquisitionCard 
             key={acquisition.id} 
-            user={user}
+            currentUser={currentUser} 
             acquisition={acquisition} 
-            // setAcquisitions={setAcquisitions} 
+            setAcquisitions={setAcquisitions} 
             onDeleteAcquisition={onDeleteAcquisition}
             />
     })

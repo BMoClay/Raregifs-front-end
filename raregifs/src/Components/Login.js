@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Login({ setUser }) {
+function Login({ setCurrentUser }) {
 
     const [formData, setFormData] = useState({
         name: "",
@@ -18,7 +18,7 @@ function Login({ setUser }) {
         })
             .then(res => res.json())
             .then((user) => {
-                setUser(user)
+                setCurrentUser(user)
                 // console.log(user) is
                 // coming back as null
                 // from my fake auth?

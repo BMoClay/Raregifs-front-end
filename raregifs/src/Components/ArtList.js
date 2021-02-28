@@ -1,15 +1,17 @@
 import React from 'react'
 import ArtCard from './ArtCard'
 
-function ArtList({ artworks, user, onDeleteArtwork, onUpdateArtwork, onDeleteAcquisition }){
-  
+// function ArtList({ artworks, user, onDeleteArtwork, onUpdateArtwork, onDeleteAcquisition }){
+function ArtList({ artworks, currentUser, onDeleteArtwork, acquisitions, setAcquisitions, onUpdateArtwork}){
+  console.log(artworks)
     const artworksList =
     artworks.map((artwork) => {
         return <ArtCard 
             key={artwork.id} 
-            user={user} 
+            currentUser={currentUser} 
             artwork={artwork}
-            onDeleteAcquisition={onDeleteAcquisition}
+            acquisitions={acquisitions}
+            setAcquisitions={setAcquisitions}
             onDeleteArtwork={onDeleteArtwork}
             onUpdateArtwork={onUpdateArtwork}
             />

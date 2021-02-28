@@ -5,10 +5,11 @@ import ArtPage from './ArtPage';
 import Login from './Login';
 import Upload from './UploadArtForm';
 import Signup from './Signup';
-import Acquisitions from './AcquisitionsList';
+import Acquisitions from './AcquisitionsPage';
+import Storage from './Storage';
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null)
   const [artworks, setArtworks] = useState([]);
   const [acquisitions, setAcquisitions] = useState([])
 
@@ -16,7 +17,7 @@ function App() {
     fetch("http://localhost:3000/me")
     .then(r => r.json())
     .then(user => {
-      setUser(user)
+      setCurrentUser(user)
     })
   }, [])
 
@@ -35,6 +36,11 @@ function App() {
               setAcquisitions(acquisitionsArray);
           })
   }, [])
+
+  function handleAddAcquisition(newAcquisition) {
+    const updatedAcquisitionsArray = [...acquisitions, newAcquisition];
+    setAcquisitions(updatedAcquisitionsArray)
+  }
 
   function handleDeleteAcquisitionClick(id) {
     const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
@@ -59,47 +65,57 @@ function App() {
 
    return (
     <div className="app">
-        <NavBar user={user} setUser={setUser} />
+        <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
             <Switch>
-          
-              <Route path="/login">
-                <Login setUser={setUser}/>
+              <Route exact path="/login">
+                <Login setCurrentUser={setCurrentUser}/>
               </Route>
-
-              <Route path="/" >
+              <Route exact path="/" >
                 <ArtPage 
-                  user={user} 
-                  setUser={setUser} 
+                  currentUser={currentUser} 
+                  acquisitions={acquisitions}
+                  setCurrentUser={setCurrentUser} 
                   artworks={artworks} 
                   setArtworks={setArtworks}
                   setAcquisitions={setAcquisitions}
-                  onDeleteAcquisition={handleDeleteAcquisitionClick}
                   onDeleteArtwork={handleDeleteArtwork}
                   onUpdateArtwork={handleUpdateArtwork}
+                  onDeleteAcquisition={handleDeleteAcquisitionClick}
+                  onAcquireArtwork={handleAddAcquisition}
                   />
               </Route>
-
-              <Route path="/acquisitions">
+              <Route exact path="/acquisitions">
                 <Acquisitions 
-                  user={user} 
+                  currentUser={currentUser} 
                   acquisitions={acquisitions}
                   setAcquisitions={setAcquisitions}
+                  onAcquireArtwork={handleAddAcquisition}
                   onDeleteAcquisition={handleDeleteAcquisitionClick} 
                 />
               </Route>
-
-              <Route path="/upload">
+              <Route exact path="/upload">
                 <Upload 
-                  user={user} 
-                  setUser={setUser} 
-                  artworks={artworks} 
-                  setArtworks={setArtworks}/>
+                  artworks={artworks}
+                  setArtworks={setArtworks}
+                  currentUser={currentUser} 
+                />
               </Route>
-              
+              <Route exact path="/storage">
+                <Storage
+                  acquisitions={acquisitions}
+                  currentUser={currentUser} 
+                  artworks={artworks}
+                  setAcquisitions={setAcquisitions} 
+                  setArtworks={setArtworks}
+                  onDeleteArtwork={handleDeleteArtwork}
+                  onUpdateArtwork={handleUpdateArtwork}
+                  onDeleteAcquisition={handleDeleteAcquisitionClick}
+                  />
+              </Route>
               <Route exact path="/signup">
-                <Signup setUser={setUser}/>
+                <Signup 
+                  setCurrentUser={setCurrentUser}/>
               </Route>
-
             </Switch>
     </div>
   );

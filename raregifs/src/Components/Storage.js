@@ -1,15 +1,23 @@
-// import React, { useEffect, useState } from 'react'
+
 import React from 'react';
-// import UploadArtForm from './UploadArtForm'
-import ArtList from './ArtList'
+import StorageList from './StorageList'
 
 // function ArtPage({ user, artworks, setArtworks, onDeleteArtwork, onUpdateArtwork, acquisitions, setAcquisitions, onDeleteAcquisition }) {
-  function ArtPage({ currentUser, artworks, acquisitions, setAcquisitions, setArtworks, onDeleteArtwork, onUpdateArtwork,  onAcquireArtwork }) {
+  function Storage({ 
+      currentUser, 
+      artworks, 
+      acquisitions, 
+      setAcquisitions, 
+      setArtworks, 
+      onDeleteArtwork, 
+      onUpdateArtwork,
+      onDeleteAcquisition
+ }) {
 
   console.log(currentUser)
   return (
-      <div className="art-page" >
-        <ArtList 
+      <div className="storage" >
+        <StorageList
             acquisitions={acquisitions}
             currentUser={currentUser} 
             artworks={artworks}
@@ -17,10 +25,10 @@ import ArtList from './ArtList'
             setArtworks={setArtworks}
             onDeleteArtwork={onDeleteArtwork}
             onUpdateArtwork={onUpdateArtwork}
-            onAcquireArtwork={onAcquireArtwork}
+            onDeleteAcquisition={onDeleteAcquisition}
             />
       </div>
   );
 }
 
-export default ArtPage;
+export default Storage;

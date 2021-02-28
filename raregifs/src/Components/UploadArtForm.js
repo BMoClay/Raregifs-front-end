@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-function UploadArtForm({ artworks, setArtworks }){
+function UploadArtForm({ currentUser, artworks, setArtworks }){
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
-    // const { id } = user;
 
-    function handleSubmit(e) {
-        // hardcoding user_id change this to dynamic when we have login
+    console.log(currentUser)
+
+    function handleSubmitNewArtwork(e) {
         e.preventDefault();
         fetch("http://localhost:3000/artworks", {
             method: "POST",
@@ -16,11 +16,12 @@ function UploadArtForm({ artworks, setArtworks }){
             body: JSON.stringify({
                 title: title,
                 image: image,
-                user_id: 1,
+                user_id: currentUser.id,
             }),
         })
             .then((res) => res.json())
             .then((newArtwork) => {
+                // console.log(newArtwork)
                 const updatedArtworksArray = [...artworks, newArtwork];
                 setArtworks(updatedArtworksArray);
             })
@@ -29,7 +30,7 @@ function UploadArtForm({ artworks, setArtworks }){
     return ( 
         <div className="upload-art-form">
             <h1>upload: jpeg or gif, square format, under 2MB</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitNewArtwork}>
                 <input
                     type="text"
                     title="title"
