@@ -47,30 +47,15 @@ function App() {
   }, [])
 
   function handleAddAcquisition(newAcquisition) {
-    const updatedAcquisitionsArray = [...acquisitions, newAcquisition];
+    const updatedAcquisitionsArray = [newAcquisition, ...acquisitions];
     setAcquisitions(updatedAcquisitionsArray)
   }
-
-  function handleDeleteAcquisitionClick(id) {
-    const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
-      setAcquisitions(updatedAcquisitionsArray);
-  } 
-
-  function handleDeleteArtwork(id) {
-    const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
-      setArtworks(updatedArtworksArray);
-  } 
-
-  function handleUpdateArtwork(updatedArtwork) {
-    const updatedArtworksArray = artworks.map((artwork) => {
-      if (artwork.id === updatedArtwork.id) {
-        return updatedArtwork;
-      } else {
-        return artwork;
-      }
-    })
-    setArtworks(updatedArtworksArray);
+  function handleAddArtwork(newArtwork) {
+    const updatedArtworksArray = [newArtwork, ...artworks, ];
+    setAcquisitions(updatedArtworksArray)
   }
+
+  // console.log(users)
 
    return (
     <div className="app">
@@ -82,45 +67,31 @@ function App() {
               <Route exact path="/" >
                 <ArtPage 
                   currentUser={currentUser} 
-                  acquisitions={acquisitions}
-                  setCurrentUser={setCurrentUser} 
                   artworks={artworks} 
-                  setArtworks={setArtworks}
-                  setAcquisitions={setAcquisitions}
-                  onDeleteArtwork={handleDeleteArtwork}
-                  onUpdateArtwork={handleUpdateArtwork}
-                  // onDeleteAcquisition={handleDeleteAcquisitionClick}
                   onAcquireArtwork={handleAddAcquisition}
                   />
               </Route>
               <Route exact path="/acquisitions">
                 <Acquisitions
                   users={users}
-                  // artworks={artworks}
-                  currentUser={currentUser} 
-                  acquisitions={acquisitions}
-                  setAcquisitions={setAcquisitions}
+                  currentUser={currentUser}
                   onAcquireArtwork={handleAddAcquisition}
-                  // onDeleteAcquisition={handleDeleteAcquisitionClick} 
                 />
               </Route>
               <Route exact path="/upload">
                 <Upload 
-                  artworks={artworks}
-                  setArtworks={setArtworks}
-                  currentUser={currentUser} 
+                  currentUser={currentUser}
+                  onCreateArtwork={handleAddArtwork}
                 />
               </Route>
               <Route exact path="/storage">
                 <Storage
-                  acquisitions={acquisitions}
-                  currentUser={currentUser} 
-                  artworks={artworks}
-                  setAcquisitions={setAcquisitions} 
-                  setArtworks={setArtworks}
-                  onDeleteArtwork={handleDeleteArtwork}
-                  onUpdateArtwork={handleUpdateArtwork}
-                  onDeleteAcquisition={handleDeleteAcquisitionClick}
+                  currentUser={currentUser}
+                  users={users} 
+                  // acquisitions={acquisitions}
+                  // artworks={artworks}
+                  // setAcquisitions={setAcquisitions} 
+                  // setArtworks={setArtworks}
                   />
               </Route>
               <Route exact path="/signup">

@@ -12,9 +12,6 @@ function StorageList({
     onDeleteAcquisition
 }){
 
-  console.log(artworks)
-  console.log(currentUser)
-
     let myArtworksList =
     currentUser.artworks.map((artwork) => {
         return <ArtCard 

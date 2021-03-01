@@ -2,30 +2,31 @@ import React from 'react'
 import AcquisitionCard from './AcquisitionCard'
 
 function AcquisitionsList({ 
-    users,
+    thisUser,
     currentUser, 
-    acquisitions, 
-    setAcquisitions
+    userCollection,
+    onAcquireArtwork,
 }){
 
     // need to run a loop on users to get each user
     // need to run a loop on each user to get each acquisition
-    
-    const userAcquisition =
-    users.map((user) => {
+
+    const userAcquisitionCard =
+   
+        userCollection.map((userAcquisition) => {
         return <AcquisitionCard
-            key={user.id}
-            // thisCollection={thisCollection}
-            user={user}
+            key={thisUser.id}
+            userAcquisition={userAcquisition}
+            thisUser={thisUser}
             currentUser={currentUser} 
-            acquisitions={acquisitions} 
-            setAcquisitions={setAcquisitions} 
+            onAcquireArtwork={onAcquireArtwork}
             />
     })
 
     return(
-        <div className="acquisitions-list">
-            {userAcquisition}
+        <div>
+             <h4>The {thisUser.name} Collection</h4>
+            {userAcquisitionCard}
         </div>
     )
 }

@@ -2,12 +2,9 @@ import React from 'react'
 import ArtCard from './ArtCard'
 
 function ArtList({ 
-    artworks, 
-    currentUser, 
-    onDeleteArtwork, 
-    acquisitions, 
-    setAcquisitions, 
-    onUpdateArtwork
+    currentUser,
+    artworks,  
+    onAcquireArtwork,
 }){
     
   const artworksList =
@@ -16,10 +13,7 @@ function ArtList({
             key={artwork.id} 
             currentUser={currentUser} 
             artwork={artwork}
-            acquisitions={acquisitions}
-            setAcquisitions={setAcquisitions}
-            onDeleteArtwork={onDeleteArtwork}
-            onUpdateArtwork={onUpdateArtwork}
+            onAcquireArtwork={onAcquireArtwork}
             />
     })
 

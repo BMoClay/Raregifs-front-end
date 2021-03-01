@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function UploadArtForm({ currentUser, artworks, setArtworks }){
+function UploadArtForm({ currentUser, onCreateArtwork }){
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
+    const history = useHistory()
 
     function handleSubmitNewArtwork(e) {
         e.preventDefault();
@@ -19,9 +21,8 @@ function UploadArtForm({ currentUser, artworks, setArtworks }){
         })
             .then((res) => res.json())
             .then((newArtwork) => {
-                // console.log(newArtwork)
-                const updatedArtworksArray = [...artworks, newArtwork];
-                setArtworks(updatedArtworksArray);
+                onCreateArtwork(newArtwork)
+                history.push(`/artworks/${newArtwork.id}`)
             })
     }
     

@@ -16,6 +16,27 @@ function StorageCard({
     console.log(artwork.acquisitions)
 
 console.log(acquisitions)
+    
+    function handleDeleteArtwork(id) {
+        const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
+        setArtworks(updatedArtworksArray);
+    } 
+
+      function handleDeleteAcquisitionClick(id) {
+    const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
+      setAcquisitions(updatedAcquisitionsArray);
+  } 
+
+    function handleUpdateArtwork(updatedArtwork) {
+        const updatedArtworksArray = artworks.map((artwork) => {
+        if (artwork.id === updatedArtwork.id) {
+            return updatedArtwork;
+        } else {
+            return artwork;
+        }
+        })
+        setArtworks(updatedArtworksArray);
+    }
 
     function handleDeleteAcquisitionClick() {
         fetch(`http://localhost:3000/acquisitions/${artwork.acquisition.id}`, {

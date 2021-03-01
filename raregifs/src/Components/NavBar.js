@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 // import React, { Component } from 'react';
 // class NavBar extends Component{
 //     render(){
 //         return(
-
 //         );
 //     }
 // }
+
 function NavBar({ currentUser, setCurrentUser }) {
+    
     function logout(){
         setCurrentUser(null);
     }
@@ -28,8 +30,8 @@ function NavBar({ currentUser, setCurrentUser }) {
                 <NavLink to="storage" exact className="button">
                     Storage
                 </NavLink>
-            </div>
-            <div>
+            {/* </div>
+            <div> */}
                 {currentUser ? (
                     <>
                         {/* <NavLink to="/upload" user={user} >Upload</NavLink> */}

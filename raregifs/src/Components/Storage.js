@@ -1,17 +1,15 @@
-
 import React from 'react';
 import StorageList from './StorageList'
 
-// function ArtPage({ user, artworks, setArtworks, onDeleteArtwork, onUpdateArtwork, acquisitions, setAcquisitions, onDeleteAcquisition }) {
   function Storage({ 
       currentUser, 
       artworks, 
       acquisitions, 
       setAcquisitions, 
       setArtworks, 
-      onDeleteArtwork, 
-      onUpdateArtwork,
-      onDeleteAcquisition
+      // onDeleteArtwork, 
+      // onUpdateArtwork,
+      // onDeleteAcquisition
  }) {
 
   console.log(currentUser)
@@ -23,9 +21,9 @@ import StorageList from './StorageList'
             artworks={artworks}
             setAcquisitions={setAcquisitions} 
             setArtworks={setArtworks}
-            onDeleteArtwork={onDeleteArtwork}
-            onUpdateArtwork={onUpdateArtwork}
-            onDeleteAcquisition={onDeleteAcquisition}
+            // onDeleteArtwork={onDeleteArtwork}
+            // onUpdateArtwork={onUpdateArtwork}
+            // onDeleteAcquisition={onDeleteAcquisition}
             />
       </div>
   );

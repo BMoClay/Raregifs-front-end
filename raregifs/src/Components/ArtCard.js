@@ -1,13 +1,13 @@
-import React from 'react'
-// import AcquisitionsPage from './AcquisitionsPage';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 function ArtCard({ 
   artwork, 
   currentUser, 
-  acquisitions, 
-  setAcquisitions 
+  onAcquireArtwork, 
 }) {
     
+    const history = useHistory()
     const { title, image, user } = artwork
 
     function handleAcquireArtworkClick(e) {
@@ -26,10 +26,10 @@ function ArtCard({
           }),
         })
         .then(r => r.json())
-        .then(newAcquisition => {
-            let updatedAcquisitionsArray = [...acquisitions, newAcquisition]
-          setAcquisitions(updatedAcquisitionsArray)
-        })
+        .then((newAcquisition) => {
+          onAcquireArtwork(newAcquisition)
+          history.push(`/acquisitions/${newAcquisition.id}`);
+        });
       }
 
     return (
@@ -37,16 +37,7 @@ function ArtCard({
             <img src={image} alt={title} />
             <h3>{title}</h3>
             <h3>{user.name}</h3>
-            <div>
-                {currentUser ? (
-                    <>
-                    <button onClick={handleAcquireArtworkClick}>acquire image</button>
-                    </>
-                ) : (
-                    <>
-                    </>
-                )}
-            </div>
+            <button className="button" onClick={handleAcquireArtworkClick}>acquire image</button>
         </div>
     );
 }

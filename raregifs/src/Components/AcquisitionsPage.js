@@ -3,35 +3,26 @@ import React from 'react'
 import AcquisitionsList from './AcquisitionsList'
 
 function AcquisitionsPage({ 
-    // artworks,
     users, 
-    currentUser, 
-    acquisitions, 
-    setAcquisitions, 
-    onAcquireArtwork, 
-    // onDeleteAcquisition 
+    currentUser,
+    onAcquireArtwork,  
 }){
     // const [collection, setCollection] = useState([])
 
-    // const thisCollection = users.map((user) => {
-    //     user.acquisitions.map((acquired_artwork) => {
-    //        setCollection(acquired_artwork)
-    //         return collection
-    //     })
-    // })
-    //     console.log(collection)
+    const userAcquisitions =
+    users.map((thisUser) => {
+        return <AcquisitionsList
+            key={thisUser.id}
+            userCollection={thisUser.acquisitions}
+            thisUser={thisUser}
+            currentUser={currentUser} 
+            onAcquireArtwork={onAcquireArtwork}
+            />
+    })
 
     return (
-        <div className="acquisitions-page" >
-            <AcquisitionsList 
-                // artworks={artworks}
-                users={users}
-                currentUser={currentUser}
-                acquisitions={acquisitions}  
-                setAcquisitions={setAcquisitions}
-                // onDeleteAcquisition={onDeleteAcquisition}
-                onAcquireArtwork={onAcquireArtwork}
-                />
+        <div >
+           {userAcquisitions}
         </div>
     );
     }
