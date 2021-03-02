@@ -1,45 +1,35 @@
-import React from 'react'
-import ArtCard from './ArtCard'
-import AcquisitionCard from './AcquisitionCard'
+import React from 'react';
+import ArtStorageCard from './ArtStorageCard';
+import AcquisitionStorageCard from './AcquisitionStorageCard';
+
 
 function StorageList({ 
-    artworks, 
     currentUser, 
-    onDeleteArtwork, 
-    acquisitions, 
-    setAcquisitions, 
-    onUpdateArtwork,
-    onDeleteAcquisition
 }){
 
     let myArtworksList =
-    currentUser.artworks.map((artwork) => {
-        return <ArtCard 
-            key={artwork.id} 
+    currentUser.artworks.map((userArtwork) => {
+        return <ArtStorageCard 
+            key={userArtwork.id} 
             currentUser={currentUser} 
-            artwork={artwork}
-            acquisitions={acquisitions}
-            onDeleteArtwork={onDeleteArtwork}
-            onUpdateArtwork={onUpdateArtwork}
+            userArtwork={userArtwork}
             />
     })
 
     let myAcquisitionsList =
-    currentUser.acquisitions.map((acquisition) => {
-        return <AcquisitionCard 
-            key={acquisition.id} 
-            acquisition={acquisition}
+    currentUser.acquisitions.map((userAcquisition) => {
+        return <AcquisitionStorageCard 
+            key={userAcquisition.id} 
+            userAcquisition={userAcquisition}
             currentUser={currentUser} 
-            acquisitions={acquisitions}
-            setAcquisitions={setAcquisitions}
-            onDeleteAcquisition={onDeleteAcquisition}
             />
     })
+
     return(
         <div className="my-storage">
-            <h2>Works</h2>
+            <h2>My Work</h2>
             {myArtworksList}
-            <h2>Acquisitions</h2>
+            <h2>My Acquisitions</h2>
             {myAcquisitionsList}
         </div>
     )

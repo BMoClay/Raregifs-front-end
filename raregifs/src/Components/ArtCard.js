@@ -3,15 +3,24 @@ import { useHistory } from 'react-router-dom';
 
 function ArtCard({ 
   artwork, 
-  currentUser, 
+  currentUser,
+  // artwork,
+  setArtworks,
+  acquisitions,
+  setAcquisitions, 
   onAcquireArtwork, 
-}) {
-    
+}){
+  
     const history = useHistory()
     const { title, image, user } = artwork
 
+    // function handleAddAcquisition(newAcquisition) {
+    //   const updatedAcquisitionsArray = [newAcquisition, ...acquisitions];
+    //   setAcquisitions(updatedAcquisitionsArray)
+    // }
+
     function handleAcquireArtworkClick(e) {
-        const acquisition = {
+        const newAcquisition = {
           user_id: currentUser.id,
           artwork_id: artwork.id,
         }
@@ -22,7 +31,7 @@ function ArtCard({
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-             acquisition
+             newAcquisition
           }),
         })
         .then(r => r.json())

@@ -10,7 +10,6 @@ import Storage from './Storage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
-  const [users, setUsers] = useState([])
   const [artworks, setArtworks] = useState([]);
   const [acquisitions, setAcquisitions] = useState([])
 
@@ -38,24 +37,15 @@ function App() {
           })
   }, [])
 
-  useEffect(() => {
-    fetch('http://localhost:3000/users')
-        .then(r => r.json())
-        .then(usersArray => {
-            setUsers(usersArray);
-        })
-  }, [])
-
   function handleAddAcquisition(newAcquisition) {
     const updatedAcquisitionsArray = [newAcquisition, ...acquisitions];
     setAcquisitions(updatedAcquisitionsArray)
   }
-  function handleAddArtwork(newArtwork) {
-    const updatedArtworksArray = [newArtwork, ...artworks, ];
-    setAcquisitions(updatedArtworksArray)
-  }
 
-  // console.log(users)
+  function handleAddArtwork(newArtwork) {
+    const updatedArtworksArray = [newArtwork, ...artworks];
+    setArtworks(updatedArtworksArray)
+  }
 
    return (
     <div className="app">
@@ -68,13 +58,17 @@ function App() {
                 <ArtPage 
                   currentUser={currentUser} 
                   artworks={artworks} 
+                  setArtworks={setArtworks}
+                  acquisitions={acquisitions}
+                  setAcquisitions={setAcquisitions}
                   onAcquireArtwork={handleAddAcquisition}
                   />
               </Route>
               <Route exact path="/acquisitions">
                 <Acquisitions
-                  users={users}
                   currentUser={currentUser}
+                  acquisitions={acquisitions}
+                  setAcquisitions={setAcquisitions}
                   onAcquireArtwork={handleAddAcquisition}
                 />
               </Route>
@@ -87,11 +81,6 @@ function App() {
               <Route exact path="/storage">
                 <Storage
                   currentUser={currentUser}
-                  users={users} 
-                  // acquisitions={acquisitions}
-                  // artworks={artworks}
-                  // setAcquisitions={setAcquisitions} 
-                  // setArtworks={setArtworks}
                   />
               </Route>
               <Route exact path="/signup">

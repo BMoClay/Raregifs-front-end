@@ -3,7 +3,10 @@ import ArtCard from './ArtCard'
 
 function ArtList({ 
     currentUser,
-    artworks,  
+    artworks,
+    setArtworks,
+    acquisitions,
+    setAcquisitions,  
     onAcquireArtwork,
 }){
     
@@ -13,10 +16,13 @@ function ArtList({
             key={artwork.id} 
             currentUser={currentUser} 
             artwork={artwork}
+            setArtworks={setArtworks}
+            acquisitions={acquisitions}
+            setAcquisitions={setAcquisitions}
             onAcquireArtwork={onAcquireArtwork}
             />
     })
-
+    // console.log(artwork)
     return(
         <div className="art-list">
             {artworksList}
