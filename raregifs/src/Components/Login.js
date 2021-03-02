@@ -19,9 +19,6 @@ function Login({ setCurrentUser }) {
             .then(res => res.json())
             .then((user) => {
                 setCurrentUser(user)
-                // console.log(user) is
-                // coming back as null
-                // from my fake auth?
             })
     }
  

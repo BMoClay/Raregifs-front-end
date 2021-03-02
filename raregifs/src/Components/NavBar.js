@@ -1,14 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-// import React, { Component } from 'react';
-// class NavBar extends Component{
-//     render(){
-//         return(
-//         );
-//     }
-// }
-
 function NavBar({ currentUser, setCurrentUser }) {
     
     function logout(){
@@ -21,7 +13,7 @@ function NavBar({ currentUser, setCurrentUser }) {
                 <NavLink to="/" exact className="button">
                     Raregifs
                 </NavLink>
-                <NavLink to="/acquisitions" exact className="button">
+                <NavLink to="/users" exact className="button">
                     Collections
                 </NavLink>
                 <NavLink to="/upload" exact className="button">
@@ -30,11 +22,8 @@ function NavBar({ currentUser, setCurrentUser }) {
                 <NavLink to="storage" exact className="button">
                     Storage
                 </NavLink>
-            {/* </div>
-            <div> */}
                 {currentUser ? (
                     <>
-                        {/* <NavLink to="/upload" user={user} >Upload</NavLink> */}
                         <button onClick={logout} >logout</button>
                     </>
                 ) : (

@@ -5,8 +5,8 @@ import ArtPage from './ArtPage';
 import Login from './Login';
 import Upload from './UploadArtForm';
 import Signup from './Signup';
-import Acquisitions from './AcquisitionsPage';
-import Storage from './Storage';
+import UserPage from './UserPage';
+import StoragePage from './StoragePage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
@@ -55,37 +55,19 @@ function App() {
                 <Login setCurrentUser={setCurrentUser}/>
               </Route>
               <Route exact path="/" >
-                <ArtPage 
-                  currentUser={currentUser} 
-                  artworks={artworks} 
-                  setArtworks={setArtworks}
-                  acquisitions={acquisitions}
-                  setAcquisitions={setAcquisitions}
-                  onAcquireArtwork={handleAddAcquisition}
-                  />
+                <ArtPage currentUser={currentUser} artworks={artworks} onAcquireArtwork={handleAddAcquisition}/>
               </Route>
-              <Route exact path="/acquisitions">
-                <Acquisitions
-                  currentUser={currentUser}
-                  acquisitions={acquisitions}
-                  setAcquisitions={setAcquisitions}
-                  onAcquireArtwork={handleAddAcquisition}
-                />
+              <Route exact path="/users">
+                <UserPage currentUser={currentUser} onAcquireArtwork={handleAddAcquisition}/>
               </Route>
               <Route exact path="/upload">
-                <Upload 
-                  currentUser={currentUser}
-                  onCreateArtwork={handleAddArtwork}
-                />
+                <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
               </Route>
               <Route exact path="/storage">
-                <Storage
-                  currentUser={currentUser}
-                  />
+                <StoragePage currentUser={currentUser} />
               </Route>
               <Route exact path="/signup">
-                <Signup 
-                  setCurrentUser={setCurrentUser}/>
+                <Signup setCurrentUser={setCurrentUser}/>
               </Route>
             </Switch>
     </div>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 function UploadArtForm({ currentUser, onCreateArtwork }){
+   
+    const { id } = currentUser
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
-    const history = useHistory()
 
     function handleSubmitNewArtwork(e) {
         e.preventDefault();
@@ -16,13 +16,12 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
             body: JSON.stringify({
                 title: title,
                 image: image,
-                user_id: currentUser.id,
+                user_id: id,
             }),
         })
             .then((res) => res.json())
             .then((newArtwork) => {
                 onCreateArtwork(newArtwork)
-                history.push(`/artworks/${newArtwork.id}`)
             })
     }
     

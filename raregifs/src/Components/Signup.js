@@ -21,6 +21,7 @@ function Signup({ setUser }) {
                 setUser(user)
             })
     }
+
     const { name, password } = formData
  
   return (
@@ -31,7 +32,6 @@ function Signup({ setUser }) {
                 type="text"
                 name="name"
                 autoComplete="off"
-                // value={formData.name}
                 value={name}
                 onChange={handleChange}
             />
@@ -39,7 +39,6 @@ function Signup({ setUser }) {
             <input
                 type="password"
                 name="password"
-                // value={formData.password}
                 value={password}
                 onChange={handleChange}
                 autoComplete="current-password"
