@@ -7,6 +7,7 @@ import Upload from './UploadArtForm';
 import ArtPage from './ArtPage';
 import UserPage from './UserPage';
 import StoragePage from './StoragePage';
+import Account from './Account';
 
 
 
@@ -49,26 +50,31 @@ function App() {
     setArtworks(updatedArtworksArray)
   }
 
-  function handleDeleteAcquisition(id) {
-    const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
-    setAcquisitions(updatedAcquisitionsArray);
-  } 
+  // function handleDeleteAcquisition(id) {
+  //   const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
+  //   setAcquisitions(updatedAcquisitionsArray);
+  // } 
 
-  function handleUpdateArtwork(updatedArtwork) {
-    const updatedArtworksArray = artworks.map((artwork) => {
-      if (artwork.id === updatedArtwork.id) {
-          return updatedArtwork;
-      } else {
-          return artwork;
-      }
-    })
-    setArtworks(updatedArtworksArray);
-  }
+  // function handleUpdateArtwork(updatedArtwork) {
+  //   const updatedArtworksArray = artworks.map((artwork) => {
+  //     if (artwork.id === updatedArtwork.id) {
+  //         return updatedArtwork;
+  //     } else {
+  //         return artwork;
+  //     }
+  //   })
+  //   setArtworks(updatedArtworksArray);
+  // }
 
-  function handleDeleteArtwork(id) {
-    const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
-    setArtworks(updatedArtworksArray);
-  }  
+  // function handleDeleteArtwork(id) {
+  //   const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
+  //   setArtworks(updatedArtworksArray);
+  // }  
+
+  // function handleDeleteUser(id) {
+  //   const updatedUsersArray = users.filter((user) => user.id !== id);
+  //   setUsers(updatedUsersArray);
+  // }  
 
    return (
     <div className="app">
@@ -87,12 +93,10 @@ function App() {
                 <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
               </Route>
               <Route exact path="/storage">
-                <StoragePage 
-                    currentUser={currentUser} 
-                    onUpdateArtwork={handleUpdateArtwork}
-                    onDeleteArtwork={handleDeleteArtwork}
-                    onDeleteAcquisition={handleDeleteAcquisition}
-                    />
+                <StoragePage currentUser={currentUser}/>
+              </Route>
+              <Route exact path="/account">
+                <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
               </Route>
               <Route exact path="/signup">
                 <Signup setCurrentUser={setCurrentUser}/>

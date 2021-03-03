@@ -19,12 +19,15 @@ function NavBar({ currentUser, setCurrentUser }) {
                 <NavLink to="/upload" exact className="button">
                     Upload
                 </NavLink>
-                <NavLink to="storage" exact className="button">
+                <NavLink to="/storage" exact className="button">
                     Storage
                 </NavLink>
                 {currentUser ? (
                     <>
-                        <button onClick={logout} >logout</button>
+                        <button onClick={logout} >logout</button>   
+                        <NavLink to="/account" exact className="button">
+                            Account
+                        </NavLink>
                     </>
                 ) : (
                     <>

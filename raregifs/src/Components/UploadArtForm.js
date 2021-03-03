@@ -27,7 +27,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
     
     return ( 
         <div className="upload-art-form">
-            <h1>upload: jpeg or gif, square format, under 2MB</h1>
+            <h4>Upload</h4>
             <form onSubmit={handleSubmitNewArtwork}>
                 <input
                     type="text"
