@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 
-function StorageCardArt({ userArtwork, onDeleteArtwork, onUpdateArtwork }) {
+function StorageCardArt({ artwork, onDeleteArtwork, onUpdateArtwork }) {
 
-    const { title, id, image } = userArtwork
+    const { id, title, image } = artwork
     const [updatedTitle, setUpdatedTitle] = useState(title)
 
     function handleDeleteClick() {
         fetch(`http://localhost:3000/artworks/${id}`, {
+        // fetch(`http://localhost:3000/users/${id}/artworks`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -18,6 +19,7 @@ function StorageCardArt({ userArtwork, onDeleteArtwork, onUpdateArtwork }) {
     function handleUpdateArtworkSubmit(e) {
         e.preventDefault();
         fetch(`http://localhost:3000/artworks/${id}`, {
+        // fetch(`http://localhost:3000/users/${id}/artworks`, {
             method: "PATCH",
             headers: {
             "Content-Type": "application/json",

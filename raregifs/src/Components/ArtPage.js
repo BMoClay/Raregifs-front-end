@@ -3,14 +3,14 @@ import ArtCard from './ArtCard'
 
 function ArtPage({ currentUser, artworks, onAcquireArtwork }){
     
-  const artworkcards =
+  const artworkCard =
     artworks.map((artwork) => {
-        return <ArtCard key={artwork.id} currentUser={currentUser} onAcquireArtwork={onAcquireArtwork}/>
+        return <ArtCard key={artwork.id} artwork={artwork} currentUser={currentUser} onAcquireArtwork={onAcquireArtwork}/>
     })
     
     return(
         <div className="cards">
-            {artworkcards}
+            {artworkCard}
         </div>
     )
 }

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './NavBar';
-import ArtPage from './ArtPage';
+import Signup from './Signup';
 import Login from './Login';
 import Upload from './UploadArtForm';
-import Signup from './Signup';
+import ArtPage from './ArtPage';
 import UserPage from './UserPage';
 import StoragePage from './StoragePage';
+
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
@@ -47,6 +49,27 @@ function App() {
     setArtworks(updatedArtworksArray)
   }
 
+  function handleDeleteAcquisition(id) {
+    const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
+    setAcquisitions(updatedAcquisitionsArray);
+  } 
+
+  function handleUpdateArtwork(updatedArtwork) {
+    const updatedArtworksArray = artworks.map((artwork) => {
+      if (artwork.id === updatedArtwork.id) {
+          return updatedArtwork;
+      } else {
+          return artwork;
+      }
+    })
+    setArtworks(updatedArtworksArray);
+  }
+
+  function handleDeleteArtwork(id) {
+    const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
+    setArtworks(updatedArtworksArray);
+  }  
+
    return (
     <div className="app">
         <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
@@ -64,7 +87,12 @@ function App() {
                 <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
               </Route>
               <Route exact path="/storage">
-                <StoragePage currentUser={currentUser} />
+                <StoragePage 
+                    currentUser={currentUser} 
+                    onUpdateArtwork={handleUpdateArtwork}
+                    onDeleteArtwork={handleDeleteArtwork}
+                    onDeleteAcquisition={handleDeleteAcquisition}
+                    />
               </Route>
               <Route exact path="/signup">
                 <Signup setCurrentUser={setCurrentUser}/>

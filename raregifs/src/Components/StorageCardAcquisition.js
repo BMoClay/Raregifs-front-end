@@ -1,9 +1,9 @@
 import React from 'react'
 
-function StorageCardAcquisition({ userAcquisition, onDeleteAcquisition }) {
+function StorageCardAcquisition({ id, artwork, onDeleteAcquisition }) {
     
     function handleDeleteAcquisitionClick() {
-        fetch(`http://localhost:3000/acquisitions/${userAcquisition.id}`, {
+        fetch(`http://localhost:3000/acquisitions/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -14,9 +14,9 @@ function StorageCardAcquisition({ userAcquisition, onDeleteAcquisition }) {
 
     return (
         <div className="storage-card">
-            <img src={userAcquisition.artwork.image} alt={userAcquisition.artwork.title} />
-            <h3>{userAcquisition.artwork.title}</h3>
-            <h3>{userAcquisition.artwork.user_name}</h3>
+            <img src={artwork.image} alt={artwork.title} />
+            <h3>{artwork.title}</h3>
+            <h3>{artwork.user_name}</h3>
             <button onClick={handleDeleteAcquisitionClick}>remove from collection</button>
         </div>
     );
