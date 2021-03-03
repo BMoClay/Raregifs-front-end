@@ -1,50 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import StorageCardArt from './StorageCardArt';
 import StorageCardAcquisition from './StorageCardAcquisition'
 
-function StoragePage({ currentUser }) {
-
-      const [userArtworks, setUserArtworks] = useState(currentUser.artworks)
-      const [userAcquisitions, setUserAcquisitions] = useState(currentUser.acquisiitons)
-
-      function handleDeleteAcquisition(id) {
-          const updatedAcquisitionsArray = currentUser.acquisitions.filter((acquisition) => acquisition.id !== id);
-          setUserAcquisitions(updatedAcquisitionsArray);
-      } 
-    
-      function handleUpdateArtwork(updatedArtwork) {
-          const updatedArtworksArray = currentUser.artworks.map((artwork) => {
-              if (artwork.id === updatedArtwork.id) {
-                  return updatedArtwork;
-              } else {
-                  return artwork;
-              }
-          })
-          setUserArtworks(updatedArtworksArray);
-      }
-    
-      function handleDeleteArtwork(id) {
-          const updatedArtworksArray = currentUser.artworks.filter((artwork) => artwork.id !== id);
-          setUserArtworks(updatedArtworksArray);
-      }  
+function StoragePage({ 
+    currentUser,
+    onDeleteArtwork, 
+    onUpdateArtwork, 
+    onDeleteAcquisition, 
+  }) {
 
       const uArtworkCard =
-          userArtworks.map((artwork) => { 
+          currentUser.artworks.map((artwork) => {   
               return <StorageCardArt 
                 key={artwork.id}
                 artwork={artwork}
-                onUpdateArtwork={handleUpdateArtwork}
-                onDeleteArtwork={handleDeleteArtwork}
+                onUpdateArtwork={onUpdateArtwork}
+                onDeleteArtwork={onDeleteArtwork}
               />
           })
       
       const uAcquisitionCard = 
-          userAcquisitions.map((acquisition) => {
+          currentUser.acquisitions.map((acquisition) => {
               return <StorageCardAcquisition
                 key={acquisition.id}
-                id={acquisition.id}
+                acquisition={acquisition}
                 artwork={acquisition.artwork}
-                onDeleteAcquisition={handleDeleteAcquisition}
+                onDeleteAcquisition={onDeleteAcquisition}
               />
           })    
 
@@ -59,3 +40,42 @@ function StoragePage({ currentUser }) {
 }
 
 export default StoragePage;
+
+    // userArtworks,
+    // setUserArtworks,
+    // userAcquisitions,
+    // setUserAcquisitions, 
+  
+      // const [userArtworks, setUserArtworks] = useState(currentUser.artworks)
+      // const [userAcquisitions, setUserAcquisitions] = useState(currentUser.acquisitions)
+
+      // function handleDeleteUserAcquisition(id) {
+      //     const updatedAcquisitionsArray = userAcquisitions.filter((acquisition) => acquisition.id !== id);
+      //     setUserAcquisitions(updatedAcquisitionsArray);
+      // } 
+    
+      // function handleUpdateUserArtwork(updatedArtwork) {
+      //     const updatedArtworksArray = userArtworks.map((artwork) => {
+      //         if (artwork.id === updatedArtwork.id) {
+      //             return updatedArtwork;
+      //         } else {
+      //             return artwork;
+      //         }
+      //     })
+      //     setUserArtworks(updatedArtworksArray);
+      // }
+    
+      // function handleDeleteUserArtwork(id) {
+      //     const updatedArtworksArray = userArtworks.filter((artwork) => artwork.id !== id);
+      //     setUserArtworks(updatedArtworksArray);
+      // }  
+
+         // userArtworks.map((artwork) => { 
+
+
+         // onUpdateUserArtwork={handleUpdateUserArtwork}
+         // onDeleteUserArtwork={handleDeleteUserArtwork}
+       
+         // setUserArtworks={setUserArtworks}
+          // onDeleteUserAcquisition={handleDeleteUserAcquisition}
+             // setUserAcquisitions={setUserAcquisitions}

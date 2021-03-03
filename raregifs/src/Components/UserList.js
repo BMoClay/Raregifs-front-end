@@ -7,7 +7,7 @@ function UserList({ userCollection, eachUser, currentUser, onAcquireArtwork }){
         userCollection.map((acquisition) => {
         return <UserAcquisitionCard
                     key={acquisition.id}
-                    userAcquisition={acquisition}
+                    acquisition={acquisition}
                     currentUser={currentUser} 
                     onAcquireArtwork={onAcquireArtwork}
                 />

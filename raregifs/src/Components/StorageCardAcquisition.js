@@ -1,7 +1,9 @@
 import React from 'react'
 
-function StorageCardAcquisition({ id, artwork, onDeleteAcquisition }) {
+function StorageCardAcquisition({ acquisition, artwork, onDeleteAcquisition }) {
     
+    const { id } = acquisition
+
     function handleDeleteAcquisitionClick() {
         fetch(`http://localhost:3000/acquisitions/${id}`, {
             method: "DELETE"

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UserAcquisitionCard({ userAcquisition, currentUser, onAcquireArtwork }) {
+function UserAcquisitionCard({ acquisition, currentUser, onAcquireArtwork }) {
 
     function handleAcquireArtworkClick(e) {
         e.preventDefault();
@@ -11,7 +11,7 @@ function UserAcquisitionCard({ userAcquisition, currentUser, onAcquireArtwork })
             },
             body: JSON.stringify({
                 user_id: currentUser.id,
-                artwork_id: userAcquisition.artwork.id
+                artwork_id: acquisition.artwork.id
             }),
         })
             .then(r => r.json())
@@ -20,9 +20,9 @@ function UserAcquisitionCard({ userAcquisition, currentUser, onAcquireArtwork })
     
     return (
         <div className="acquisition-card">
-            <img src={userAcquisition.artwork.image} alt={userAcquisition.artwork.title} />
-            <h3>{userAcquisition.artwork.title}</h3>
-            <h3>{userAcquisition.artwork.user_name}</h3>
+            <img src={acquisition.artwork.image} alt={acquisition.artwork.title} />
+            <h3>{acquisition.artwork.title}</h3>
+            <h3>{acquisition.artwork.user_name}</h3>
             <div>
                 {currentUser ? (
                     <>

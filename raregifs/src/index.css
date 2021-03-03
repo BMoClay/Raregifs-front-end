@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.storage-card img {
+  width: 200px;
+}
+
+.acquisition-card img {
+  width: 200px;
+}
+
+.art-card img {
+  width: 400px;
+}

@@ -7,7 +7,6 @@ function StorageCardArt({ artwork, onDeleteArtwork, onUpdateArtwork }) {
 
     function handleDeleteClick() {
         fetch(`http://localhost:3000/artworks/${id}`, {
-        // fetch(`http://localhost:3000/users/${id}/artworks`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -19,7 +18,6 @@ function StorageCardArt({ artwork, onDeleteArtwork, onUpdateArtwork }) {
     function handleUpdateArtworkSubmit(e) {
         e.preventDefault();
         fetch(`http://localhost:3000/artworks/${id}`, {
-        // fetch(`http://localhost:3000/users/${id}/artworks`, {
             method: "PATCH",
             headers: {
             "Content-Type": "application/json",
@@ -28,7 +26,7 @@ function StorageCardArt({ artwork, onDeleteArtwork, onUpdateArtwork }) {
         })
             .then((r) => r.json())
             .then((updatedArtwork) => {
-                onUpdateArtwork(updatedArtwork);
+                onUpdateArtwork(updatedArtwork)
             });
     }
 
