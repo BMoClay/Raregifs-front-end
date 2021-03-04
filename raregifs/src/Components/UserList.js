@@ -1,8 +1,11 @@
 import React from 'react'
 import UserAcquisitionCard from './UserAcquisitionCard'
+// import CommentsContainer from './CommentsContainer'
+import CommentForm from './CommentForm'
+import CommentCard from './CommentCard'
 
-function UserList({ userCollection, eachUser, currentUser, onAcquireArtwork }){
-
+function UserList({ commentsReceived, userCollection, eachUser, currentUser, onAcquireArtwork }){
+    
    let userCard =
         userCollection.map((acquisition) => {
         return <UserAcquisitionCard
@@ -13,10 +16,23 @@ function UserList({ userCollection, eachUser, currentUser, onAcquireArtwork }){
                 />
         })
 
+    let userComments =
+        commentsReceived.map((comment) => {
+        return <CommentCard
+                    key={comment.id}
+                    content={comment.content}
+                />
+        })
+
     return(
         <div>
             <h4>The {eachUser.name} Collection</h4>
                 {userCard}
+            <h4>Comments on {eachUser.name}' collection</h4>    
+                {userComments}
+            <h4>Add a comment</h4>
+                <CommentForm currentUser={currentUser}/>
+                <br></br>
         </div>
     );
 }

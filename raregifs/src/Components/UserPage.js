@@ -4,7 +4,8 @@ import UserList from './UserList'
 function UserPage({ currentUser, onAcquireArtwork }){
 
     const [users, setUsers] = useState([])
-
+    console.log(currentUser)
+    console.log(users)
     useEffect(() => {
         fetch('http://localhost:3000/users')
             .then(r => r.json())
@@ -17,10 +18,11 @@ function UserPage({ currentUser, onAcquireArtwork }){
         users.map((eachUser) => {
             return <UserList
                 key={eachUser.id}
+                currentUser={currentUser}
                 userCollection={eachUser.acquisitions}
                 eachUser={eachUser}
-                currentUser={currentUser} 
                 onAcquireArtwork={onAcquireArtwork}
+                commentsReceived={eachUser.comments_received}
                 />
         })
 
