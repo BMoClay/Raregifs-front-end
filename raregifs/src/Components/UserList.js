@@ -3,7 +3,7 @@ import UserAcquisitionCard from './UserAcquisitionCard'
 import CommentForm from './CommentForm'
 import CommentCard from './CommentCard'
 
-function UserList({ eachUser, cUId, onAcquireArtwork }){
+function UserList({ eachUser, cUId, onAcquireArtwork, acquisitions }){
 
                                         // eachUser.comments_received
     const [comments, setComments] = useState([])
@@ -18,8 +18,10 @@ function UserList({ eachUser, cUId, onAcquireArtwork }){
         setComments(updatedCommentsArray);
     } 
 
-    const uAcquisitions =
-        eachUser.acquisitions.map((acquisition) => {
+    const thisCollection = acquisitions.filter((acquisition) => acquisition.user.id === eachUser.id)
+    
+    const uAcquisitions =    
+        thisCollection.map((acquisition) => {
             return <UserAcquisitionCard
                     key={acquisition.id}
                     aArtwork={acquisition.artwork}

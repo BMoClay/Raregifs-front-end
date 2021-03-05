@@ -1,12 +1,13 @@
 import React from 'react'
 import UserList from './UserList'
 
-function UserPage({ users, currentUser, onAcquireArtwork }){
+function UserPage({ users, currentUser, onAcquireArtwork, acquisitions }){
     
     const aUser =
         users.map((eachUser) => {
             return <UserList
                 key={eachUser.id}
+                acquisitions={acquisitions}
                 eachUser={eachUser}
                 cUId={currentUser.id}
                 onAcquireArtwork={onAcquireArtwork}

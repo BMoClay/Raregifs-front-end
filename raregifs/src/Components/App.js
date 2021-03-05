@@ -14,6 +14,8 @@ function App() {
     const [artworks, setArtworks] = useState([]);
     const [acquisitions, setAcquisitions] = useState([])
     const [users, setUsers] = useState([])
+    // const [eachUserCollection, setEachUserCollection] = useState([])
+    // const [eachUser, setEachUser] = useState([])
     
     useEffect(() => {
         fetch('http://localhost:3000/users')
@@ -47,9 +49,10 @@ function App() {
             })
     }, [])
 
-    function handleAddAcquisition(newAcquisition) {
-        const updatedAcquisitionsArray = [newAcquisition, ...acquisitions];
-        setAcquisitions(updatedAcquisitionsArray)
+    function handleAddAcquisition(newUserAcq) {
+      console.log("TEST", newUserAcq)
+      const updatedAcquisitionsArray = [newUserAcq, ...acquisitions]
+      setAcquisitions(updatedAcquisitionsArray)
     }
 
     function handleAddArtwork(newArtwork) {
@@ -60,19 +63,19 @@ function App() {
     function handleDeleteAcquisition(acquisitionObject) {
         // console.log(acquisitionObject)
         const { id } = acquisitionObject
-        const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
-        setAcquisitions(updatedAcquisitionsArray);
+        const updatedAcqA = acquisitions.filter((acquisition) => acquisition.id !== id);
+        setAcquisitions(updatedAcqA);
     } 
 
     function handleUpdateArtwork(updatedArtwork) {
-        const updatedArtworksArray = artworks.map((artwork) => {
+        const updatedArtA = artworks.map((artwork) => {
             if (artwork.id === updatedArtwork.id) {
                 return updatedArtwork;
             } else {
                 return artwork;
             }
         })
-        setArtworks(updatedArtworksArray);
+        setArtworks(updatedArtA);
     }
 
     function handleDeleteArtwork(id) {
@@ -80,7 +83,6 @@ function App() {
         setArtworks(updatedArtworksArray);
     }  
 
-    console.log(currentUser)
     return (
       <div className="app">
           <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
@@ -92,7 +94,7 @@ function App() {
                   <ArtPage currentUser={currentUser} artworks={artworks} onAcquireArtwork={handleAddAcquisition}/>
                 </Route>
                 <Route exact path="/users">
-                  <UserPage users={users} currentUser={currentUser} onAcquireArtwork={handleAddAcquisition}/>
+                  <UserPage users={users} acquisitions={acquisitions} currentUser={currentUser} onAcquireArtwork={handleAddAcquisition}/>
                 </Route>
                 <Route exact path="/upload">
                   <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
@@ -116,6 +118,47 @@ function App() {
     );
 }
 export default App;
+
+
+
+
+
+
+    // const eachUser = users.map((user) => {
+    //   // return user={user}
+    //   setEachUser(user)
+    // })
+    // console.log(eachUser)
+
+    
+
+
+    // function handleAddAcquisition(newUserAcq) {
+    //   const thisUser = users.filter((user) => user.id === newUserAcq.user.id)
+    //       const updatedUserCollection = thisUser.acquisitions
+    // // const updatedAcquisitionsArray = [newUserAcq, ...acquisitions]
+    // // setAcquisitions(updatedUAcqs, updatedAcquisitionsArray)
+    //   return thisUser
+    // }
+
+    // console.log(users)
+    // console.log(acquisitions)
+
+
+
+          // const updatedUserAcqsA = [newUserAcq, ...acquisitions];
+           // setAcquisitions(updatedUserAcqsA)
+
+
+
+
+
+
+
+
+
+
+
 
     // const [userArtworks, setUserArtworks] = useState([])
     // const [userAcquisitions, setUserAcquisitions] = useState([])

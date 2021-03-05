@@ -1,6 +1,12 @@
 import React from 'react';
 
-function ArtCard({ artwork, currentUser, onAcquireArtwork }){
+function ArtCard(
+      { 
+          artwork, 
+          currentUser, 
+          onAcquireArtwork, 
+      }
+) {
 
     const { title, image, user } = artwork
 
@@ -25,7 +31,11 @@ function ArtCard({ artwork, currentUser, onAcquireArtwork }){
             <img src={image} alt={title} />
             <h3>{title}</h3>
             <h3>{user.name}</h3>
-            <button className="button" onClick={handleAcquireArtworkClick}>acquire image</button>
+            <button 
+                className="button" 
+                onClick={handleAcquireArtworkClick}
+                >acquire image
+            </button>
         </div>
     );
 }

@@ -16,7 +16,7 @@ function UserAcquisitionCard({ aArtwork, cUId, onAcquireArtwork }) {
             }),
         })
             .then(r => r.json())
-            .then((newAcquisition) => onAcquireArtwork(newAcquisition))
+            .then((newUserAcq) => onAcquireArtwork(newUserAcq))
     }
     
     return (
