@@ -10,24 +10,27 @@ function StoragePage({
   }) {
 
       const uArtworkCard =
-          currentUser.artworks.map((artwork) => {   
-              return <StorageCardArt 
+        currentUser ? (currentUser.artworks.map((artwork) => {   
+                return <StorageCardArt 
                 key={artwork.id}
                 artwork={artwork}
                 onUpdateArtwork={onUpdateArtwork}
                 onDeleteArtwork={onDeleteArtwork}
-              />
-          })
+                />
+            }
+            )) : (null)          
       
       const uAcquisitionCard = 
-          currentUser.acquisitions.map((acquisition) => {
-              return <StorageCardAcquisition
-                key={acquisition.id}
-                acquisition={acquisition}
-                artwork={acquisition.artwork}
-                onDeleteAcquisition={onDeleteAcquisition}
-              />
-          })    
+        currentUser ? (currentUser.acquisitions.map((acquisition) => {
+                return <StorageCardAcquisition
+                  key={acquisition.id}
+                  acquisition={acquisition}
+                  artwork={acquisition.artwork}
+                  onDeleteAcquisition={onDeleteAcquisition}
+                />
+            }    
+        )) : (null)
+         
 
     return (
         <div className="storage" >

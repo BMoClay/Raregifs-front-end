@@ -1,43 +1,134 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserAcquisitionCard from './UserAcquisitionCard'
-// import CommentsContainer from './CommentsContainer'
 import CommentForm from './CommentForm'
 import CommentCard from './CommentCard'
 
-function UserList({ commentsReceived, userCollection, eachUser, currentUser, onAcquireArtwork }){
-    
-   let userCard =
-        userCollection.map((acquisition) => {
-        return <UserAcquisitionCard
-                    key={acquisition.id}
-                    acquisition={acquisition}
-                    currentUser={currentUser} 
-                    onAcquireArtwork={onAcquireArtwork}
-                />
-        })
+function UserList({ eachUser, cUId, onAcquireArtwork }){
 
-    let userComments =
-        commentsReceived.map((comment) => {
-        return <CommentCard
-                    key={comment.id}
-                    content={comment.content}
-                />
+                                        // eachUser.comments_received
+    const [comments, setComments] = useState([])
+
+    function handleAddComment(newComment) {
+        const updatedCommentsArray = [newComment, ...comments];
+        setComments(updatedCommentsArray)
+    } 
+
+    function handleDeleteComment(id) {
+        const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
+        setComments(updatedCommentsArray);
+    } 
+
+    const uAcquisitions =
+        eachUser.acquisitions.map((acquisition) => {
+            return <UserAcquisitionCard
+                    key={acquisition.id}
+                    aArtwork={acquisition.artwork}
+                    cUId={cUId}
+                    onAcquireArtwork={onAcquireArtwork}
+                    />
+        })
+    
+    const uComments =
+        eachUser.comments_received.map((rComment) => {
+            return <CommentCard
+                    key={rComment.id}
+                    cUId={cUId}
+                    commentID={rComment.id}
+                    content={rComment.content}
+                    author={rComment.author}
+                    commenter_id={rComment.commenter_id}
+                    onDeleteComment={handleDeleteComment}
+                    />
         })
 
     return(
         <div>
-            <h4>The {eachUser.name} Collection</h4>
-                {userCard}
-            <h4>Comments on {eachUser.name}' collection</h4>    
-                {userComments}
-            <h4>Add a comment</h4>
-                <CommentForm currentUser={currentUser}/>
+            <h2>The {eachUser.name} Collection</h2>
+                {uAcquisitions}
+            <h3>Comments on {eachUser.name}'s collection</h3>    
+                {uComments}
+                <CommentForm 
+                    eachUserID={eachUser.id} 
+                    cUId={cUId}
+                    onAddComment={handleAddComment}
+                    />
                 <br></br>
         </div>
     );
 }
 
 export default UserList;
+
+
+
+
+
+
+
+// const [comments, setComments] = useState([])
+
+// function handleAddComment(newComment) {
+//     const updatedCommentsArray = [newComment, ...comments];
+//     setComments(updatedCommentsArray)
+// } 
+
+// function handleDeleteComment(id) {
+//     const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
+//     setComments(updatedCommentsArray);
+// } 
+
+// const uAcquisitions =
+//     eachUser.acquisitions ? (eachUser.acquisitions.map((acquisition) => {
+//         return <UserAcquisitionCard
+//                     key={acquisition.id}
+//                     aArtwork={acquisition.artwork}
+//                     cUId={cUId}
+//                     onAcquireArtwork={onAcquireArtwork}
+//                 />
+//     }
+//     )) : (null)
+
+
+// const uComments =
+//     eachUser.comments_received ? (eachUser.comments_received.map((rComment) => {
+//             return <CommentCard
+//                         key={rComment.id}
+//                         cUId={cUId}
+//                         commentID={rComment.id}
+//                         content={rComment.content}
+//                         author={rComment.author}
+//                         commenter_id={rComment.commenter_id}
+//                         onDeleteComment={handleDeleteComment}
+//                     />
+//         }
+//     )) : (null)
+
+// return(
+//     <div>
+//         <h2>The {eachUser.name} Collection</h2>
+//             {uAcquisitions}
+//         <h3>Comments on {eachUser.name}'s collection</h3>    
+//             {uComments}
+//             <CommentForm 
+//                 eachUserID={eachUser.id} 
+//                 cUId={cUId}
+//                 onAddComment={handleAddComment}
+//                 />
+//             <br></br>
+//     </div>
+// );
+// }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

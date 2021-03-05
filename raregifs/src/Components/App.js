@@ -13,6 +13,15 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null)
     const [artworks, setArtworks] = useState([]);
     const [acquisitions, setAcquisitions] = useState([])
+    const [users, setUsers] = useState([])
+    
+    useEffect(() => {
+        fetch('http://localhost:3000/users')
+            .then(r => r.json())
+            .then(usersArray => {
+                setUsers(usersArray);
+            })
+      }, [])
 
     useEffect(() => {
       fetch("http://localhost:3000/me")
@@ -48,7 +57,9 @@ function App() {
         setArtworks(updatedArtworksArray)
     } 
 
-    function handleDeleteAcquisition(id) {
+    function handleDeleteAcquisition(acquisitionObject) {
+        // console.log(acquisitionObject)
+        const { id } = acquisitionObject
         const updatedAcquisitionsArray = acquisitions.filter((acquisition) => acquisition.id !== id);
         setAcquisitions(updatedAcquisitionsArray);
     } 
@@ -69,6 +80,7 @@ function App() {
         setArtworks(updatedArtworksArray);
     }  
 
+    console.log(currentUser)
     return (
       <div className="app">
           <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
@@ -80,7 +92,7 @@ function App() {
                   <ArtPage currentUser={currentUser} artworks={artworks} onAcquireArtwork={handleAddAcquisition}/>
                 </Route>
                 <Route exact path="/users">
-                  <UserPage currentUser={currentUser} onAcquireArtwork={handleAddAcquisition}/>
+                  <UserPage users={users} currentUser={currentUser} onAcquireArtwork={handleAddAcquisition}/>
                 </Route>
                 <Route exact path="/upload">
                   <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>

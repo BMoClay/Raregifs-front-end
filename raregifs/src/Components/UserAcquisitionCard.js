@@ -1,7 +1,8 @@
 import React from 'react';
 
-function UserAcquisitionCard({ acquisition, currentUser, onAcquireArtwork }) {
+function UserAcquisitionCard({ aArtwork, cUId, onAcquireArtwork }) {
 
+    console.log(aArtwork)
     function handleAcquireArtworkClick(e) {
         e.preventDefault();
         fetch('http://localhost:3000/acquisitions', {
@@ -10,8 +11,8 @@ function UserAcquisitionCard({ acquisition, currentUser, onAcquireArtwork }) {
             'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                user_id: currentUser.id,
-                artwork_id: acquisition.artwork.id
+                user_id: cUId,
+                artwork_id: aArtwork.id
             }),
         })
             .then(r => r.json())
@@ -20,11 +21,11 @@ function UserAcquisitionCard({ acquisition, currentUser, onAcquireArtwork }) {
     
     return (
         <div className="acquisition-card">
-            <img src={acquisition.artwork.image} alt={acquisition.artwork.title} />
-            <h3>{acquisition.artwork.title}</h3>
-            <h3>{acquisition.artwork.user_name}</h3>
+            <img src={aArtwork.image} alt={aArtwork.title} />
+            <h2>{aArtwork.title}</h2>
+            <h4>{aArtwork.user_name}</h4>
             <div>
-                {currentUser ? (
+                {cUId ? (
                     <>
                     <button onClick={handleAcquireArtworkClick}>acquire image</button>
                     </>
@@ -33,6 +34,8 @@ function UserAcquisitionCard({ acquisition, currentUser, onAcquireArtwork }) {
                     </>
                 )}
             </div>
+            <br></br>
+            <br></br>
         </div>
     );
 }
