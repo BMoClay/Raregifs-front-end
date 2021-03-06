@@ -4,13 +4,18 @@ import StorageCardAcquisition from './StorageCardAcquisition'
 
 function StoragePage({ 
     currentUser,
+    acquisitions,
+    artworks,
     onDeleteArtwork, 
     onUpdateArtwork, 
     onDeleteAcquisition, 
   }) {
 
+  const uAcquisitions = acquisitions.filter((acquisition) => acquisition.user.id === currentUser.id)
+  const uArtworks = artworks.filter((artwork) => artwork.user.id === currentUser.id)
+
       const uArtworkCard =
-        currentUser ? (currentUser.artworks.map((artwork) => {   
+        currentUser ? (uArtworks.map((artwork) => {   
                 return <StorageCardArt 
                 key={artwork.id}
                 artwork={artwork}
@@ -21,7 +26,7 @@ function StoragePage({
             )) : (null)          
       
       const uAcquisitionCard = 
-        currentUser ? (currentUser.acquisitions.map((acquisition) => {
+        currentUser ? (uAcquisitions.map((acquisition) => {
                 return <StorageCardAcquisition
                   key={acquisition.id}
                   acquisition={acquisition}
@@ -43,42 +48,3 @@ function StoragePage({
 }
 
 export default StoragePage;
-
-    // userArtworks,
-    // setUserArtworks,
-    // userAcquisitions,
-    // setUserAcquisitions, 
-  
-      // const [userArtworks, setUserArtworks] = useState(currentUser.artworks)
-      // const [userAcquisitions, setUserAcquisitions] = useState(currentUser.acquisitions)
-
-      // function handleDeleteUserAcquisition(id) {
-      //     const updatedAcquisitionsArray = userAcquisitions.filter((acquisition) => acquisition.id !== id);
-      //     setUserAcquisitions(updatedAcquisitionsArray);
-      // } 
-    
-      // function handleUpdateUserArtwork(updatedArtwork) {
-      //     const updatedArtworksArray = userArtworks.map((artwork) => {
-      //         if (artwork.id === updatedArtwork.id) {
-      //             return updatedArtwork;
-      //         } else {
-      //             return artwork;
-      //         }
-      //     })
-      //     setUserArtworks(updatedArtworksArray);
-      // }
-    
-      // function handleDeleteUserArtwork(id) {
-      //     const updatedArtworksArray = userArtworks.filter((artwork) => artwork.id !== id);
-      //     setUserArtworks(updatedArtworksArray);
-      // }  
-
-         // userArtworks.map((artwork) => { 
-
-
-         // onUpdateUserArtwork={handleUpdateUserArtwork}
-         // onDeleteUserArtwork={handleDeleteUserArtwork}
-       
-         // setUserArtworks={setUserArtworks}
-          // onDeleteUserAcquisition={handleDeleteUserAcquisition}
-             // setUserAcquisitions={setUserAcquisitions}

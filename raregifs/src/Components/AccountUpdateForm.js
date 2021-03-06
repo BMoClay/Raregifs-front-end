@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
 function AccountUpdateForm({ currentUser, setCurrentUser }){
-
+    
     const { id } = currentUser
+
     const [formData, setFormData] = useState({
         name: currentUser.name,
         password: currentUser.password,

@@ -1,6 +1,10 @@
 import React from 'react';
 
-function UserAcquisitionCard({ aArtwork, cUId, onAcquireArtwork }) {
+function UserAcquisitionCard({ 
+                aArtwork, 
+                cUId, 
+                onAcquireArtwork,
+             }) {
 
     console.log(aArtwork)
     function handleAcquireArtworkClick(e) {
@@ -27,7 +31,9 @@ function UserAcquisitionCard({ aArtwork, cUId, onAcquireArtwork }) {
             <div>
                 {cUId ? (
                     <>
-                    <button onClick={handleAcquireArtworkClick}>acquire image</button>
+                    <button onClick={handleAcquireArtworkClick}>
+                        acquire image
+                    </button>
                     </>
                 ) : (
                     <>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
-function StorageCardArt({ artwork, onDeleteArtwork, onUpdateArtwork }) {
+function StorageCardArt({ 
+                artwork, 
+                onDeleteArtwork, 
+                onUpdateArtwork,
+             }) {
 
     const { id, title, image } = artwork
     const [updatedTitle, setUpdatedTitle] = useState(title)

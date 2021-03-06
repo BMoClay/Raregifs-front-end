@@ -14,7 +14,10 @@ function Account({ currentUser, setCurrentUser }) {
     return (
         <div>
             <h3>{name}</h3>
-            <AccountUpdateForm currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            <AccountUpdateForm 
+                currentUser={currentUser} 
+                setCurrentUser={setCurrentUser} 
+            />
             <button onClick={handleDeleteUserClick}>Delete Account</button>
         </div>
     )

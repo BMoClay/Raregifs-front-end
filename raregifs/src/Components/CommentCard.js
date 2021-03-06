@@ -1,6 +1,13 @@
 import React from 'react'
 
-function CommentCard({ cUId, commenter_id, content, author, commentID, onDeleteComment }){
+function CommentCard({ 
+            cUId, 
+            commenter_id, 
+            content, 
+            author, 
+            commentID, 
+            onDeleteComment 
+        }){
 
     function handleDeleteCommentClick() {
         fetch(`http://localhost:3000/comments/${commentID}`, {
@@ -11,7 +18,6 @@ function CommentCard({ cUId, commenter_id, content, author, commentID, onDeleteC
                 onDeleteComment(deletedComment)
             })
     }
-
   
     return (
             <div>
@@ -19,7 +25,9 @@ function CommentCard({ cUId, commenter_id, content, author, commentID, onDeleteC
                 <h4>-{author}</h4>
                 {cUId === commenter_id ? (
                         <>
-                            <button onClick={handleDeleteCommentClick}>delete comment</button>
+                            <button onClick={handleDeleteCommentClick}>
+                                delete comment
+                            </button>
                         </>
                     ) : (
                         <>

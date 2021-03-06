@@ -32,9 +32,9 @@ function ArtCard(
             <h3>{title}</h3>
             <h3>{user.name}</h3>
             <button 
-                className="button" 
-                onClick={handleAcquireArtworkClick}
-                >acquire image
+              className="button" 
+              onClick={handleAcquireArtworkClick}>
+                acquire image
             </button>
         </div>
     );

@@ -1,6 +1,10 @@
 import React from 'react'
 
-function StorageCardAcquisition({ acquisition, artwork, onDeleteAcquisition }) {
+function StorageCardAcquisition({ 
+                acquisition, 
+                artwork, 
+                onDeleteAcquisition,
+             }) {
     
     const { id } = acquisition
 
@@ -19,7 +23,10 @@ function StorageCardAcquisition({ acquisition, artwork, onDeleteAcquisition }) {
             <img src={artwork.image} alt={artwork.title} />
             <h3>{artwork.title}</h3>
             <h3>{artwork.user_name}</h3>
-            <button onClick={handleDeleteAcquisitionClick}>remove from collection</button>
+            <button 
+                onClick={handleDeleteAcquisitionClick}>
+                    remove from collection
+            </button>
         </div>
     );
 }
