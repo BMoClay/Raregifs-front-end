@@ -8,7 +8,7 @@ function CommentCard({
             commentID, 
             onDeleteComment 
         }){
-
+          
     function handleDeleteCommentClick() {
         fetch(`http://localhost:3000/comments/${commentID}`, {
             method: "DELETE"

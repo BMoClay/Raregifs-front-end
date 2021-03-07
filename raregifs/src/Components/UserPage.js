@@ -31,7 +31,8 @@ function UserPage({
         setComments(updatedCommentsArray)
     } 
 
-    function handleDeleteComment(id) {
+    function handleDeleteComment(commentObj) {
+        const { id } = commentObj
         const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
         setComments(updatedCommentsArray);
     } 

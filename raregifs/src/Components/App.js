@@ -65,7 +65,8 @@ function App() {
         setArtworks(updatedArtA);
     }
 
-    function handleDeleteArtwork(id) {
+    function handleDeleteArtwork(artworkObj) {
+        const { id } = artworkObj
         const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
         setArtworks(updatedArtworksArray);
     }  
