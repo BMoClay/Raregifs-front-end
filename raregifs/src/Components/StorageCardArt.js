@@ -6,6 +6,12 @@ function StorageCardArt({
                 onUpdateArtwork,
              }) {
 
+    const aUsers = artwork.acquiring_users.map((user) => {
+        return (
+            <div key={user.id}>{user.name}</div>
+        )
+    })
+    
     const { id, title, image } = artwork
     const [updatedTitle, setUpdatedTitle] = useState(title)
 
@@ -39,6 +45,7 @@ function StorageCardArt({
             <div>
                 <img src={image} alt={title} />
                 <h3>{title}</h3>
+                <h4>collected by: {aUsers}</h4>
                 <form onSubmit={handleUpdateArtworkSubmit}>
                     <input
                         type="text"

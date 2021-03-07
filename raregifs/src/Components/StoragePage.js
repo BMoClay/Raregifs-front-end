@@ -19,6 +19,7 @@ function StoragePage({
                 return <StorageCardArt 
                 key={artwork.id}
                 artwork={artwork}
+                collected_by={artwork.acquiring_users}
                 onUpdateArtwork={onUpdateArtwork}
                 onDeleteArtwork={onDeleteArtwork}
                 />

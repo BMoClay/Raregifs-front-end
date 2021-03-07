@@ -6,7 +6,6 @@ function UserAcquisitionCard({
                 onAcquireArtwork,
              }) {
 
-    console.log(aArtwork)
     function handleAcquireArtworkClick(e) {
         e.preventDefault();
         fetch('http://localhost:3000/acquisitions', {

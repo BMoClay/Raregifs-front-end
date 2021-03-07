@@ -13,6 +13,24 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null)
     const [artworks, setArtworks] = useState([]);
     const [acquisitions, setAcquisitions] = useState([])
+    const [users, setUsers] = useState([])
+    const [comments, setComments] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/users')
+            .then(r => r.json())
+            .then(usersArray => {
+                setUsers(usersArray);
+            })
+      }, [])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/comments')
+            .then(r => r.json())
+            .then(commentsArray => {
+                setComments(commentsArray);
+            })
+    }, [])
 
     useEffect(() => {
       fetch("http://localhost:3000/me")
@@ -70,6 +88,16 @@ function App() {
         const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
         setArtworks(updatedArtworksArray);
     }  
+    function handleAddComment(newComment) {
+      const updatedCommentsArray = [newComment, ...comments];
+      setComments(updatedCommentsArray)
+  } 
+
+  function handleDeleteComment(commentObj) {
+      const { id } = commentObj
+      const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
+      setComments(updatedCommentsArray);
+  } 
 
     return (
       <div className="app">
@@ -86,9 +114,14 @@ function App() {
                 </Route>
                 <Route exact path="/users">
                   <UserPage 
+                      users={users}
+                      comments={comments}
                       acquisitions={acquisitions} 
                       currentUser={currentUser} 
-                      onAcquireArtwork={handleAddAcquisition}/>
+                      onAcquireArtwork={handleAddAcquisition}
+                      onAddComment={handleAddComment}
+                      onDeleteComment={handleDeleteComment}
+                      />
                 </Route>
                 <Route exact path="/upload">
                   <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
