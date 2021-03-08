@@ -45,7 +45,6 @@ function StorageCardArt({
             <div>
                 <img src={image} alt={title} />
                 <h3>{title}</h3>
-                <h4>collected by: {aUsers}</h4>
                 <form onSubmit={handleUpdateArtworkSubmit}>
                     <input
                         type="text"
@@ -56,9 +55,19 @@ function StorageCardArt({
                     /><input type="submit" value="update title"/>
                 </form>
                 <button onClick={handleDeleteClick}>delete</button>
+                <div>
+                    {artwork.acquiring_users.length > 0? (
+                        <>
+                            <h4>collected by:{aUsers}</h4>
+                        </>
+                    ) : (
+                        <>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default StorageCardArt;    

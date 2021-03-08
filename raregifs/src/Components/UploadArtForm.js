@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// active storage
+// import { DirectUpload } from 'activestorage'
 
 function UploadArtForm({ currentUser, onCreateArtwork }){
    
@@ -37,7 +39,10 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <input
+                    // activestorage
+                    
                     type="text"
+                    // type="file"
                     title="image"
                     placeholder="enter image url/ gif url"
                     value={image}

@@ -12,25 +12,9 @@ import Account from './Account';
 function App() {
     const [currentUser, setCurrentUser] = useState(null)
     const [artworks, setArtworks] = useState([]);
-    const [acquisitions, setAcquisitions] = useState([])
     const [users, setUsers] = useState([])
+    const [acquisitions, setAcquisitions] = useState([])
     const [comments, setComments] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:3000/users')
-            .then(r => r.json())
-            .then(usersArray => {
-                setUsers(usersArray);
-            })
-      }, [])
-
-    useEffect(() => {
-        fetch('http://localhost:3000/comments')
-            .then(r => r.json())
-            .then(commentsArray => {
-                setComments(commentsArray);
-            })
-    }, [])
 
     useEffect(() => {
       fetch("http://localhost:3000/me")
@@ -41,18 +25,35 @@ function App() {
     }, [])
    
     useEffect(() => {
-        fetch('http://localhost:3000/artworks')
+      fetch('http://localhost:3000/artworks')
+        .then(r => r.json())
+        .then((artworksArray) => {
+            setArtworks(artworksArray);
+        });
+    }, []) 
+
+    
+    useEffect(() => {
+      fetch('http://localhost:3000/users')
           .then(r => r.json())
-          .then((artworksArray) => {
-              setArtworks(artworksArray);
-          });
-        }, []) 
+          .then(usersArray => {
+              setUsers(usersArray);
+          })
+    }, [])
 
     useEffect(() => {
         fetch('http://localhost:3000/acquisitions')
+          .then(r => r.json())
+          .then(acquisitionsArray => {
+              setAcquisitions(acquisitionsArray);
+          })
+    }, [])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/comments')
             .then(r => r.json())
-            .then(acquisitionsArray => {
-                setAcquisitions(acquisitionsArray);
+            .then(commentsArray => {
+                setComments(commentsArray);
             })
     }, [])
 
@@ -73,8 +74,9 @@ function App() {
     } 
 
     function handleUpdateArtwork(updatedArtwork) {
+        const { id } = (updatedArtwork)
         const updatedArtA = artworks.map((artwork) => {
-            if (artwork.id === updatedArtwork.id) {
+            if (artwork.id === id) {
                 return updatedArtwork;
             } else {
                 return artwork;
@@ -82,6 +84,7 @@ function App() {
         })
         setArtworks(updatedArtA);
     }
+    
 
     function handleDeleteArtwork(artworkObj) {
         const { id } = artworkObj
