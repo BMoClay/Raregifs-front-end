@@ -2,6 +2,7 @@ import React from 'react'
 import UserAcquisitionCard from './UserAcquisitionCard'
 import CommentForm from './CommentForm'
 import CommentCard from './CommentCard'
+import { Grid } from 'semantic-ui-react'
 
 function UserList({ 
             eachUser, 
@@ -47,9 +48,10 @@ function UserList({
     ) : (null)
 
     return(
-        <div>
+        <Grid>
              {tCollection.length > 0 ? (
-                <>
+                <>  
+                    <br></br>
                     <h2>The {eachUser.name} Collection</h2>
                         {uAcquisitions}
                     <CommentForm 
@@ -74,7 +76,7 @@ function UserList({
                 </>
             )}
         </div>
-        </div>
+        </Grid>
     );
 }
 

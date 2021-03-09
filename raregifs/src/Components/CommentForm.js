@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form } from 'semantic-ui-react'
 
 function CommentForm({ cUId, eachUserID, onAddComment }){
 
@@ -24,20 +25,32 @@ function CommentForm({ cUId, eachUserID, onAddComment }){
     }
 
     return( 
-        <div className="comment-form">
-            <form onSubmit={handleSubmitNewComment}>
-                <input 
-                    type="text"
-                    title="comment"
-                    placeholder="add comment"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
+        <Form onSubmit={handleSubmitNewComment}>
+            <Form.TextArea 
+                label='write a note' 
+                placeholder='your note...'
+                value={content}
+                type='text'
+                onChange={(e) => setContent(e.target.value)}
                 />
-                <button type="submit">submit</button>
-            </form>
-        </div>
+            <Form.Button>send</Form.Button>
+        </Form>
     );
-
 }
 
 export default CommentForm
+
+
+
+    // <div className="comment-form">
+    // <form onSubmit={handleSubmitNewComment}>
+    //     <input 
+    //         type="text"
+    //         title="comment"
+    //         placeholder="add comment"
+    //         value={content}
+    //         onChange={(e) => setContent(e.target.value)}
+    //     />
+    //     <button type="submit">submit</button>
+    // </form>
+    // </div>

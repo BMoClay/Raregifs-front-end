@@ -10,6 +10,7 @@ import StoragePage from './StoragePage';
 import Account from './Account';
 
 function App() {
+
     const [currentUser, setCurrentUser] = useState(null)
     const [artworks, setArtworks] = useState([]);
     const [users, setUsers] = useState([])
@@ -59,6 +60,7 @@ function App() {
 
     function handleAddAcquisition(newUserAcq) {
       const updatedAcquisitionsArray = [newUserAcq, ...acquisitions]
+      // onClick={(handleAcquireArtworkClick) => setOpen(false)}
       setAcquisitions(updatedAcquisitionsArray)
     }
 
@@ -84,7 +86,7 @@ function App() {
         })
         setArtworks(updatedArtA);
     }
-    
+
 
     function handleDeleteArtwork(artworkObj) {
         const { id } = artworkObj
@@ -102,55 +104,101 @@ function App() {
       setComments(updatedCommentsArray);
   } 
 
-    return (
-      <div className="app">
-          <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-              <Switch>
-                <Route exact path="/login">
-                  <Login setCurrentUser={setCurrentUser}/>
-                </Route>
-                <Route exact path="/" >
-                  <ArtPage 
-                      currentUser={currentUser} 
-                      artworks={artworks} 
-                      onAcquireArtwork={handleAddAcquisition}/>
-                </Route>
-                <Route exact path="/users">
-                  <UserPage 
-                      users={users}
-                      comments={comments}
-                      acquisitions={acquisitions} 
-                      currentUser={currentUser} 
-                      onAcquireArtwork={handleAddAcquisition}
-                      onAddComment={handleAddComment}
-                      onDeleteComment={handleDeleteComment}
-                      />
-                </Route>
-                <Route exact path="/upload">
-                  <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
-                </Route>
-                <Route exact path="/storage">
-                  <StoragePage 
-                      currentUser={currentUser}
-                      acquisitions={acquisitions}
-                      artworks={artworks}
-                      onDeleteArtwork={handleDeleteArtwork}
-                      onDeleteAcquisition={handleDeleteAcquisition}
-                      onUpdateArtwork={handleUpdateArtwork}
-                      />
-                </Route>
-                <Route exact path="/account">
-                  <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
-                </Route>
-                <Route exact path="/signup">
-                  <Signup setCurrentUser={setCurrentUser}/>
-                </Route>
-              </Switch>
-      </div>
-    );
+      return (
+        <div className="app">
+            <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+                <Switch>
+                  <Route exact path="/login">
+                    <Login setCurrentUser={setCurrentUser}/>
+                  </Route>
+                  <Route exact path="/" >
+                    <ArtPage 
+                        currentUser={currentUser} 
+                        artworks={artworks} 
+                        onAcquireArtwork={handleAddAcquisition}/>
+                  </Route>
+                  <Route exact path="/users">
+                    <UserPage 
+                        users={users}
+                        comments={comments}
+                        acquisitions={acquisitions} 
+                        currentUser={currentUser} 
+                        onAcquireArtwork={handleAddAcquisition}
+                        onAddComment={handleAddComment}
+                        onDeleteComment={handleDeleteComment}
+                        />
+                  </Route>
+                  <Route exact path="/upload">
+                    <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
+                  </Route>
+                  <Route exact path="/storage">
+                    <StoragePage 
+                        currentUser={currentUser}
+                        acquisitions={acquisitions}
+                        artworks={artworks}
+                        onDeleteArtwork={handleDeleteArtwork}
+                        onDeleteAcquisition={handleDeleteAcquisition}
+                        onUpdateArtwork={handleUpdateArtwork}
+                        />
+                  </Route>
+                  <Route exact path="/account">
+                    <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+                  </Route>
+                  <Route exact path="/signup">
+                    <Signup setCurrentUser={setCurrentUser}/>
+                  </Route>
+                </Switch>
+        </div>
+      );
 }
+
 export default App;
 
-
+// return (
+//   <div className="app">
+//       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+//           <Switch>
+//             <Route exact path="/login">
+//               <Login setCurrentUser={setCurrentUser}/>
+//             </Route>
+//             <Route exact path="/" >
+//               <ArtPage 
+//                   currentUser={currentUser} 
+//                   artworks={artworks} 
+//                   onAcquireArtwork={handleAddAcquisition}/>
+//             </Route>
+//             <Route exact path="/users">
+//               <UserPage 
+//                   users={users}
+//                   comments={comments}
+//                   acquisitions={acquisitions} 
+//                   currentUser={currentUser} 
+//                   onAcquireArtwork={handleAddAcquisition}
+//                   onAddComment={handleAddComment}
+//                   onDeleteComment={handleDeleteComment}
+//                   />
+//             </Route>
+//             <Route exact path="/upload">
+//               <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
+//             </Route>
+//             <Route exact path="/storage">
+//               <StoragePage 
+//                   currentUser={currentUser}
+//                   acquisitions={acquisitions}
+//                   artworks={artworks}
+//                   onDeleteArtwork={handleDeleteArtwork}
+//                   onDeleteAcquisition={handleDeleteAcquisition}
+//                   onUpdateArtwork={handleUpdateArtwork}
+//                   />
+//             </Route>
+//             <Route exact path="/account">
+//               <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+//             </Route>
+//             <Route exact path="/signup">
+//               <Signup setCurrentUser={setCurrentUser}/>
+//             </Route>
+//           </Switch>
+//   </div>
+// );
 
 

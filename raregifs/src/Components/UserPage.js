@@ -1,5 +1,6 @@
 import React from 'react'
 import UserList from './UserList'
+import { Container } from 'semantic-ui-react'
 
 function UserPage({ 
             currentUser, 
@@ -10,36 +11,6 @@ function UserPage({
             onAddComment,
             onDeleteComment
         }){
-    
-    // const [users, setUsers] = useState([])
-    // const [comments, setComments] = useState([])
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/users')
-    //         .then(r => r.json())
-    //         .then(usersArray => {
-    //             setUsers(usersArray);
-    //         })
-    //   }, [])
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/comments')
-    //         .then(r => r.json())
-    //         .then(commentsArray => {
-    //             setComments(commentsArray);
-    //         })
-    // }, [])
-
-    // function handleAddComment(newComment) {
-    //     const updatedCommentsArray = [newComment, ...comments];
-    //     setComments(updatedCommentsArray)
-    // } 
-
-    // function handleDeleteComment(commentObj) {
-    //     const { id } = commentObj
-    //     const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
-    //     setComments(updatedCommentsArray);
-    // } 
 
     const aUser =
         users.map((eachUser) => {
@@ -57,9 +28,9 @@ function UserPage({
         )
         
     return (
-        <div >
+        <Container >
             {aUser}
-        </div>
+        </Container>
     );
 }
 export default UserPage;

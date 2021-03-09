@@ -1,5 +1,6 @@
 import React from 'react'
 import ArtCard from './ArtCard'
+import { Container } from 'semantic-ui-react'
 
 function ArtPage(
     { 
@@ -19,9 +20,9 @@ function ArtPage(
     })
     
     return(
-        <div className="cards">
+        <Container style={{ margin: 20 }}>
             {artworkCard}
-        </div>
+      </Container>
     )
 }
 

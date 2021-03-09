@@ -1,4 +1,12 @@
 import React from 'react';
+import { 
+  Container,
+  Grid,
+  Image,
+  Button,
+  Header,
+  Modal,
+} from 'semantic-ui-react'
 
 function ArtCard(
       { 
@@ -8,6 +16,7 @@ function ArtCard(
       }
 ) {
 
+    const [open, setOpen] = React.useState(false)
     const { title, image, user } = artwork
 
     function handleAcquireArtworkClick(e) {
@@ -27,17 +36,55 @@ function ArtCard(
       }
 
       return (
-        <div className="art-card">
-            <img src={image} alt={title} />
-            <h3>{title}</h3>
-            <h3>{user.name}</h3>
-            <button 
-              className="button" 
-              onClick={handleAcquireArtworkClick}>
-                acquire image
-            </button>
-        </div>
-    );
-}
+          <Grid stackable centered columns={3}>
+            <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={<Image size='large' src={image}/>}
+                padding='20px'
+            >
+                <Modal.Content image>
+                  <Image size='huge' src={image} wrapped />
+                  <Modal.Description>
+                    <Header>{title}</Header>
+                    <p>{user.name}</p>
+                  </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                  <Button color='black' onClick={() => setOpen(false)}>
+                    Nope
+                  </Button>
+                  <Button
+                    content="Add it to the collection"
+                    labelPosition='right'
+                    icon='checkmark'
+                    onClick={handleAcquireArtworkClick}
+                    // onClick={() => setOpen(false)}
+                    positive
+                  />
+                </Modal.Actions>
+            </Modal>
+            </Grid>
+       );
+  }
 
 export default ArtCard;
+
+
+ // function wrapperFunction(handleAcquireArtworkClick) {
+      //      setOpen(false);
+      // }
+
+
+
+  // <Segment basic padded='very' vertical className="art-card">
+  // <Image src={image} alt={title} size="large"/>
+  // <h3>{title}</h3>
+  // <h3>{user.name}</h3>
+  // <Button 
+  //   className="button" 
+  //   onClick={handleAcquireArtworkClick}>
+  //     acquire image
+  // </Button>
+  // </Segment>

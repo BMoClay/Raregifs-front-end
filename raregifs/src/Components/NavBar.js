@@ -1,47 +1,52 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button, Dropdown } from 'semantic-ui-react';
 
 function NavBar({ currentUser, setCurrentUser }) {
-    
     function logout(){
         setCurrentUser(null);
     }
 
-    return(
-        <header>
-            <div>
-                <NavLink to="/" exact className="button">
-                    Raregifs
-                </NavLink>
-                <NavLink to="/users" exact className="button">
-                    Collections
-                </NavLink>
-                <NavLink to="/upload" exact className="button">
-                    Upload
-                </NavLink>
-                <NavLink to="/storage" exact className="button">
-                    Storage
-                </NavLink>
+
+    return( 
+        <Dropdown pointing='top left' text="Raregifs" selection>
+            <Dropdown.Menu>
+                <Dropdown.Item text="Gallery" icon="trophy" as={Link} to='/'/>
+                <Dropdown.Item text="Collections" icon="cogs" as={Link} to='/users'/>
                 {currentUser ? (
                     <>
-                        <button onClick={logout} >logout</button>   
-                        <NavLink to="/account" exact className="button">
-                            Account
-                        </NavLink>
+                        <Dropdown.Item text="Storage" icon="shopping basket" as={Link} to='/storage'/>
+                        <Dropdown.Item text="Upload" icon="upload" as={Link} to='/upload'/> 
+                        <Dropdown.Item text="Account" icon="secret user" as={Link} to="/account"/>
+                        <Button size="mini" onClick={logout} >logout</Button>  
                     </>
                 ) : (
                     <>
-                        <NavLink to="/login" exact className="button">
-                            Login
-                        </NavLink>
-                        <NavLink to="/signup" exact className="button" >
-                            Signup
-                        </NavLink>
+                        <Dropdown.Item text="Login" icon="sign-in" as={Link} to='/login'/>
+                        <Dropdown.Item text="Signup" icon="signup" as={Link} to='/signup'/>
                     </>
                 )}
-            </div>
-        </header>
-    ); 
+            </Dropdown.Menu>
+        </Dropdown>
+    );
 }
 
-export default NavBar;
+export default NavBar
+
+    // <Dropdown pointing='top left' default="Raregifs" fluid search selection>
+    //     <Dropdown.Menu>
+    //         <Dropdown.Item text="Raregifs" icon="trophy" as={Link} to='/'/>
+    //         <Dropdown.Item text="Collections" icon="cogs" as={Link} to='/users'/>
+    //         <Dropdown.Item text="Storage" icon="shopping basket" as={Link} to='/storage'/>
+    //         <Dropdown.Item text="Upload" icon="upload" as={Link} to='/upload'/>
+    //     </Dropdown.Menu>
+    // </Dropdown>
+
+
+    // <Select pointing='top left' defaultValue={this.state.selected} fluid search selection>
+    // <Select text="Raregifs" icon="trophy" as={Link} to='/'/>
+    // <Select text="Collections" icon="cogs" as={Link} to='/users'/>
+    // <Select text="Storage" icon="shopping basket" as={Link} to='/storage'/>
+    // <Select text="Upload" icon="upload" as={Link} to='/upload'/>
+    // </Select>
+    // );

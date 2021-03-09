@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form } from 'semantic-ui-react'
 // active storage
 // import { DirectUpload } from 'activestorage'
 
@@ -28,30 +29,85 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
     }
     
     return ( 
-        <div className="upload-art-form">
-            <h4>Upload</h4>
-            <form onSubmit={handleSubmitNewArtwork}>
-                <input
+        <Form onSubmit={handleSubmitNewArtwork}>
+            <br></br>
+            <Form.Group widths="equal" padding>
+                <Form.Input 
+                    fluid label='title'
+                    placeholder='title'
                     type="text"
-                    title="title"
-                    placeholder="title (optional)"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                />
-                <input
-                    // activestorage
-                    
+                    />
+                <Form.Input 
+                    fluid label='image-url'
+                    placeholder='image-url'
                     type="text"
-                    // type="file"
-                    title="image"
-                    placeholder="enter image url/ gif url"
+                    //file
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
-                />
-                <button type="submit">Add Image</button>
-            </form>
-        </div>
+                    />
+                </Form.Group>
+            <Form.Button>submit</Form.Button>
+        </Form>
     );
 }
 
 export default UploadArtForm;
+
+
+
+// {/* 
+// <div className="upload-art-form">
+//             <h4>Upload</h4>
+//             <form onSubmit={handleSubmitNewArtwork}>
+//                 <input
+//                     type="text"
+//                     title="title"
+//                     placeholder="title (optional)"
+//                     value={title}
+//                     onChange={(e) => setTitle(e.target.value)}
+//                 />
+//                 <input
+//                     // activestorage
+                    
+//                     type="text"
+//                     // type="file"
+//                     title="image"
+//                     placeholder="enter image url/ gif url"
+//                     value={image}
+//                     onChange={(e) => setImage(e.target.value)}
+//                 />
+//                 <button type="submit">Add Image</button>
+//             </form>
+//         </div>
+
+
+
+
+
+// // return ( 
+// //     <div className="upload-art-form">
+// //         <h4>Upload</h4>
+// //         <form onSubmit={handleSubmitNewArtwork}>
+// //             <input */}
+// //                 type="text"
+// //                 title="title"
+// //                 placeholder="title (optional)"
+// //                 value={title}
+// //                 onChange={(e) => setTitle(e.target.value)}
+// //             />
+// //             <input
+// //                 // activestorage
+                
+// //                 type="text"
+// //                 // type="file"
+// //                 title="image"
+// //                 placeholder="enter image url/ gif url"
+// //                 value={image}
+// //                 onChange={(e) => setImage(e.target.value)}
+// //             />
+// //             <button type="submit">Add Image</button>
+// //         </form>
+// //     </div>
+// // );
