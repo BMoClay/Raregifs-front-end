@@ -25,9 +25,16 @@ function CommentForm({ cUId, eachUserID, onAddComment }){
     }
 
     return( 
-        <Form onSubmit={handleSubmitNewComment}>
-            <Form.TextArea 
-                label='write a note' 
+        <Form 
+            onSubmit={handleSubmitNewComment} 
+            // width='130px'
+            style={{
+                padding: '20px'
+            }}
+            >
+            <Form.TextArea
+                // width='100px' 
+                // label='write a note' 
                 placeholder='your note...'
                 value={content}
                 type='text'
@@ -39,6 +46,49 @@ function CommentForm({ cUId, eachUserID, onAddComment }){
 }
 
 export default CommentForm
+
+
+
+
+// <div>
+// {tCollection.length > 0 ? ( 
+//     <>  
+//     <br></br>
+//     <h2>The {eachUser.name} Collection</h2>
+//         {uAcquisitions}
+//     <CommentForm  
+//         // width='50%'
+//         eachUserID={eachUser.id} 
+//         cUId={cUId} 
+//         onAddComment={onAddComment}
+//     />
+//     <br></br>
+//     </>
+// ) : (
+//     <>
+//     </>
+// )}
+// <div>
+//     {tComments.length > 0 ? (
+//         <>
+//         <h3>Comments on {eachUser.name}'s collection</h3>    
+//             {uComments}
+//         </>
+//     ) : (
+//         <>
+//         </>
+//     )}
+// </div>
+// </div>
+
+
+
+
+
+
+
+
+
 
 
 

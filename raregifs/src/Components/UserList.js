@@ -1,7 +1,9 @@
 import React from 'react'
 import UserAcquisitionCard from './UserAcquisitionCard'
 import CommentForm from './CommentForm'
+// import CommentContainer from './CommentContainer'
 import CommentCard from './CommentCard'
+
 import { 
     Container,
     Card,
@@ -46,7 +48,10 @@ function UserList({
     const uComments =
     eachUser.comments_received ? (tComments.map((comment) => {
             return <CommentCard
+            // return <CommentContainer
                     key={comment.id}
+                    // comments={comments}
+                    // eachUser={eachUser}
                     cUId={cUId}
                     commentID={comment.id}
                     content={comment.content}
@@ -58,59 +63,103 @@ function UserList({
     ) : (null)
 
     return(
-        <div>
+        <Container className='user-container'>
             <br></br>
-            {tCollection.length > 0 ? (
-                <>
-                <h3>{eachUser.name}'s Collection</h3>
-                <Grid>
-                    <Grid.Column>
-                        <Grid columns={2} doubling stackable>
-                            <Grid.Column>
-                                <Segment>{uAcquisitions}</Segment>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Segment><CommentForm 
-                                        eachUserID={eachUser.id} 
-                                        cUId={cUId} 
-                                        onAddComment={onAddComment}
-                                        />
-                                </Segment>
-                            </Grid.Column>
-                        </Grid>
-                    </Grid.Column>
-                </Grid>
-                </>
-                ) : (
-                <>
-                </>
-            )}
-            <div>
-            {tComments.length > 0 ? (
-                <>
-                <br></br>
-                <h3>Comments</h3>
-                <Grid>
-                    <Grid.Column>
-                        <Grid columns={2} doubling stackable>
-                            <Grid.Column>
-                                <Segment>{uComments}</Segment>
-                            </Grid.Column>
-                        </Grid>
-                    </Grid.Column>
-                </Grid>
-                </>
+        <Header 
+            inverted 
+            textAlign='center'
+            justifyContent='space-around'
+            style={{
+                padding: '20px'
+            }}
+        >
+            <br></br>
+            The {eachUser.name} Collection
+        </Header>
+            <Grid >
+                 <style>
+                    {`
+                    html, body {
+                        background-color: #252839 !important;
+                    }
+
+                    p {
+                        align-content: center;
+                        background-color: #495285;
+                        color: #fff;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        min-height: 6em;
+                    }
+
+                    p > span {
+                        opacity: 0.4;
+                        text-align: center;
+                    }
+                    
+                    }
+                    `}
+                    </style>
+                 {tCollection.length > 0 ? (
+                    //  <Grid.Column >
+                     <>  
+                        <br></br>
+                        {/* <Header inverted textAlign='center'>The {eachUser.name} Collection</Header> */}
+                            {uAcquisitions}
+                        <CommentForm 
+                            eachUserID={eachUser.id} 
+                            cUId={cUId} 
+                            onAddComment={onAddComment}
+                        />
+                        <br></br>
+                    </>
+                    //{/* </Grid.Column> */}
             ) : (
                 <>
                 </>
             )}
-        </div>
-    </div>
+            {/* <div> */}
+                {tComments.length > 0 ? (
+                    <Container>
+                        <Header
+                                inverted 
+                                textAlign='center'
+                                justifyContent='space-around'
+                                style={{
+                                    padding: '20px'
+                                }}
+                            >
+                                Comments on {eachUser.name}'s collection
+                            </Header>
+                        <Grid>
+                        <>
+                            {/* <Header.Subheader
+                                inverted 
+                                textAlign='center'
+                                justifyContent='space-around'
+                            > */}
+                                {uComments}
+                            {/* </Header.Subheader> */}
+                        </>
+                        {/* </Grid.Column> */}
+                        </Grid>
+                    </Container>
+                ) : (
+                    <>
+                    </>
+                )}
+            {/* </div> */}
+            {/* </Grid.Column> */}
+        </Grid>
+        </Container>
     );
 }
 
 export default UserList;
 
+
+    
 
 
 

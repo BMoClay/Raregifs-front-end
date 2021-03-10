@@ -21,32 +21,34 @@ function CommentCard({
     }
   
     return (
-        <div>
-            <div>
-                <br></br>
-                <Card.Group>
-                    <Card.Content>
-                        <Card.Header as='h4'>{content}</Card.Header>
-                        <Card.Description>-{author}</Card.Description>
-                        {cUId === commenter_id ? (
-                            <>
-                                <Button 
-                                    onClick={handleDeleteCommentClick}
-                                    size="small"
-                                    icon="trash"
-                                    >
-                                </Button>
-                            </>
-                        ) : (
-                            <>
-                            </>
-                        )}
-                    </Card.Content>
+        // <div>
+        //     <div>
+        //         <br></br>
+                <Card.Group >
+                    <Card>
+                        <Card.Content>
+                            <Card.Header>{content}</Card.Header>
+                            <Card.Description>-{author}</Card.Description>
+                            {cUId === commenter_id ? (
+                                <>
+                                    <Button 
+                                        onClick={handleDeleteCommentClick}
+                                        size="small"
+                                        icon="trash"
+                                        >
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                </>
+                            )}
+                        </Card.Content>
+                    </Card>
                 </Card.Group>
-                <br></br>
-                <br></br>
-            </div>
-        </div>
+        //         <br></br>
+        //         <br></br>
+        //     </div>
+        // </div>
     )
 }
 

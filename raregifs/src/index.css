@@ -38,10 +38,11 @@ code {
   /* justify-content: space-around; */
 }
 
-.ui-large-image {
+.ui-huge-image {
   /* justify-content: center;
   align-items: space-around; */
   /* padding: '30px'; */
+  /* style={{ maxHeight: 200 }} */
 }
 
 .ui-container {
@@ -50,7 +51,9 @@ code {
 }
 
 div.ui-card {
-  width: '300px'; 
+  /* width: '300px'; 
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
+
+body{ max-height: 100vh; }

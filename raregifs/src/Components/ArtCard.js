@@ -36,14 +36,14 @@ function ArtCard(
       }
 
       return (
-        // <Grid 
-        //   stackable centered columns={1}
-        //   style={{ 
-        //     margin: 10,
-        //     padding: 40,
-        //     width: 300,
-        //   }}
-        //   >
+        <Grid 
+          stackable centered columns={1}
+          style={{ 
+            margin: 10,
+            padding: 40,
+            // width: 300,
+          }}
+          >
             <Modal
                 // style={{ 
                 //       margin: 10,
@@ -59,8 +59,11 @@ function ArtCard(
                 // padding='20px'
                 // justify-content='center'
             >
-                  <Modal.Content image>
-                  <Image size='huge' src={image} />
+              {/* style={{ maxHeight: 500 }} */}
+              {/* style={{ marginTop: '1rem' }} */}
+              {/* style={{ position: relative }} */}
+                  <Modal.Content image >
+                  <Image wrapped size='huge' src={image} />
                   {/* <Image size='huge' src={image} wrapped /> */}
                   <Modal.Description>
                     <Header>{title}</Header>
@@ -81,7 +84,7 @@ function ArtCard(
                   />
                 </Modal.Actions>
             </Modal>
-          // </Grid>
+          </Grid>
        );
   }
 
