@@ -1,24 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Dropdown } from 'semantic-ui-react';
+// import { BrowserRouter } from 'react-router-dom';
+import { Dropdown } from 'semantic-ui-react';
 
-function NavBar({ currentUser, setCurrentUser }) {
-    function logout(){
-        setCurrentUser(null);
-    }
-
+function NavBar({ currentUser }) {
 
     return( 
-        <Dropdown pointing='top left' text="Raregifs" selection>
-            <Dropdown.Menu>
+        <Dropdown
+            icon='null'
+            text="Raregifs" 
+            fluid 
+            floating 
+            style={{
+                position: 'relative',
+                width: '90px',
+                // textAlign: 'left',
+                // display: 'block',
+                fontSize: '1.2em',
+                color: 'red',
+            }}>
+            <Dropdown.Menu text="Raregifs" fluid floating>
                 <Dropdown.Item text="Gallery" icon="trophy" as={Link} to='/'/>
-                <Dropdown.Item text="Collections" icon="cogs" as={Link} to='/users'/>
+                <Dropdown.Item text="Collections" icon="cogs" as={Link} to='/users_collections'/>
                 {currentUser ? (
                     <>
-                        <Dropdown.Item text="Storage" icon="shopping basket" as={Link} to='/storage'/>
+                        <Dropdown.Item text="Storage" icon="shopping basket" as={Link} to='/my_storage'/>
                         <Dropdown.Item text="Upload" icon="upload" as={Link} to='/upload'/> 
                         <Dropdown.Item text="Account" icon="secret user" as={Link} to="/account"/>
-                        <Button size="mini" onClick={logout} >logout</Button>  
                     </>
                 ) : (
                     <>
@@ -28,10 +36,14 @@ function NavBar({ currentUser, setCurrentUser }) {
                 )}
             </Dropdown.Menu>
         </Dropdown>
-    );
+    )
+    
 }
 
 export default NavBar
+
+
+//{/* onClick={(event, userOptions) => userOptions.redirect(userOptions.pathname)} */}
 
     // <Dropdown pointing='top left' default="Raregifs" fluid search selection>
     //     <Dropdown.Menu>

@@ -8,6 +8,7 @@ import ArtPage from './ArtPage';
 import UserPage from './UserPage';
 import StoragePage from './StoragePage';
 import Account from './Account';
+// import { Container } from 'semantic-ui-react';
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
       fetch('http://localhost:3000/artworks')
         .then(r => r.json())
         .then((artworksArray) => {
-            setArtworks(artworksArray);
+            setArtworks(artworksArray.reverse());
         });
     }, []) 
 
@@ -65,8 +66,10 @@ function App() {
     }
 
     function handleAddArtwork(newArtwork) {
+      console.log(newArtwork)
         const updatedArtworksArray = [newArtwork, ...artworks];
         setArtworks(updatedArtworksArray)
+        console.log(updatedArtworksArray)
     } 
 
     function handleDeleteAcquisition(acquisitionObject) {
@@ -103,9 +106,10 @@ function App() {
       const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
       setComments(updatedCommentsArray);
   } 
-
+      console.log(artworks)
       return (
-        <div className="app">
+        <div>
+        {/* // <Container className="app"> */}
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <Switch>
                   <Route exact path="/login">
@@ -117,7 +121,7 @@ function App() {
                         artworks={artworks} 
                         onAcquireArtwork={handleAddAcquisition}/>
                   </Route>
-                  <Route exact path="/users">
+                  <Route exact path="/users_collections">
                     <UserPage 
                         users={users}
                         comments={comments}
@@ -131,7 +135,7 @@ function App() {
                   <Route exact path="/upload">
                     <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
                   </Route>
-                  <Route exact path="/storage">
+                  <Route exact path="/my_storage">
                     <StoragePage 
                         currentUser={currentUser}
                         acquisitions={acquisitions}
@@ -148,6 +152,7 @@ function App() {
                     <Signup setCurrentUser={setCurrentUser}/>
                   </Route>
                 </Switch>
+        {/* </Container> */}
         </div>
       );
 }

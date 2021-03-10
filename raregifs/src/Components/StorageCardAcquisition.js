@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Card } from 'semantic-ui-react'
 
 function StorageCardAcquisition({ 
                 acquisition, 
@@ -19,14 +20,18 @@ function StorageCardAcquisition({
     }
 
     return (
-        <div className="storage-card">
+        <div className="storage-card" >
+        {/* <Card> */}
             <img src={artwork.image} alt={artwork.title} />
             <h3>{artwork.title}</h3>
-            <h3>{artwork.user_name}</h3>
-            <button 
-                onClick={handleDeleteAcquisitionClick}>
+            <h4>{artwork.user_name}</h4>
+            <Button 
+                onClick={handleDeleteAcquisitionClick}
+                // justify-content='center'
+                >
                     remove from collection
-            </button>
+            </Button>
+        {/* </Card> */}
         </div>
     );
 }

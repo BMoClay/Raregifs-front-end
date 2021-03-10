@@ -20,6 +20,37 @@ code {
   width: 200px;
 }
 
-.art-card img {
+/* .art-card img {
   width: 500px;
+} */
+
+.art-container {
+  /* justify-content: center; */
+  /* display: flex;  */
+  /* width: 500px; */
+}
+
+/* .ui-centered-stackable-one-column-grid {
+  justify-content: space-around;
+} */
+
+.art-card {
+  /* justify-content: space-around; */
+}
+
+.ui-large-image {
+  /* justify-content: center;
+  align-items: space-around; */
+  /* padding: '30px'; */
+}
+
+.ui-container {
+  /* display: 'flex'; */
+  /* justify-content: center; */
+}
+
+div.ui-card {
+  width: '300px'; 
+  justify-content: center;
+  align-items: center;
 }

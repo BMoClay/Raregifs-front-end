@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Container,
   Grid,
   Image,
   Button,
@@ -15,6 +14,7 @@ function ArtCard(
           onAcquireArtwork, 
       }
 ) {
+    console.log(artwork)
 
     const [open, setOpen] = React.useState(false)
     const { title, image, user } = artwork
@@ -36,16 +36,32 @@ function ArtCard(
       }
 
       return (
-          <Grid stackable centered columns={3}>
+        // <Grid 
+        //   stackable centered columns={1}
+        //   style={{ 
+        //     margin: 10,
+        //     padding: 40,
+        //     width: 300,
+        //   }}
+        //   >
             <Modal
+                // style={{ 
+                //       margin: 10,
+                //       padding: 40,
+                //       width: 300,
+                //     }}
+                // size="large"
+                // height="tall"
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Image size='large' src={image}/>}
-                padding='20px'
+                trigger={<Image size='large' src={image} />}
+                // padding='20px'
+                // justify-content='center'
             >
-                <Modal.Content image>
-                  <Image size='huge' src={image} wrapped />
+                  <Modal.Content image>
+                  <Image size='huge' src={image} />
+                  {/* <Image size='huge' src={image} wrapped /> */}
                   <Modal.Description>
                     <Header>{title}</Header>
                     <p>{user.name}</p>
@@ -65,7 +81,7 @@ function ArtCard(
                   />
                 </Modal.Actions>
             </Modal>
-            </Grid>
+          // </Grid>
        );
   }
 

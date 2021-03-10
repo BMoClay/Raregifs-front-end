@@ -37,7 +37,7 @@ function StorageCardArt({
             .then((r) => r.json())
             .then((updatedArtwork) => {
                 onUpdateArtwork(updatedArtwork)
-            });
+            })
     }
 
     return (

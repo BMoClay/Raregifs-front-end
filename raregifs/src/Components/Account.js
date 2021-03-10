@@ -1,5 +1,6 @@
 import React from 'react';
 import AccountUpdateForm from './AccountUpdateForm';
+import { Button } from 'semantic-ui-react'
 
 function Account({ currentUser, setCurrentUser }) {
 
@@ -10,6 +11,10 @@ function Account({ currentUser, setCurrentUser }) {
             method: "DELETE"
         })
     }
+    
+    function logout(){
+        setCurrentUser(null);
+    }
   
     return (
         <div>
@@ -18,7 +23,8 @@ function Account({ currentUser, setCurrentUser }) {
                 currentUser={currentUser} 
                 setCurrentUser={setCurrentUser} 
             />
-            <button onClick={handleDeleteUserClick}>Delete Account</button>
+            <Button onClick={handleDeleteUserClick}>Delete Account</Button>
+            <Button size="mini" onClick={logout} >logout</Button>  
         </div>
     )
 

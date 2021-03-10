@@ -5,7 +5,6 @@ import { Form } from 'semantic-ui-react'
 
 function UploadArtForm({ currentUser, onCreateArtwork }){
    
-    const { id } = currentUser
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
 
@@ -19,37 +18,42 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
             body: JSON.stringify({
                 title: title,
                 image: image,
-                user_id: id,
+                user_id: currentUser.id,
             }),
         })
             .then((res) => res.json())
             .then((newArtwork) => {
                 onCreateArtwork(newArtwork)
+                // console.log(newArtwork)
             })
     }
     
     return ( 
+        <div>
+            <br></br>
         <Form onSubmit={handleSubmitNewArtwork}>
             <br></br>
-            <Form.Group widths="equal" padding>
+            <Form.Group widths="equal">
                 <Form.Input 
-                    fluid label='title'
+                    // fluid label='title'
+                    label='title'
+                    value={title}
                     placeholder='title'
                     type="text"
-                    value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     />
                 <Form.Input 
-                    fluid label='image-url'
+                    // fluid label='image-url'
+                    label='image-url'
+                    value={image}
                     placeholder='image-url'
                     type="text"
-                    //file
-                    value={image}
                     onChange={(e) => setImage(e.target.value)}
                     />
                 </Form.Group>
             <Form.Button>submit</Form.Button>
         </Form>
+        </div>
     );
 }
 
