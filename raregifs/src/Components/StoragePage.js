@@ -1,6 +1,13 @@
 import React from 'react';
 import StorageCardArt from './StorageCardArt';
 import StorageCardAcquisition from './StorageCardAcquisition'
+import { 
+  Container,
+  Image,
+  Button,
+  Header,
+  Modal,
+} from 'semantic-ui-react'
 
 function StoragePage({ 
     currentUser,
@@ -39,13 +46,33 @@ function StoragePage({
          
 
     return (
-        <div className="storage" >
-          <h4>My Work</h4>
-              {uArtworkCard}
-          <h4>Collection</h4>
-              {uAcquisitionCard}
-        </div>
+      <Container>
+                <Header 
+            textAlign='center'
+            justifyContent='space-around'
+            // style={{
+            //     padding: '20px'
+            // }}
+        >
+            My Work
+        </Header>
+        {uArtworkCard}
+        <Header
+          textAlign='center'
+          justifyContent='space-around'
+        >
+        My Collection
+        </Header>
+        {uAcquisitionCard}
+      </Container>
     );
 }
 
 export default StoragePage;
+
+// <div className="storage" >
+//          <h4>My Work</h4>
+//              {uArtworkCard}
+//          <h4>Collection</h4>
+//              {uAcquisitionCard}
+//    </div>

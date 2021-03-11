@@ -19,41 +19,22 @@ code {
 .acquisition-card img {
   width: 200px;
 }
+/* .modal {
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  top: auto;
+  left: auto;
+  bottom: auto;
+  right: auto;
+} */
 
 /* .art-card img {
   width: 500px;
 } */
 
-.art-container {
-  /* justify-content: center; */
-  /* display: flex;  */
-  /* width: 500px; */
-}
-
-/* .ui-centered-stackable-one-column-grid {
-  justify-content: space-around;
+/* div.ui-scrolling-modal-transition-visible {
+  width: 300px;
 } */
 
-.art-card {
-  /* justify-content: space-around; */
-}
-
-.ui-huge-image {
-  /* justify-content: center;
-  align-items: space-around; */
-  /* padding: '30px'; */
-  /* style={{ maxHeight: 200 }} */
-}
-
-.ui-container {
-  /* display: 'flex'; */
-  /* justify-content: center; */
-}
-
-div.ui-card {
-  /* width: '300px'; 
-  justify-content: center;
-  align-items: center; */
-}
-
-body{ max-height: 100vh; }
+/* body{ max-height: 100vh; } */

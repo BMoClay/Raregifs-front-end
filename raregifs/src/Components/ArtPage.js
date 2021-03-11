@@ -1,6 +1,5 @@
 import React from 'react'
 import ArtCard from './ArtCard'
-// import { Container, Segment, Card, Grid } from 'semantic-ui-react'
 
 function ArtPage(
     { 
@@ -13,50 +12,17 @@ function ArtPage(
   const uArtwork =
     artworks.map((artwork) => {
         return <ArtCard
-        // return <Card 
-        //             style={{ 
-        //                 // margin: 10,
-        //                 // padding: 40,
-        //                 // width: 300,
-        //             }}
-        //         // justify-content="center"
-        //         // margin="0 auto"
-        //         // width='300px'
-        //         >
-                    // <ArtCard
-                    // className='art-card'
-                    // justify-content="center"
                     key={artwork.id} 
                     artwork={artwork} 
                     currentUser={currentUser} 
                     onAcquireArtwork={onAcquireArtwork}
                      />
-                // </Card>
-
     })
     
     return(
-        // <Grid centered columns={1} justify-content="center">
-        //     <Grid.Column >
-        //     {uArtwork}
-        //     </Grid.Column>
-        // </Grid>
         <div className='art-container' >
             {uArtwork}
         </div>
-        // <div className='art-container' >
-        //     <Container 
-        //         // display="flex"
-        //         // align-items="center"
-        //         style={{ 
-        //             margin: 10,
-        //             padding: 40,
-        //             width: 300,
-        //         }}
-        //         >
-        //             {uArtwork}
-        //     </Container>
-        // </div>
     )
 }
 

@@ -1,4 +1,12 @@
 import React, { useState } from 'react'
+import { 
+    Grid,
+    Image,
+    Button,
+    Header,
+    Modal,
+    Form,
+  } from 'semantic-ui-react'
 
 function StorageCardArt({ 
                 artwork, 
@@ -6,6 +14,7 @@ function StorageCardArt({
                 onUpdateArtwork,
              }) {
 
+    const [open, setOpen] = React.useState(false)
     const aUsers = artwork.acquiring_users.map((user) => {
         return (
             <div key={user.id}>{user.name}</div>
@@ -41,21 +50,23 @@ function StorageCardArt({
     }
 
     return (
-        <div className="storage-card">
-            <div>
-                <img src={image} alt={title} />
-                <h3>{title}</h3>
-                <form onSubmit={handleUpdateArtworkSubmit}>
-                    <input
-                        type="text"
-                        name="title"
-                        autoComplete="off"
-                        value={updatedTitle}
-                        onChange={(e) => setUpdatedTitle(e.target.value)}
-                    /><input type="submit" value="update title"/>
-                </form>
-                <button onClick={handleDeleteClick}>delete</button>
-                <div>
+        <Grid 
+          stackable centered 
+          style={{ 
+            margin: 10,
+            padding: 40,
+          }}
+          >
+              <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={<Image size="large" src={image} />}
+            >
+                 <Modal.Content image >
+                  <Image wrapped size="huge" src={image} alt={title}/>
+                  <Modal.Description>
+                    <Header>{title}</Header>
                     {artwork.acquiring_users.length > 0? (
                         <>
                             <h4>collected by:{aUsers}</h4>
@@ -64,10 +75,45 @@ function StorageCardArt({
                         <>
                         </>
                     )}
-                </div>
-            </div>
-        </div>
+                  </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                  <Form onSubmit={handleUpdateArtworkSubmit}>
+                    <Form.Input 
+                        fluid 
+                        label='update title'
+                        type='text'
+                        name="title"
+                        autoComplete="off"
+                        value={updatedTitle}
+                        onChange={(e) => setUpdatedTitle(e.target.value)}
+                    />
+                  </Form>
+                  <Button
+                    content="delete"
+                    labelPosition='right'
+                    icon='trash'
+                    onClick={handleDeleteClick}
+                    negative
+                  />
+                </Modal.Actions>
+            </Modal>
+        </Grid>
     )
 }
 
 export default StorageCardArt;    
+
+    // <div className="storage-card" >
+    // {/* <Card> */}
+    //     <img src={artwork.image} alt={artwork.title} />
+    //     <h3>{artwork.title}</h3>
+    //     <h4>{artwork.user_name}</h4>
+    //     <Button 
+    //         onClick={handleDeleteAcquisitionClick}
+    //         // justify-content='center'
+    //         >
+    //             remove from collection
+    //     </Button>
+    // {/* </Card> */}
+    // </div>

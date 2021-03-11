@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Form } from 'semantic-ui-react'
+import { 
+    Form, 
+    Embed,
+} from 'semantic-ui-react'
 // active storage
 // import { DirectUpload } from 'activestorage'
 
@@ -27,6 +30,11 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
                 // console.log(newArtwork)
             })
     }
+
+    function handleConvertClick(e) {
+        e.preventDefault();
+        fetch("")
+    }
     
     return ( 
         <div>
@@ -53,6 +61,22 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
                 </Form.Group>
             <Form.Button>submit</Form.Button>
         </Form>
+        <br></br>
+        <Embed
+            icon='paint brush'
+            // placeholder='click play button to start a new drawing'
+            url='https://kleki.com/'
+        />
+        <br></br>
+        <Embed
+            icon='file pdf'
+            url='https://docs.google.com/presentation/d/1-fqAEHm5nJW0QQgHCvb_jyOfmQG98tZNu6iodqoJLFk/edit#slide=id.p'
+        />
+        <br></br>
+        {/* <Embed
+            icon='stack exchange'
+            url='https://convertio.co/pdf-gif/'
+        /> */}
         </div>
     );
 }

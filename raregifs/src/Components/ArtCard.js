@@ -14,7 +14,6 @@ function ArtCard(
           onAcquireArtwork, 
       }
 ) {
-    console.log(artwork)
 
     const [open, setOpen] = React.useState(false)
     const { title, image, user } = artwork
@@ -35,51 +34,49 @@ function ArtCard(
         .then((newAcquisition) => onAcquireArtwork(newAcquisition))
       }
 
+      function onAcquireClick(e) {
+        e.preventDefault();
+        handleAcquireArtworkClick(e)
+        setOpen(false)
+      }
+
       return (
         <Grid 
-          stackable centered columns={1}
+          stackable centered 
           style={{ 
             margin: 10,
             padding: 40,
-            // width: 300,
           }}
           >
             <Modal
-                // style={{ 
-                //       margin: 10,
-                //       padding: 40,
-                //       width: 300,
-                //     }}
-                // size="large"
-                // height="tall"
+                // onSuccess={() => setOpen(false)}
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Image size='large' src={image} />}
-                // padding='20px'
-                // justify-content='center'
+                trigger={<Image size="large" src={image} />}
             >
-              {/* style={{ maxHeight: 500 }} */}
-              {/* style={{ marginTop: '1rem' }} */}
-              {/* style={{ position: relative }} */}
-                  <Modal.Content image >
-                  <Image wrapped size='huge' src={image} />
-                  {/* <Image size='huge' src={image} wrapped /> */}
+                  <Modal.Content image>
+                  <Image wrapped size="huge" src={image} />
                   <Modal.Description>
                     <Header>{title}</Header>
                     <p>{user.name}</p>
                   </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button color='black' onClick={() => setOpen(false)}>
+                  <Button 
+                    className='delete-btn'
+                    color='black' 
+                    onClick={() => setOpen(false)} 
+                    >
                     Nope
                   </Button>
                   <Button
+                    className='acquire-btn'
                     content="Add it to the collection"
                     labelPosition='right'
                     icon='checkmark'
-                    onClick={handleAcquireArtworkClick}
-                    // onClick={() => setOpen(false)}
+                    // onClick={handleAcquireArtworkClick}
+                    onClick={onAcquireClick}
                     positive
                   />
                 </Modal.Actions>
@@ -89,6 +86,42 @@ function ArtCard(
   }
 
 export default ArtCard;
+
+  // <div className="storage-card">
+  // <div>
+  //     <img src={image} alt={title} />
+  //     <h3>{title}</h3>
+  //     <form onSubmit={handleUpdateArtworkSubmit}>
+  //         <input
+  //             type="text"
+  //             name="title"
+  //             autoComplete="off"
+  //             value={updatedTitle}
+  //             onChange={(e) => setUpdatedTitle(e.target.value)}
+  //         /><input type="submit" value="update title"/>
+  //     </form>
+  //     <button onClick={handleDeleteClick}>delete</button>
+  //     <div>
+  //         {artwork.acquiring_users.length > 0? (
+  //             <>
+  //                 <h4>collected by:{aUsers}</h4>
+  //             </>
+  //         ) : (
+  //             <>
+  //             </>
+  //         )}
+  //     </div>
+  // </div>
+  // </div>
+
+
+
+
+
+
+
+
+
 
 
  // function wrapperFunction(handleAcquireArtworkClick) {

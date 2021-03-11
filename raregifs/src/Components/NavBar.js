@@ -25,7 +25,7 @@ function NavBar({ currentUser }) {
                 {currentUser ? (
                     <>
                         <Dropdown.Item text="Storage" icon="shopping basket" as={Link} to='/my_storage'/>
-                        <Dropdown.Item text="Upload" icon="upload" as={Link} to='/upload'/> 
+                        <Dropdown.Item text="Upload" icon="upload" as={Link} to='/studio'/> 
                         <Dropdown.Item text="Account" icon="secret user" as={Link} to="/account"/>
                     </>
                 ) : (

@@ -8,7 +8,7 @@ import ArtPage from './ArtPage';
 import UserPage from './UserPage';
 import StoragePage from './StoragePage';
 import Account from './Account';
-// import { Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 
 function App() {
 
@@ -69,7 +69,6 @@ function App() {
       console.log(newArtwork)
         const updatedArtworksArray = [newArtwork, ...artworks];
         setArtworks(updatedArtworksArray)
-        console.log(updatedArtworksArray)
     } 
 
     function handleDeleteAcquisition(acquisitionObject) {
@@ -108,8 +107,8 @@ function App() {
   } 
       console.log(artworks)
       return (
-        <div>
-        {/* // <Container className="app"> */}
+        // <div>
+        <Container className="app">
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <Switch>
                   <Route exact path="/login">
@@ -132,7 +131,7 @@ function App() {
                         onDeleteComment={handleDeleteComment}
                         />
                   </Route>
-                  <Route exact path="/upload">
+                  <Route exact path="/studio">
                     <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
                   </Route>
                   <Route exact path="/my_storage">
@@ -152,8 +151,8 @@ function App() {
                     <Signup setCurrentUser={setCurrentUser}/>
                   </Route>
                 </Switch>
-        {/* </Container> */}
-        </div>
+        </Container>
+        // </div>
       );
 }
 

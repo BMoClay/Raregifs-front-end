@@ -1,5 +1,12 @@
 import React from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { 
+    Grid,
+    Image,
+    Button,
+    Header,
+    Modal,
+    Form,
+  } from 'semantic-ui-react'
 
 function StorageCardAcquisition({ 
                 acquisition, 
@@ -8,6 +15,7 @@ function StorageCardAcquisition({
              }) {
     
     const { id } = acquisition
+    const [open, setOpen] = React.useState(false)
 
     function handleDeleteAcquisitionClick() {
         fetch(`http://localhost:3000/acquisitions/${id}`, {
@@ -20,19 +28,37 @@ function StorageCardAcquisition({
     }
 
     return (
-        <div className="storage-card" >
-        {/* <Card> */}
-            <img src={artwork.image} alt={artwork.title} />
-            <h3>{artwork.title}</h3>
-            <h4>{artwork.user_name}</h4>
-            <Button 
-                onClick={handleDeleteAcquisitionClick}
-                // justify-content='center'
-                >
-                    remove from collection
-            </Button>
-        {/* </Card> */}
-        </div>
+        <Grid 
+        stackable centered 
+        style={{ 
+          margin: 10,
+          padding: 40,
+        }}
+        >
+            <Modal
+              onClose={() => setOpen(false)}
+              onOpen={() => setOpen(true)}
+              open={open}
+              trigger={<Image size='large' src={artwork.image} alt={artwork.title}/>}
+          >
+               <Modal.Content image >
+                <Image wrapped size='huge' src={artwork.image} alt={artwork.title}/>
+                <Modal.Description>
+                  <Header>{artwork.title}</Header>
+                  <p>{artwork.user_name}</p>
+                </Modal.Description>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button
+                  content="remove from collection"
+                  labelPosition='right'
+                  icon='trash'
+                  onClick={handleDeleteAcquisitionClick}
+                  negative
+                />
+              </Modal.Actions>
+          </Modal>
+      </Grid>
     );
 }
 
