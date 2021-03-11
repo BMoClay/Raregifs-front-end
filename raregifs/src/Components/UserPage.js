@@ -1,6 +1,6 @@
 import React from 'react'
 import UserList from './UserList'
-import { Container } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 
 function UserPage({ 
             currentUser, 
@@ -28,11 +28,13 @@ function UserPage({
         )
         
     return (
-        <Container >
+        // <Container >
+        // <Grid> 
          <div>
             {aUser}
          </div>
-        </Container>
+        //  </Grid>
+        // </Container>
     );
 }
 export default UserPage;

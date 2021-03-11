@@ -105,7 +105,7 @@ function App() {
       const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
       setComments(updatedCommentsArray);
   } 
-      console.log(artworks)
+      
       return (
         // <div>
         <Container className="app">

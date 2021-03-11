@@ -21,12 +21,12 @@ function NavBar({ currentUser }) {
             }}>
             <Dropdown.Menu text="Raregifs" fluid floating>
                 <Dropdown.Item text="Gallery" icon="trophy" as={Link} to='/'/>
-                <Dropdown.Item text="Collections" icon="cogs" as={Link} to='/users_collections'/>
+                <Dropdown.Item text="Collections" icon="university" as={Link} to='/users_collections'/>
                 {currentUser ? (
                     <>
                         <Dropdown.Item text="Storage" icon="shopping basket" as={Link} to='/my_storage'/>
-                        <Dropdown.Item text="Upload" icon="upload" as={Link} to='/studio'/> 
-                        <Dropdown.Item text="Account" icon="secret user" as={Link} to="/account"/>
+                        <Dropdown.Item text="Studio" icon="pencil" as={Link} to='/studio'/> 
+                        <Dropdown.Item text="Account" icon="sign-out alternate" as={Link} to="/account"/>
                     </>
                 ) : (
                     <>

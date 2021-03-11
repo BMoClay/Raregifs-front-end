@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { 
     Form, 
     Embed,
+    // Button,
+    Container,
 } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom';
 // active storage
 // import { DirectUpload } from 'activestorage'
 
 function UploadArtForm({ currentUser, onCreateArtwork }){
    
+    const history = useHistory() 
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
 
@@ -26,6 +30,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
         })
             .then((res) => res.json())
             .then((newArtwork) => {
+                history.push("/")
                 onCreateArtwork(newArtwork)
                 // console.log(newArtwork)
             })
@@ -33,11 +38,27 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
 
     function handleConvertClick(e) {
         e.preventDefault();
-        fetch("")
-    }
+        fetch("https://api.convertio.co/convert", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                apikey: "43419917fb02bda8434dd02fdceb07cf",
+                file: "http://google.com/",
+                outputformat: "gif",
+            }),
+        })
+            .then((res) => res.json())
+            .then((convertedFile) => {
+                console.log(convertedFile)
+            })
+        }
+    
+    
     
     return ( 
-        <div>
+        <Container>
             <br></br>
         <Form onSubmit={handleSubmitNewArtwork}>
             <br></br>
@@ -70,14 +91,31 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
         <br></br>
         <Embed
             icon='file pdf'
-            url='https://docs.google.com/presentation/d/1-fqAEHm5nJW0QQgHCvb_jyOfmQG98tZNu6iodqoJLFk/edit#slide=id.p'
+            url='https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p'
         />
         <br></br>
-        {/* <Embed
+        <Embed
+            style={{height: 2800}}
             icon='stack exchange'
-            url='https://convertio.co/pdf-gif/'
+            url='https://ezgif.com/pdf-to-gif'
+        /> 
+        <br></br>
+        {/* <Embed
+            // style={{height: 2200}}
+            icon='world'
+            url='https://imgur.com/'
         /> */}
-        </div>
+        {/* <br></br> 
+        <Embed
+            // style={{height: 2200}}
+            icon='hourglass three'
+            url='https://image.online-convert.com/convert-to-webp'
+        />
+        <br></br>  */}
+        {/* <Button
+            onClick={handleConvertClick}
+        >convert pdf to gif</Button> */}
+        </Container>
     );
 }
 

@@ -49,6 +49,12 @@ function StorageCardArt({
             })
     }
 
+    function handleUpdateClick(e) {
+        e.preventDefault();
+        handleUpdateArtworkSubmit(e)
+        setOpen(false)
+      }
+
     return (
         <Grid 
           stackable centered 
@@ -78,7 +84,7 @@ function StorageCardArt({
                   </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Form onSubmit={handleUpdateArtworkSubmit}>
+                  <Form onSubmit={handleUpdateClick}>
                     <Form.Input 
                         fluid 
                         label='update title'
@@ -88,6 +94,7 @@ function StorageCardArt({
                         value={updatedTitle}
                         onChange={(e) => setUpdatedTitle(e.target.value)}
                     />
+                    <Form.Button>submit</Form.Button>
                   </Form>
                   <Button
                     content="delete"

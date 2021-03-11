@@ -56,7 +56,7 @@ function ArtCard(
                 trigger={<Image size="large" src={image} />}
             >
                   <Modal.Content image>
-                  <Image wrapped size="huge" src={image} />
+                  <Image wrapped size="large" src={image} />
                   <Modal.Description>
                     <Header>{title}</Header>
                     <p>{user.name}</p>
@@ -86,6 +86,78 @@ function ArtCard(
   }
 
 export default ArtCard;
+
+
+
+  // <Grid 
+  // //     relaxed columns={3}
+  // //     // centered columns={2}
+  //     style={{ 
+  //     margin: 10,
+  //     padding: 40,
+  //     // width: 300,
+  //     }}
+  // >
+  //     {/* width={3} */}
+  // {/* //     <Grid.Column> */}
+  // <Container itemsPerRow={4}>
+  //         <Modal 
+  //             style={{
+  //                 // height: '50px',
+  //                 width: '150px',
+  //             }}
+  //             onClose={() => setOpen(false)}
+  //             onOpen={() => setOpen(true)}
+  //             open={open}
+  //             trigger={<Image size="small" src={aArtwork.image} />}
+  //         >
+  //             <Modal.Content image>
+  //                 <Image src={aArtwork.image} alt={aArtwork.title} />
+  //             <Modal.Description>
+  //                 <Header
+  //                     style={{
+  //                         // position: 'relative',
+  //                         // width: '90px',
+  //                         // textAlign: 'left',
+  //                         // display: 'block',
+  //                         fontSize: 'small',
+  //                         // color: 'red',
+  //                     }}
+  //                 >
+  //                     {aArtwork.title}
+  //                 </Header>
+  //             </Modal.Description>
+  //                 <Modal.Meta>
+  //                     <span className='artist-name'>{aArtwork.user_name}</span>
+  //                 </Modal.Meta>
+  //             </Modal.Content>
+  //             {cUId ? (
+  //                 <>
+  //                 <Button size='small' onClick={handleAcquireArtworkClick}>
+  //                     acquire
+  //                 </Button>
+  //                 </>
+  //             ) : (
+  //                 <>
+  //                 </>
+  //             )}
+  //         <br></br>
+  //         </Modal>
+  //     </Container>
+  //     {/* </Grid.Column> */}
+  // </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
 
   // <div className="storage-card">
   // <div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Card } from 'semantic-ui-react'
 
 function CommentForm({ cUId, eachUserID, onAddComment }){
 
@@ -24,15 +24,30 @@ function CommentForm({ cUId, eachUserID, onAddComment }){
             })
     }
 
-    return( 
+    return(
+        // <Card>
         <Form 
             onSubmit={handleSubmitNewComment} 
             // width='130px'
             style={{
-                padding: '20px'
+                // display: 'flex',
+                width: '270px',
+                height: '200px',
+                padding: '10px',
+                // alignItems: 'center',
+                // justifyContent:'center',
             }}
             >
             <Form.TextArea
+                style={{
+                    // display: 'flex',
+                    justifyContent:'center',
+                    width: '250px',
+                    height: '100px',
+                    padding: '10px',
+                    alignItems: 'flex-start',
+                    // justifyContent:'space-around',
+                }}
                 // width='100px' 
                 // label='write a note' 
                 placeholder='your note...'
@@ -40,8 +55,9 @@ function CommentForm({ cUId, eachUserID, onAddComment }){
                 type='text'
                 onChange={(e) => setContent(e.target.value)}
                 />
-            <Form.Button>send</Form.Button>
+            <Form.Button>post</Form.Button>
         </Form>
+        // </Card> 
     );
 }
 

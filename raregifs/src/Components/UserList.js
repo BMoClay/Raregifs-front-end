@@ -48,10 +48,7 @@ function UserList({
     const uComments =
     eachUser.comments_received ? (tComments.map((comment) => {
             return <CommentCard
-            // return <CommentContainer
                     key={comment.id}
-                    // comments={comments}
-                    // eachUser={eachUser}
                     cUId={cUId}
                     commentID={comment.id}
                     content={comment.content}
@@ -63,95 +60,127 @@ function UserList({
     ) : (null)
 
     return(
-        <Container className='user-container'>
-            <br></br>
-        <Header 
-            inverted 
-            textAlign='center'
-            justifyContent='space-around'
+        <Container 
+            className='user-container'  
             style={{
-                padding: '20px'
-            }}
-        >
-            <br></br>
-            The {eachUser.name} Collection
-        </Header>
-            <Grid >
-                 <style>
-                    {`
-                    html, body {
-                        background-color: #252839 !important;
-                    }
+                // display: 'flex',
+                flexWrap: 'wrap',
+                position: 'relative',
+                alignItems: 'center',
+                textAlign:'center',
+                justifyContent: 'center',
+                padding: '10px', 
+                }}
+            >
+            <style>
+                {`
+                html, body {
+                    background-color: #252839 !important;
+                }
 
-                    p {
-                        align-content: center;
-                        background-color: #495285;
-                        color: #fff;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        min-height: 6em;
-                    }
+                p {
+                    align-content: center;
+                    background-color: #495285;
+                    color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    min-height: 6em;
+                }
 
-                    p > span {
-                        opacity: 0.4;
-                        text-align: center;
-                    }
-                    
-                    }
-                    `}
-                    </style>
-                 {tCollection.length > 0 ? (
-                    //  <Grid.Column >
-                     <>  
+                p > span {
+                    opacity: 0.4;
+                    text-align: center;
+                }
+                
+                }
+                `}
+            </style>
+                <Header 
+                    inverted 
+                    style={{
+                        display: 'flex',
+                        textAlign:'center',
+                        justifyContent:'space-around',
+                        padding: '20px',
+                    }}
+                >
+                    <br></br>
+                    The {eachUser.name} Collection
+                </Header>
+                <Divider hidden style={{ justifyContent: 'space-around'}}/>
+                    <Grid 
+                        style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            flexDirection: 'row',
+                            // width: '250px',
+                            display: 'flex',
+                            textAlign:'center',
+                            justifyContent:'space-around',
+                            alignSelf: 'center',
+                            // padding: '10px',
+                        }}
+                    >
+                        {tCollection.length > 0 ? (
+                        <>  
                         <br></br>
-                        {/* <Header inverted textAlign='center'>The {eachUser.name} Collection</Header> */}
-                            {uAcquisitions}
+                        {uAcquisitions}
                         <CommentForm 
+                            style={{
+                                // width: '250px',
+                                display: 'flex',
+                                textAlign:'center',
+                                // alignSelf: 'center',
+                                justifyContent:'center',
+                                padding: '10px',
+                            }}
                             eachUserID={eachUser.id} 
                             cUId={cUId} 
                             onAddComment={onAddComment}
                         />
                         <br></br>
-                    </>
-                    //{/* </Grid.Column> */}
-            ) : (
-                <>
-                </>
-            )}
-            {/* <div> */}
-                {tComments.length > 0 ? (
-                    <Container>
-                        <Header
+                        </>
+                    ) : (
+                        <>
+                        </>
+                    )}
+                        <Divider hidden />
+                        {tComments.length > 0 ? (
+                        <Container  
+                            style={{
+                                textAlign:'center',
+                                justifyContent:'space-around',
+                                padding: '10px',
+                            }}
+                        >
+                            <Header
                                 inverted 
-                                textAlign='center'
-                                justifyContent='space-around'
                                 style={{
+                                    justifyContent: 'space-around',
                                     padding: '20px'
                                 }}
                             >
                                 Comments on {eachUser.name}'s collection
                             </Header>
-                        <Grid>
-                        <>
-                            {/* <Header.Subheader
-                                inverted 
-                                textAlign='center'
-                                justifyContent='space-around'
-                            > */}
-                                {uComments}
-                            {/* </Header.Subheader> */}
-                        </>
-                        {/* </Grid.Column> */}
-                        </Grid>
-                    </Container>
-                ) : (
-                    <>
-                    </>
-                )}
-            {/* </div> */}
-            {/* </Grid.Column> */}
-        </Grid>
+                            <Grid  
+                                style={{
+                                    // width: '250px',
+                                    // textAlign:'center',
+                                    // justifyContent:'space-around',
+                                    padding: '10px',
+                                }}
+                            >
+                            <>
+                            {uComments}
+                            </>
+                            </Grid>
+                        </Container>
+                        ) : (
+                            <>
+                            </>
+                        )}
+                </Grid>
         </Container>
     );
 }

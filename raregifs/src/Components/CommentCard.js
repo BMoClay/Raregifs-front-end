@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button } from 'semantic-ui-react'
+import { Card, Button, Grid } from 'semantic-ui-react'
 
 function CommentCard({ 
             cUId, 
@@ -21,34 +21,29 @@ function CommentCard({
     }
   
     return (
-        // <div>
-        //     <div>
-        //         <br></br>
-                <Card.Group >
-                    <Card>
-                        <Card.Content>
-                            <Card.Header>{content}</Card.Header>
-                            <Card.Description>-{author}</Card.Description>
-                            {cUId === commenter_id ? (
-                                <>
-                                    <Button 
-                                        onClick={handleDeleteCommentClick}
-                                        size="small"
-                                        icon="trash"
-                                        >
-                                    </Button>
-                                </>
-                            ) : (
-                                <>
-                                </>
-                            )}
-                        </Card.Content>
-                    </Card>
-                </Card.Group>
-        //         <br></br>
-        //         <br></br>
-        //     </div>
-        // </div>
+        // <Grid>
+            <Card.Group >
+                <Card>
+                    <Card.Content>
+                        <Card.Header >{content}</Card.Header>
+                        <Card.Description>-{author}</Card.Description>
+                        {cUId === commenter_id ? (
+                            <>
+                                <Button 
+                                    onClick={handleDeleteCommentClick}
+                                    size="small"
+                                    icon="trash"
+                                    >
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                            </>
+                        )}
+                    </Card.Content>
+                 </Card>
+            </Card.Group>
+        // </Grid> 
     )
 }
 
