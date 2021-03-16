@@ -107,8 +107,8 @@ function App() {
   } 
       
       return (
-        // <div>
-        <Container className="app">
+        <div className="app">
+        {/* <Container className="app"> */}
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <Switch>
                   <Route exact path="/login">
@@ -151,8 +151,8 @@ function App() {
                     <Signup setCurrentUser={setCurrentUser}/>
                   </Route>
                 </Switch>
-        </Container>
-        // </div>
+        {/* </Container> */}
+       </div>
       );
 }
 

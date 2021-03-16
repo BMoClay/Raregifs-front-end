@@ -46,7 +46,8 @@ function StoragePage({
          
 
     return (
-      <Container>
+      // <Container>
+      <div>
                 <Header 
             textAlign='center'
             justifyContent='space-around'
@@ -64,7 +65,8 @@ function StoragePage({
         My Collection
         </Header>
         {uAcquisitionCard}
-      </Container>
+        </div>
+      // </Container>
     );
 }
 
