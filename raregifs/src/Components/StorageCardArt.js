@@ -110,17 +110,3 @@ function StorageCardArt({
 }
 
 export default StorageCardArt;    
-
-    // <div className="storage-card" >
-    // {/* <Card> */}
-    //     <img src={artwork.image} alt={artwork.title} />
-    //     <h3>{artwork.title}</h3>
-    //     <h4>{artwork.user_name}</h4>
-    //     <Button 
-    //         onClick={handleDeleteAcquisitionClick}
-    //         // justify-content='center'
-    //         >
-    //             remove from collection
-    //     </Button>
-    // {/* </Card> */}
-    // </div>

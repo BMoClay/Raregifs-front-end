@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import { 
     Form, 
     Embed,
-    // Button,
     Container,
 } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom';
-// active storage
-// import { DirectUpload } from 'activestorage'
 
 function UploadArtForm({ currentUser, onCreateArtwork }){
    
@@ -32,7 +29,6 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
             .then((newArtwork) => {
                 history.push("/")
                 onCreateArtwork(newArtwork)
-                // console.log(newArtwork)
             })
     }
 
@@ -64,7 +60,6 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
             <br></br>
             <Form.Group widths="equal">
                 <Form.Input 
-                    // fluid label='title'
                     label='title'
                     value={title}
                     placeholder='title'
@@ -72,7 +67,6 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
                     onChange={(e) => setTitle(e.target.value)}
                     />
                 <Form.Input 
-                    // fluid label='image-url'
                     label='image-url'
                     value={image}
                     placeholder='image-url'
@@ -85,7 +79,6 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
         <br></br>
         <Embed
             icon='paint brush'
-            // placeholder='click play button to start a new drawing'
             url='https://kleki.com/'
         />
         <br></br>
@@ -100,80 +93,9 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
             url='https://ezgif.com/pdf-to-gif'
         /> 
         <br></br>
-        {/* <Embed
-            // style={{height: 2200}}
-            icon='world'
-            url='https://imgur.com/'
-        /> */}
-        {/* <br></br> 
-        <Embed
-            // style={{height: 2200}}
-            icon='hourglass three'
-            url='https://image.online-convert.com/convert-to-webp'
-        />
-        <br></br>  */}
-        {/* <Button
-            onClick={handleConvertClick}
-        >convert pdf to gif</Button> */}
         </Container>
     );
 }
 
 export default UploadArtForm;
 
-
-
-// {/* 
-// <div className="upload-art-form">
-//             <h4>Upload</h4>
-//             <form onSubmit={handleSubmitNewArtwork}>
-//                 <input
-//                     type="text"
-//                     title="title"
-//                     placeholder="title (optional)"
-//                     value={title}
-//                     onChange={(e) => setTitle(e.target.value)}
-//                 />
-//                 <input
-//                     // activestorage
-                    
-//                     type="text"
-//                     // type="file"
-//                     title="image"
-//                     placeholder="enter image url/ gif url"
-//                     value={image}
-//                     onChange={(e) => setImage(e.target.value)}
-//                 />
-//                 <button type="submit">Add Image</button>
-//             </form>
-//         </div>
-
-
-
-
-
-// // return ( 
-// //     <div className="upload-art-form">
-// //         <h4>Upload</h4>
-// //         <form onSubmit={handleSubmitNewArtwork}>
-// //             <input */}
-// //                 type="text"
-// //                 title="title"
-// //                 placeholder="title (optional)"
-// //                 value={title}
-// //                 onChange={(e) => setTitle(e.target.value)}
-// //             />
-// //             <input
-// //                 // activestorage
-                
-// //                 type="text"
-// //                 // type="file"
-// //                 title="image"
-// //                 placeholder="enter image url/ gif url"
-// //                 value={image}
-// //                 onChange={(e) => setImage(e.target.value)}
-// //             />
-// //             <button type="submit">Add Image</button>
-// //         </form>
-// //     </div>
-// // );

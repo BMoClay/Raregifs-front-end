@@ -46,14 +46,10 @@ function StoragePage({
          
 
     return (
-      // <Container>
       <div>
-                <Header 
+        <Header 
             textAlign='center'
             justifyContent='space-around'
-            // style={{
-            //     padding: '20px'
-            // }}
         >
             My Work
         </Header>
@@ -65,16 +61,8 @@ function StoragePage({
         My Collection
         </Header>
         {uAcquisitionCard}
-        </div>
-      // </Container>
+      </div>
     );
 }
 
 export default StoragePage;
-
-// <div className="storage" >
-//          <h4>My Work</h4>
-//              {uArtworkCard}
-//          <h4>Collection</h4>
-//              {uAcquisitionCard}
-//    </div>

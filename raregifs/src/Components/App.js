@@ -8,7 +8,6 @@ import ArtPage from './ArtPage';
 import UserPage from './UserPage';
 import StoragePage from './StoragePage';
 import Account from './Account';
-import { Container } from 'semantic-ui-react';
 
 function App() {
 
@@ -108,7 +107,6 @@ function App() {
       
       return (
         <div className="app">
-        {/* <Container className="app"> */}
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <Switch>
                   <Route exact path="/login">
@@ -151,58 +149,8 @@ function App() {
                     <Signup setCurrentUser={setCurrentUser}/>
                   </Route>
                 </Switch>
-        {/* </Container> */}
        </div>
       );
 }
 
 export default App;
-
-// return (
-//   <div className="app">
-//       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-//           <Switch>
-//             <Route exact path="/login">
-//               <Login setCurrentUser={setCurrentUser}/>
-//             </Route>
-//             <Route exact path="/" >
-//               <ArtPage 
-//                   currentUser={currentUser} 
-//                   artworks={artworks} 
-//                   onAcquireArtwork={handleAddAcquisition}/>
-//             </Route>
-//             <Route exact path="/users">
-//               <UserPage 
-//                   users={users}
-//                   comments={comments}
-//                   acquisitions={acquisitions} 
-//                   currentUser={currentUser} 
-//                   onAcquireArtwork={handleAddAcquisition}
-//                   onAddComment={handleAddComment}
-//                   onDeleteComment={handleDeleteComment}
-//                   />
-//             </Route>
-//             <Route exact path="/upload">
-//               <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
-//             </Route>
-//             <Route exact path="/storage">
-//               <StoragePage 
-//                   currentUser={currentUser}
-//                   acquisitions={acquisitions}
-//                   artworks={artworks}
-//                   onDeleteArtwork={handleDeleteArtwork}
-//                   onDeleteAcquisition={handleDeleteAcquisition}
-//                   onUpdateArtwork={handleUpdateArtwork}
-//                   />
-//             </Route>
-//             <Route exact path="/account">
-//               <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
-//             </Route>
-//             <Route exact path="/signup">
-//               <Signup setCurrentUser={setCurrentUser}/>
-//             </Route>
-//           </Switch>
-//   </div>
-// );
-
-

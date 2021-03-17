@@ -1,6 +1,5 @@
 import React from 'react'
 import UserList from './UserList'
-import { Container, Grid } from 'semantic-ui-react'
 
 function UserPage({ 
             currentUser, 
@@ -28,69 +27,10 @@ function UserPage({
         )
         
     return (
-        // <Container >
-        // <Grid> 
-         <div>
-            {aUser}
-         </div>
-        //  </Grid>
-        // </Container>
+        <div>
+         {aUser}
+        </div>
     );
 }
 export default UserPage;
 
-
-
-// <div>
-// <br></br>
-// {tCollection.length > 0 ? (
-//     <>
-//     <h3>{eachUser.name}'s Collection</h3>
-//     <Grid>
-//         <Grid.Column>
-//             <Grid 
-//                 columns={2} 
-//                 doubling 
-//                 stackable
-//                 width={20}
-//             >
-//                 <Grid.Column>
-//                     <Segment>{uAcquisitions}</Segment>
-//                 </Grid.Column>
-//                 <Grid.Column>
-//                     <Segment><CommentForm 
-//                             eachUserID={eachUser.id} 
-//                             cUId={cUId} 
-//                             onAddComment={onAddComment}
-//                             />
-//                     </Segment>
-//                 </Grid.Column>
-//             </Grid>
-//         </Grid.Column>
-//     </Grid>
-//     </>
-//     ) : (
-//     <>
-//     </>
-// )}
-// <div>
-// {tComments.length > 0 ? (
-//     <>
-//     <br></br>
-//     <h3>Comments</h3>
-//     <Grid>
-//         <Grid.Column>
-//             <Grid columns={2} doubling stackable>
-//                 <Grid.Column>
-//                     <Segment>{uComments}</Segment>
-//                 </Grid.Column>
-//             </Grid>
-//         </Grid.Column>
-//     </Grid>
-//     </>
-// ) : (
-//     <>
-//     </>
-// )}
-// </div>
-// </div>

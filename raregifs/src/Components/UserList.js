@@ -1,19 +1,13 @@
 import React from 'react'
 import UserAcquisitionCard from './UserAcquisitionCard'
 import CommentForm from './CommentForm'
-// import CommentContainer from './CommentContainer'
 import CommentCard from './CommentCard'
 
 import { 
     Container,
-    Card,
     Divider, 
     Grid,
     Header,
-    Menu,
-    Message,
-    Segment,
-    Table,
 } from 'semantic-ui-react'
 
 function UserList({ 
@@ -63,7 +57,6 @@ function UserList({
         <Container 
             className='user-container'  
             style={{
-                // display: 'flex',
                 flexWrap: 'wrap',
                 position: 'relative',
                 alignItems: 'center',
@@ -114,12 +107,10 @@ function UserList({
                             display: 'flex',
                             flexWrap: 'wrap',
                             flexDirection: 'row',
-                            // width: '250px',
                             display: 'flex',
                             textAlign:'center',
                             justifyContent:'space-around',
                             alignSelf: 'center',
-                            // padding: '10px',
                         }}
                     >
                         {tCollection.length > 0 ? (
@@ -128,10 +119,8 @@ function UserList({
                         {uAcquisitions}
                         <CommentForm 
                             style={{
-                                // width: '250px',
                                 display: 'flex',
                                 textAlign:'center',
-                                // alignSelf: 'center',
                                 justifyContent:'center',
                                 padding: '10px',
                             }}
@@ -165,9 +154,6 @@ function UserList({
                             </Header>
                             <Grid  
                                 style={{
-                                    // width: '250px',
-                                    // textAlign:'center',
-                                    // justifyContent:'space-around',
                                     padding: '10px',
                                 }}
                             >
@@ -189,74 +175,3 @@ export default UserList;
 
 
     
-
-
-
-
-      //  {/* {/* // return(
-        //     <Grid>
-        //          {tCollection.length > 0 ? ( */}
-        //{/* //             <>  
-        //                 <br></br>
-        //                 <h2>The {eachUser.name} Collection</h2>
-        //                     {uAcquisitions}
-        //                 <CommentForm  */}
-        //                     eachUserID={eachUser.id} 
-        //                     cUId={cUId} 
-        //                     onAddComment={onAddComment}
-        //                 />
-        //                 <br></br>
-        //             </>
-        //     ) : (
-        //         <>
-        //         </>
-        //     )}
-        //     <div>
-        //         {tComments.length > 0 ? (
-        //             <>
-        //                 <h3>Comments on {eachUser.name}'s collection</h3>    
-        //                     {uComments}
-        //             </>
-        //         ) : (
-        //             <>
-        //             </>
-        //         )}
-        //     </div>
-        //     </Grid>
-        // );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // return(
-        //     <div>
-        //          {tCollection.length > 0 ? (
-        //             <>
-        //                 <h2>The {eachUser.name} Collection</h2>
-        //                     {uAcquisitions}
-        //                 <h3>Comments on {eachUser.name}'s collection</h3>    
-        //                     {uComments}
-        //                 <CommentForm 
-        //                     eachUserID={eachUser.id} 
-        //                     cUId={cUId} 
-        //                     onAddComment={onAddComment}
-        //                 />
-        //                 <br></br>
-        //             </>
-        //     ) : (
-        //         <>
-        //         </>
-        //     )}
-        //     </div>
-        // ); */}

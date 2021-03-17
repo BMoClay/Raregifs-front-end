@@ -1,11 +1,8 @@
 import React from 'react';
 import { 
-    Grid,
     Card,
     Image,
     Button,
-    Header,
-    Modal,
   } from 'semantic-ui-react'
 
 function UserAcquisitionCard({ 
@@ -37,7 +34,6 @@ function UserAcquisitionCard({
                 width: '250px',
                 textAlign:'center',
                 justifyContent:'space-around',
-                // padding: '10px',
             }}
         >
             <Image src={aArtwork.image} alt={aArtwork.title} />
@@ -70,25 +66,3 @@ function UserAcquisitionCard({
 }
 
 export default UserAcquisitionCard;
-
-
-
-// <div className="acquisition-card">
-// <img src={aArtwork.image} alt={aArtwork.title} />
-// <h2>{aArtwork.title}</h2>
-// <h4>{aArtwork.user_name}</h4>
-// <div>
-//    {cUId ? (
-//        <>
-//        <button onClick={handleAcquireArtworkClick}>
-//            acquire image
-//        </button>
-//        </>
-//    ) : (
-//        <>
-//        </>
-//    )}
-// </div>
-// <br></br>
-// <br></br>
-// </div>

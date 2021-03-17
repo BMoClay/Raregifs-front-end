@@ -19,7 +19,6 @@ function CommentContainer({
 
     const uComments =
     eachUser.comments_received ? (tComments.map((comment) => {
-            // return <CommentCard
             return <CommentContainer
                     key={comment.id}
                     name={eachUser.name}
@@ -35,9 +34,7 @@ function CommentContainer({
 
     return( 
         <Container>
-            {/* <Header>Comments on {eachUser.name}'s collection</Header> */}
             <CommentCard
-                // key={comment.id}
                 cUId={cUId}
                 commentID={commentID}
                 content={content}
