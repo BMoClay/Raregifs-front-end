@@ -107,7 +107,6 @@ function UserList({
                             display: 'flex',
                             flexWrap: 'wrap',
                             flexDirection: 'row',
-                            display: 'flex',
                             textAlign:'center',
                             justifyContent:'space-around',
                             alignSelf: 'center',

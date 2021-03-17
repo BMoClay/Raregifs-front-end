@@ -32,24 +32,24 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
             })
     }
 
-    function handleConvertClick(e) {
-        e.preventDefault();
-        fetch("https://api.convertio.co/convert", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                apikey: "43419917fb02bda8434dd02fdceb07cf",
-                file: "http://google.com/",
-                outputformat: "gif",
-            }),
-        })
-            .then((res) => res.json())
-            .then((convertedFile) => {
-                console.log(convertedFile)
-            })
-        }
+    // function handleConvertClick(e) {
+    //     e.preventDefault();
+    //     fetch("https://api.convertio.co/convert", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             apikey: "43419917fb02bda8434dd02fdceb07cf",
+    //             file: "http://google.com/",
+    //             outputformat: "gif",
+    //         }),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((convertedFile) => {
+    //             console.log(convertedFile)
+    //         })
+    //     }
     
     
     

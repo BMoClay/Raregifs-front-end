@@ -5,7 +5,6 @@ import {
     Button,
     Header,
     Modal,
-    Form,
   } from 'semantic-ui-react'
 
 function StorageCardAcquisition({ 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Grid } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 function CommentCard({ 
             cUId, 

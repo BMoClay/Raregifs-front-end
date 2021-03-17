@@ -2,11 +2,7 @@ import React from 'react';
 import StorageCardArt from './StorageCardArt';
 import StorageCardAcquisition from './StorageCardAcquisition'
 import { 
-  Container,
-  Image,
-  Button,
-  Header,
-  Modal,
+  Header
 } from 'semantic-ui-react'
 
 function StoragePage({ 

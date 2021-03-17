@@ -8,6 +8,7 @@ function NavBar({ currentUser }) {
         <Dropdown
             icon='null'
             text="Raregifs" 
+            // fluid='true'
             fluid 
             floating 
             style={{
@@ -16,7 +17,7 @@ function NavBar({ currentUser }) {
                 fontSize: '1.2em',
                 color: 'red',
             }}>
-            <Dropdown.Menu text="Raregifs" fluid floating>
+            <Dropdown.Menu text="Raregifs">
                 <Dropdown.Item text="Gallery" icon="trophy" as={Link} to='/'/>
                 <Dropdown.Item text="Collections" icon="university" as={Link} to='/users_collections'/>
                 {currentUser ? (
