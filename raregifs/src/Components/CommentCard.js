@@ -21,8 +21,16 @@ function CommentCard({
     }
   
     return (
-        <Card.Group >
-            <Card>
+        // <Card.Group >
+            <Card
+            style={{
+                display: 'flex',
+                width: '250px',
+                // height: '300px',
+                justifyContent:'center',
+                // padding: '10px',
+            }}
+            >
                 <Card.Content>
                     <Card.Header >{content}</Card.Header>
                     <Card.Description>-{author}</Card.Description>
@@ -41,7 +49,7 @@ function CommentCard({
                     )}
                 </Card.Content>
                 </Card>
-        </Card.Group>
+        // </Card.Group>
     )
 }
 

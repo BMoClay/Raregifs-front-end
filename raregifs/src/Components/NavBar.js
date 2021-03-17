@@ -12,10 +12,11 @@ function NavBar({ currentUser }) {
             fluid 
             floating 
             style={{
-                position: 'relative',
+                // position: 'relative',
                 width: '90px',
                 fontSize: '1.2em',
                 color: 'red',
+                margin: '10px',
             }}>
             <Dropdown.Menu text="Raregifs">
                 <Dropdown.Item text="Gallery" icon="trophy" as={Link} to='/'/>

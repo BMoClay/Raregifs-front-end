@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Card } from 'semantic-ui-react'
 
 function CommentForm({ cUId, eachUserID, onAddComment }){
 
@@ -25,29 +25,41 @@ function CommentForm({ cUId, eachUserID, onAddComment }){
     }
 
     return(
-        <Form 
-            onSubmit={handleSubmitNewComment} 
+        <Card
             style={{
-                width: '270px',
-                height: '200px',
-                padding: '10px',
+                display: 'flex',
+                width: '250px',
+                height: '300px',
+                justifyContent:'center',
+                // padding: '10px',
             }}
-            >
-            <Form.TextArea
-                style={{
-                    justifyContent:'center',
-                    width: '250px',
-                    height: '100px',
-                    padding: '10px',
-                    alignItems: 'flex-start',
-                }}
-                placeholder='your note...'
-                value={content}
-                type='text'
-                onChange={(e) => setContent(e.target.value)}
-                />
-            <Form.Button>post</Form.Button>
-        </Form>
+        >
+            <Card.Content>
+                <Form 
+                    onSubmit={handleSubmitNewComment} 
+                    style={{
+                        width: '250px',
+                        height: '200px',
+                        // padding: '10px',
+                    }}
+                    >
+                    <Form.TextArea
+                        style={{
+                            // justifyContent:'center',
+                            width: '220px',
+                            height: '220px',
+                            // padding: '10px',
+                            // alignItems: 'flex-start',
+                        }}
+                        placeholder='your note...'
+                        value={content}
+                        type='text'
+                        onChange={(e) => setContent(e.target.value)}
+                        />
+                    <Form.Button>post</Form.Button>
+                </Form>
+            </Card.Content>
+        </Card>
     );
 }
 

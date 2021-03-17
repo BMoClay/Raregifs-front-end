@@ -4,6 +4,7 @@ import CommentForm from './CommentForm'
 import CommentCard from './CommentCard'
 
 import { 
+    Card,
     Container,
     Divider, 
     Grid,
@@ -101,39 +102,41 @@ function UserList({
                     <br></br>
                     The {eachUser.name} Collection
                 </Header>
-                <Divider hidden style={{ justifyContent: 'space-around'}}/>
+                {/* <Divider hidden style={{ justifyContent: 'space-around'}}/> */}
                     <Grid 
                         style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            flexDirection: 'row',
-                            textAlign:'center',
-                            justifyContent:'space-around',
-                            alignSelf: 'center',
+                            // display: 'flex',
+                            // flexWrap: 'wrap',
+                            // flexDirection: 'row',
+                            // textAlign:'center',
+                            // justifyContent:'space-around',
+                            // alignSelf: 'center',
                         }}
                     >
                         {tCollection.length > 0 ? (
                         <>  
                         <br></br>
+                        <Card.Group>
                         {uAcquisitions}
                         <CommentForm 
                             style={{
                                 display: 'flex',
                                 textAlign:'center',
                                 justifyContent:'center',
-                                padding: '10px',
+                                // padding: '10px',
                             }}
                             eachUserID={eachUser.id} 
                             cUId={cUId} 
                             onAddComment={onAddComment}
                         />
                         <br></br>
+                        </Card.Group>
                         </>
                     ) : (
                         <>
                         </>
                     )}
-                        <Divider hidden />
+                        {/* <Divider hidden /> */}
                         {tComments.length > 0 ? (
                         <Container  
                             style={{
@@ -151,15 +154,17 @@ function UserList({
                             >
                                 Comments on {eachUser.name}'s collection
                             </Header>
-                            <Grid  
+                            <Card.Group>
+                            {/* <Grid  
                                 style={{
                                     padding: '10px',
                                 }}
-                            >
+                            > */}
                             <>
                             {uComments}
                             </>
-                            </Grid>
+                            {/* </Grid> */}
+                            </Card.Group>
                         </Container>
                         ) : (
                             <>
