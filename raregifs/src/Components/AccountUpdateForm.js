@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 
 function AccountUpdateForm({ currentUser, setCurrentUser }){
     
     const { id } = currentUser
+    const history = useHistory()
 
     const [formData, setFormData] = useState({
         name: currentUser.name,
@@ -25,9 +27,18 @@ function AccountUpdateForm({ currentUser, setCurrentUser }){
             },
             body: JSON.stringify(formData),
         })
-            .then(response => response.json())
+            .then((res) => {
+                return res.json().then(data => {
+                    if (res.ok) {
+                        return data;
+                    } else {
+                        throw data;
+                    }
+                });
+            })
             .then(user => {
                 setCurrentUser(user)
+                history.push("/");
             })
     }
 
@@ -46,7 +57,8 @@ function AccountUpdateForm({ currentUser, setCurrentUser }){
                 type="text"
                 name="password"
                 placeholder={password}
-                value="password"
+                // value="password"
+                value={password}
                 onChange={handleFormChange}
             />
             <button type="submit" value="AccountUpdateForm">Update Account</button>

@@ -18,7 +18,12 @@ function App() {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-      fetch("http://localhost:3000/me")
+      const token = localStorage.getItem("token");
+      fetch("http://localhost:3000/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then(r => r.json())
       .then(user => {
         setCurrentUser(user)

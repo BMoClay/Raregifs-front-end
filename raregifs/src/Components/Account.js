@@ -13,6 +13,7 @@ function Account({ currentUser, setCurrentUser }) {
     }
     
     function logout(){
+        localStorage.removeItem("token")
         setCurrentUser(null);
     }
   

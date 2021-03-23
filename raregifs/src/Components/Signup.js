@@ -34,7 +34,9 @@ function Signup({ setCurrentUser }) {
                     }
                 });
             })
-            .then((user) => {
+            .then((data) => {
+                const { user, token } = data;
+                localStorage.setItem("token", token);
                 setCurrentUser(user);
                 history.push("/");
             })

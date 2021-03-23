@@ -18,10 +18,12 @@ function Login({ setCurrentUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const token = localStorage.getItem("token");
         fetch("http://localhost:3000/login", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(formData)
         })
@@ -34,7 +36,9 @@ function Login({ setCurrentUser }) {
                     }
                 });
             })
-            .then((user) => {
+            .then((data) => {
+                const { user, token } = data;
+                localStorage.setItem("token", token);
                 setCurrentUser(user);
                 history.push("/");
             })
