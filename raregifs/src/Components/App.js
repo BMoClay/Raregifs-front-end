@@ -104,22 +104,39 @@ function App() {
       const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
       setComments(updatedCommentsArray);
   } 
+
+  console.log(currentUser)
       
       return (
         <div className="app">
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <Switch>
-                  <Route exact path="/login">
-                    <Login setCurrentUser={setCurrentUser}/>
-                  </Route>
-                  <Route exact path="/" >
-                    <ArtPage 
+                  {currentUser ? (
+                    <>
+                    <Route exact path="/studio">
+                      <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
+                    </Route>
+                    <Route exact path="/my_storage">
+                      <StoragePage 
+                        currentUser={currentUser}
+                        acquisitions={acquisitions}
+                        artworks={artworks}
+                        onDeleteArtwork={handleDeleteArtwork}
+                        onDeleteAcquisition={handleDeleteAcquisition}
+                        onUpdateArtwork={handleUpdateArtwork}
+                        />
+                    </Route>
+                    <Route exact path="/account">
+                      <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+                    </Route>
+                    <Route exact path="/" >
+                      <ArtPage 
                         currentUser={currentUser} 
                         artworks={artworks} 
                         onAcquireArtwork={handleAddAcquisition}/>
-                  </Route>
-                  <Route exact path="/users_collections">
-                    <UserPage 
+                    </Route>
+                    <Route exact path="/users_collections">
+                      <UserPage 
                         users={users}
                         comments={comments}
                         acquisitions={acquisitions} 
@@ -128,26 +145,35 @@ function App() {
                         onAddComment={handleAddComment}
                         onDeleteComment={handleDeleteComment}
                         />
-                  </Route>
-                  <Route exact path="/studio">
-                    <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
-                  </Route>
-                  <Route exact path="/my_storage">
-                    <StoragePage 
-                        currentUser={currentUser}
-                        acquisitions={acquisitions}
-                        artworks={artworks}
-                        onDeleteArtwork={handleDeleteArtwork}
-                        onDeleteAcquisition={handleDeleteAcquisition}
-                        onUpdateArtwork={handleUpdateArtwork}
+                    </Route>
+                    </>
+                  ) : (
+                    <>
+                    <Route exact path="/login">
+                      <Login setCurrentUser={setCurrentUser}/>
+                    </Route>
+                    <Route exact path="/signup">
+                      <Signup setCurrentUser={setCurrentUser}/>
+                    </Route>
+                    <Route exact path="/" >
+                      <ArtPage 
+                        currentUser={currentUser} 
+                        artworks={artworks} 
+                        onAcquireArtwork={handleAddAcquisition}/>
+                    </Route>
+                    {/* <Route exact path="/users_collections">
+                      <UserPage 
+                        users={users}
+                        comments={comments}
+                        acquisitions={acquisitions} 
+                        currentUser={currentUser} 
+                        onAcquireArtwork={handleAddAcquisition}
+                        onAddComment={handleAddComment}
+                        onDeleteComment={handleDeleteComment}
                         />
-                  </Route>
-                  <Route exact path="/account">
-                    <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
-                  </Route>
-                  <Route exact path="/signup">
-                    <Signup setCurrentUser={setCurrentUser}/>
-                  </Route>
+                    </Route> */}
+                    </>
+                  )}
                 </Switch>
        </div>
       );

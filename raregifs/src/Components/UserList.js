@@ -6,7 +6,6 @@ import CommentCard from './CommentCard'
 import { 
     Card,
     Container,
-    Divider, 
     Grid,
     Header,
 } from 'semantic-ui-react'
