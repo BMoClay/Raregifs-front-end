@@ -23,8 +23,7 @@ function AccountUpdateForm({ currentUser, setCurrentUser }){
         e.preventDefault()
         axios.patch(`/users/${id}`, formData)
             .then((response) => {
-                console.log(response.data)
-                // setCurrentUser(response.data)
+                setCurrentUser(response.data)
                 history.push("/");
             })
     }

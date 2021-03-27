@@ -2,7 +2,6 @@ import React from 'react'
 import UserAcquisitionCard from './UserAcquisitionCard'
 import CommentForm from './CommentForm'
 import CommentCard from './CommentCard'
-
 import { 
     Card,
     Container,
@@ -101,17 +100,7 @@ function UserList({
                     <br></br>
                     The {eachUser.name} Collection
                 </Header>
-                {/* <Divider hidden style={{ justifyContent: 'space-around'}}/> */}
-                    <Grid 
-                        style={{
-                            // display: 'flex',
-                            // flexWrap: 'wrap',
-                            // flexDirection: 'row',
-                            // textAlign:'center',
-                            // justifyContent:'space-around',
-                            // alignSelf: 'center',
-                        }}
-                    >
+                    <Grid>
                         {tCollection.length > 0 ? (
                         <>  
                         <br></br>
@@ -122,7 +111,6 @@ function UserList({
                                 display: 'flex',
                                 textAlign:'center',
                                 justifyContent:'center',
-                                // padding: '10px',
                             }}
                             eachUserID={eachUser.id} 
                             cUId={cUId} 
@@ -135,8 +123,7 @@ function UserList({
                         <>
                         </>
                     )}
-                        {/* <Divider hidden /> */}
-                        {tComments.length > 0 ? (
+                    {tComments.length > 0 ? (
                         <Container  
                             style={{
                                 textAlign:'center',
@@ -154,15 +141,9 @@ function UserList({
                                 Comments on {eachUser.name}'s collection
                             </Header>
                             <Card.Group>
-                            {/* <Grid  
-                                style={{
-                                    padding: '10px',
-                                }}
-                            > */}
                             <>
                             {uComments}
                             </>
-                            {/* </Grid> */}
                             </Card.Group>
                         </Container>
                         ) : (

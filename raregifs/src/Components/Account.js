@@ -14,7 +14,6 @@ function Account({
     function handleDeleteUserClick() {
         axios.delete(`/users/${id}`)
             .then(response => {
-                // console.log(response.data)
                 onDeleteUser(response.data)
             })
     }

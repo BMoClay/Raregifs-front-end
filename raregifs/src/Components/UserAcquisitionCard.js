@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { 
     Card,
     Image,
@@ -13,18 +14,11 @@ function UserAcquisitionCard({
 
     function handleAcquireArtworkClick(e) {
         e.preventDefault();
-        fetch('http://localhost:3000/acquisitions', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
+        axios.post('/acquisitions', {
                 user_id: cUId,
                 artwork_id: aArtwork.id
-            }),
-        })
-            .then(r => r.json())
-            .then((newUserAcq) => onAcquireArtwork(newUserAcq))
+            })
+            .then((response) => onAcquireArtwork(response.data))
     }
     
     return (

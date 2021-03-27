@@ -15,20 +15,14 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
 
     function handleSubmitNewArtwork(e) {
         e.preventDefault();
-        axios.post("http://localhost:3000/artworks", {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
+        axios.post("/artworks", {
                 title: title,
                 image: image,
                 user_id: currentUser.id,
-            }),
-        })
-            .then((res) => res.json())
-            .then((newArtwork) => {
+            })
+            .then((response) => {
+                onCreateArtwork(response.data)
                 history.push("/")
-                onCreateArtwork(newArtwork)
             })
     }
 

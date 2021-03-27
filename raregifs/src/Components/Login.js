@@ -11,8 +11,6 @@ function Login({ setCurrentUser }) {
         password: "",
     });
 
-    // console.log(errors)
-
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }

@@ -8,11 +8,9 @@ function NavBar({ currentUser }) {
         <Dropdown
             icon='null'
             text="Raregifs" 
-            // fluid='true'
             fluid 
             floating 
             style={{
-                // position: 'relative',
                 width: '90px',
                 fontSize: '1.2em',
                 color: 'red',

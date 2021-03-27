@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
 import { Card, Button } from 'semantic-ui-react'
 
 function CommentCard({ 
@@ -11,45 +12,38 @@ function CommentCard({
         }){
           
     function handleDeleteCommentClick() {
-        fetch(`http://localhost:3000/comments/${commentID}`, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(deletedComment => {
-                onDeleteComment(deletedComment)
+        axios.delete(`/comments/${commentID}`)
+            .then(response => {
+                onDeleteComment(response.data)
             })
     }
   
     return (
-        // <Card.Group >
-            <Card
+        <Card
             style={{
                 display: 'flex',
                 width: '250px',
-                // height: '300px',
                 justifyContent:'center',
-                // padding: '10px',
             }}
             >
-                <Card.Content>
-                    <Card.Header >{content}</Card.Header>
-                    <Card.Description>-{author}</Card.Description>
-                    {cUId === commenter_id ? (
-                        <>
-                            <Button 
-                                onClick={handleDeleteCommentClick}
-                                size="small"
-                                icon="trash"
-                                >
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-                        </>
-                    )}
-                </Card.Content>
-                </Card>
-        // </Card.Group>
+            <Card.Content>
+                <Card.Header >{content}</Card.Header>
+                <Card.Description>-{author}</Card.Description>
+                {cUId === commenter_id ? (
+                    <>
+                        <Button 
+                            onClick={handleDeleteCommentClick}
+                            size="small"
+                            icon="trash"
+                            >
+                        </Button>
+                    </>
+                ) : (
+                    <>
+                    </>
+                )}
+            </Card.Content>
+        </Card>
     )
 }
 

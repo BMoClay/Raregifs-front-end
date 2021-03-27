@@ -45,14 +45,13 @@ function StoragePage({
       <div>
         <Header 
             textAlign='center'
-            // justifyContent='space-around'
+
         >
             My Work
         </Header>
         {uArtworkCard}
         <Header
           textAlign='center'
-          // justifyContent='space-around'
         >
         My Collection
         </Header>

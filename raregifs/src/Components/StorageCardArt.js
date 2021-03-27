@@ -26,10 +26,7 @@ function StorageCardArt({
     const [updatedTitle, setUpdatedTitle] = useState(title)
 
     function handleDeleteClick() {
-        axios.delete(`/artworks/${id}`, {
-            method: "DELETE"
-        })
-            // .then(res => res.json())
+        axios.delete(`/artworks/${id}`)
             .then(response => {
                 onDeleteArtwork(response.data)
             })
@@ -40,7 +37,6 @@ function StorageCardArt({
         axios.patch(`/artworks/${id}`, { title: updatedTitle })
             .then((response) => {
                 onUpdateArtwork(response.data)
-                console.log(response.data)
             })
     }
 
