@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 import { 
     Grid,
     Image,
@@ -17,12 +18,9 @@ function StorageCardAcquisition({
     const [open, setOpen] = React.useState(false)
 
     function handleDeleteAcquisitionClick() {
-        fetch(`http://localhost:3000/acquisitions/${id}`, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(deletedAcquisition => {
-                onDeleteAcquisition(deletedAcquisition)
+        axios.delete(`/acquisitions/${id}`)
+            .then(response => {
+                onDeleteAcquisition(response.data)
             })
     }
 

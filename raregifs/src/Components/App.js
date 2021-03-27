@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import axios from 'axios';
 import NavBar from './NavBar';
 import Signup from './Signup';
 import Login from './Login';
@@ -18,59 +19,47 @@ function App() {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-      const token = localStorage.getItem("token");
-      fetch("http://localhost:3000/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(r => r.json())
-      .then(user => {
-        setCurrentUser(user)
-      })
+      axios.get("/me").then((response) => {
+           setCurrentUser(response.data)
+        });
     }, [])
    
     useEffect(() => {
-      fetch('http://localhost:3000/artworks')
-        .then(r => r.json())
-        .then((artworksArray) => {
-            setArtworks(artworksArray.reverse());
+      axios.get('/artworks')
+        // .then((res) => res.json())
+        .then((response) => {
+            setArtworks(response.data.reverse());
         });
     }, []) 
 
     
     useEffect(() => {
-      fetch('http://localhost:3000/users')
-          .then(r => r.json())
-          .then(usersArray => {
-              setUsers(usersArray);
+      axios.get('/users')
+          .then((response) => {
+              setUsers(response.data);
           })
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:3000/acquisitions')
-          .then(r => r.json())
-          .then(acquisitionsArray => {
-              setAcquisitions(acquisitionsArray);
+      axios.get('/acquisitions')
+          .then((response) => {
+              setAcquisitions(response.data);
           })
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:3000/comments')
-            .then(r => r.json())
-            .then(commentsArray => {
-                setComments(commentsArray);
-            })
+      axios.get('/comments')
+          .then(response => {
+              setComments(response.data);
+          })
     }, [])
 
     function handleAddAcquisition(newUserAcq) {
       const updatedAcquisitionsArray = [newUserAcq, ...acquisitions]
-      // onClick={(handleAcquireArtworkClick) => setOpen(false)}
       setAcquisitions(updatedAcquisitionsArray)
     }
 
     function handleAddArtwork(newArtwork) {
-      console.log(newArtwork)
         const updatedArtworksArray = [newArtwork, ...artworks];
         setArtworks(updatedArtworksArray)
     } 
@@ -99,6 +88,14 @@ function App() {
         const updatedArtworksArray = artworks.filter((artwork) => artwork.id !== id);
         setArtworks(updatedArtworksArray);
     }  
+
+    function handleDeleteUser(userObj) {
+      console.log(userObj)
+      const { id } = userObj
+      const updatedUsersArray = users.filter((user) => user.id !== id);
+      setUsers(updatedUsersArray);
+  } 
+
     function handleAddComment(newComment) {
       const updatedCommentsArray = [newComment, ...comments];
       setComments(updatedCommentsArray)
@@ -132,7 +129,11 @@ function App() {
                         />
                     </Route>
                     <Route exact path="/account">
-                      <Account setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+                      <Account 
+                      setCurrentUser={setCurrentUser} 
+                      currentUser={currentUser}
+                      onDeleteUser={handleDeleteUser}
+                      />
                     </Route>
                     <Route exact path="/" >
                       <ArtPage 

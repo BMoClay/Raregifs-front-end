@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 function Login({ setCurrentUser }) {
@@ -10,7 +11,7 @@ function Login({ setCurrentUser }) {
         password: "",
     });
 
-    console.log(errors)
+    // console.log(errors)
 
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,32 +19,16 @@ function Login({ setCurrentUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const token = localStorage.getItem("token");
-        fetch("http://localhost:3000/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(formData)
-        })
-            .then((res) => {
-                return res.json().then(data => {
-                    if (res.ok) {
-                        return data;
-                    } else {
-                        throw data;
-                    }
-                });
-            })
-            .then((data) => {
-                const { user, token } = data;
+        axios.post("/login", formData) 
+            .then((response) => {
+                const { user, token } = response.data;
                 localStorage.setItem("token", token);
+                axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
                 setCurrentUser(user);
                 history.push("/");
             })
             .catch((error) => {
-                setErrors(error.errors);
+                setErrors(error.response.data.errors)
             });
     }
  
@@ -66,11 +51,6 @@ function Login({ setCurrentUser }) {
                 onChange={handleChange}
                 autoComplete="current-password"
             />
-            {/* {errors.map(error => (
-                <p style={{ color: "red" }} key={error}>
-                    {error}
-                </p>
-                ))} */}
             <input type="submit" value="Login" />
             {errors.map((error) => (
                 <p style={{ color: "red" }} key={error}>

@@ -1,15 +1,22 @@
 import React from 'react';
+import axios from 'axios';
 import AccountUpdateForm from './AccountUpdateForm';
 import { Button } from 'semantic-ui-react'
 
-function Account({ currentUser, setCurrentUser }) {
+function Account({ 
+    currentUser, 
+    setCurrentUser,
+    onDeleteUser,
+}) {
 
     const { name, id } = currentUser
 
     function handleDeleteUserClick() {
-        fetch(`http://localhost:3000/users/${id}`, {
-            method: "DELETE"
-        })
+        axios.delete(`/users/${id}`)
+            .then(response => {
+                // console.log(response.data)
+                onDeleteUser(response.data)
+            })
     }
     
     function logout(){

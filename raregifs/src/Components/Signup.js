@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 function Signup({ setCurrentUser }) {
@@ -18,30 +19,16 @@ function Signup({ setCurrentUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-            .then((res) => {
-                return res.json().then(data => {
-                    if (res.ok) {
-                        return data;
-                    } else {
-                        throw data;
-                    }
-                });
-            })
-            .then((data) => {
-                const { user, token } = data;
+        axios.post("/signup", formData)
+            .then((response) => {
+                const { user, token } = response.data;
                 localStorage.setItem("token", token);
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
                 setCurrentUser(user);
                 history.push("/");
             })
             .catch((error) => {
-                setErrors(error.errors);
+                setErrors(error.response.data.errors);
             });
     }
 

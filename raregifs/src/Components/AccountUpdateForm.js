@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 function AccountUpdateForm({ currentUser, setCurrentUser }){
@@ -20,24 +21,10 @@ function AccountUpdateForm({ currentUser, setCurrentUser }){
 
     function handleUpdateFormSubmit(e) {
         e.preventDefault()
-        fetch(`http://localhost:3000/users/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',                
-            },
-            body: JSON.stringify(formData),
-        })
-            .then((res) => {
-                return res.json().then(data => {
-                    if (res.ok) {
-                        return data;
-                    } else {
-                        throw data;
-                    }
-                });
-            })
-            .then(user => {
-                setCurrentUser(user)
+        axios.patch(`/users/${id}`, formData)
+            .then((response) => {
+                console.log(response.data)
+                // setCurrentUser(response.data)
                 history.push("/");
             })
     }

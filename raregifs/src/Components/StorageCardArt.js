@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 import { 
     Grid,
     Image,
@@ -25,27 +26,21 @@ function StorageCardArt({
     const [updatedTitle, setUpdatedTitle] = useState(title)
 
     function handleDeleteClick() {
-        fetch(`http://localhost:3000/artworks/${id}`, {
+        axios.delete(`/artworks/${id}`, {
             method: "DELETE"
         })
-            .then(res => res.json())
-            .then(deletedArtwork => {
-                onDeleteArtwork(deletedArtwork)
+            // .then(res => res.json())
+            .then(response => {
+                onDeleteArtwork(response.data)
             })
         }
 
     function handleUpdateArtworkSubmit(e) {
         e.preventDefault();
-        fetch(`http://localhost:3000/artworks/${id}`, {
-            method: "PATCH",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ title: updatedTitle }),
-        })
-            .then((r) => r.json())
-            .then((updatedArtwork) => {
-                onUpdateArtwork(updatedArtwork)
+        axios.patch(`/artworks/${id}`, { title: updatedTitle })
+            .then((response) => {
+                onUpdateArtwork(response.data)
+                console.log(response.data)
             })
     }
 

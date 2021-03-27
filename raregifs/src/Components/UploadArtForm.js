@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { 
     Form, 
     Embed,
@@ -14,8 +15,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
 
     function handleSubmitNewArtwork(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/artworks", {
-            method: "POST",
+        axios.post("http://localhost:3000/artworks", {
             headers: {
                 "Content-Type": "application/json",
             },
