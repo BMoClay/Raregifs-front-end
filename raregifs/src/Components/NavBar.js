@@ -20,6 +20,7 @@ function NavBar({ currentUser }) {
                 <Dropdown.Item text="Gallery" icon="trophy" as={Link} to='/'/>
                 {currentUser ? (
                     <>
+                        <Dropdown.Item text="Home" icon="home" as={Link} to='/home'/> 
                         <Dropdown.Item text="Studio" icon="pencil" as={Link} to='/studio'/> 
                         <Dropdown.Item text="Storage" icon="shopping basket" as={Link} to='/my_storage'/>
                         <Dropdown.Item text="Collections" icon="university" as={Link} to='/users_collections'/>

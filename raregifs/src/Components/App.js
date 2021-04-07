@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
+// import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import NavBar from './NavBar';
 import Signup from './Signup';
@@ -9,6 +10,7 @@ import ArtPage from './ArtPage';
 import UserPage from './UserPage';
 import StoragePage from './StoragePage';
 import Account from './Account';
+import Home from './Home';
 
 function App() {
 
@@ -115,6 +117,9 @@ function App() {
                 <Switch>
                   {currentUser ? (
                     <>
+                    <Route>
+                      <Home exact path="/home"/>
+                    </Route>
                     <Route exact path="/studio">
                       <Upload currentUser={currentUser} onCreateArtwork={handleAddArtwork}/>
                     </Route>
