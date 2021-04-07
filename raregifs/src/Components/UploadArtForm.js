@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import axios from 'axios';
+import { useDropzone } from 'react-dropzone';
+import styles from "./styles/Home.module.css";
 import { 
     Form, 
     Embed,
@@ -8,10 +10,35 @@ import {
 import { useHistory } from 'react-router-dom';
 
 function UploadArtForm({ currentUser, onCreateArtwork }){
-   
+
+    const [uploadedFiles, setUploadedFiles] = useState([])
+    
     const history = useHistory() 
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
+
+    const onDrop = useCallback((acceptedFiles) => {
+        const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`;
+
+        acceptedFiles.forEach(async (acceptedFile) => {
+            const formData = new FormData();
+            formData.append("file", acceptedFile);
+            formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
+
+            const response = await fetch(url, {
+                method: "post",
+                body: formData,
+            })
+            const data = await response.json();
+             console.log(data);
+        })
+    }, []);
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
+        onDrop, 
+        accepts: "image/*",
+        multiple: false,
+    })
 
     function handleSubmitNewArtwork(e) {
         e.preventDefault();
@@ -24,31 +51,21 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
                 onCreateArtwork(response.data)
                 history.push("/")
             })
-    }
-
-    // function handleConvertClick(e) {
-    //     e.preventDefault();
-    //     fetch("https://api.convertio.co/convert", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             apikey: "43419917fb02bda8434dd02fdceb07cf",
-    //             file: "http://google.com/",
-    //             outputformat: "gif",
-    //         }),
-    //     })
-    //         .then((res) => res.json())
-    //         .then((convertedFile) => {
-    //             console.log(convertedFile)
-    //         })
-    //     }
-    
-    
-    
+    }   
+        
     return ( 
         <Container>
+            <>
+            <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
+                <input {...getInputProps()}/>    
+                Drop Zone
+            </div>
+            <ul>
+                {uploadedFiles.map((file) => (
+                <li key={file.public_id}>{file.public_id}</li>
+                ))}
+            </ul>
+            </>
             <br></br>
         <Form onSubmit={handleSubmitNewArtwork}>
             <br></br>
@@ -92,4 +109,3 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
 }
 
 export default UploadArtForm;
-
