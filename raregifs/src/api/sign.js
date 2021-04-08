@@ -1,8 +1,7 @@
 const cloudinary = require("cloudinary").v2;
 
 export default async (_req, res) => {
-    // can authenticate user here somehow but would need to add to this code or change it
-
+    // authenticate user = need to add authentication to this code
     const timestamp = Math.round((new Date).getTime()/1000);
 
     // // Show the timestamp
