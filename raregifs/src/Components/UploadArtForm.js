@@ -62,10 +62,10 @@ function UploadArtForm({ currentUser, onCreateArtwork }){
     return ( 
         <Container>
             <>
-            <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
+            {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
                 <input {...getInputProps()}/>    
                 Drop Zone
-            </div>
+            </div> */}
             <ul>
                 {uploadedFiles.map((file) => (
                 <li key={file.public_id}>
