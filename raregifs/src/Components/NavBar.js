@@ -8,15 +8,18 @@ function NavBar({ currentUser }) {
         <Dropdown
             icon='null'
             text="Raregifs" 
-            fluid 
-            floating 
+            // fluid 
+            // floating 
             style={{
                 width: '90px',
                 fontSize: '1.2em',
                 color: 'red',
                 margin: '10px',
+                //position: 'fixed',
             }}>
-            <Dropdown.Menu text="Raregifs">
+            <Dropdown.Menu text="Raregifs" style={{                 
+                // position: 'fixed'
+            }}>
                 <Dropdown.Item text="Gallery" icon="trophy" as={Link} to='/'/>
                 {currentUser ? (
                     <>

@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import axios from "axios";
 import { DropzoneArea } from "material-ui-dropzone";
 import { Image } from "cloudinary-react";
-import styles from "./styles/Home.module.css";
+// import styles from "./styles/Home.module.css";
 import { Form, Embed, Container } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { db, storage } from "../api/fireabse.config";
