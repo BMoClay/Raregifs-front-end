@@ -54,7 +54,8 @@ function Login({ setCurrentUser }) {
  
   return (
     <div className="login">
-        <form onSubmit={handleSubmit}>
+        <form style={{margin: '10px'}} onSubmit={handleSubmit}>
+            <h4>Enter your username and password...</h4>
             <label>name</label>
             <input
                 type="text"
@@ -79,13 +80,16 @@ function Login({ setCurrentUser }) {
                 ))}
         </form>
         <hr/>
-        <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-        />  
+        <div style={{margin: '10px'}}>
+            <h4>Or login with Google</h4>
+            <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Login"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+            />  
+        </div>
     </div>
   );
 }
