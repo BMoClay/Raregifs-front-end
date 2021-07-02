@@ -8,7 +8,10 @@ function NavBar({ currentUser }) {
     return( 
         <Menu 
         vertical
+        fluid 
+        floating 
         style={{
+            border: 'none',
             width: '90px'
         }}
         >
