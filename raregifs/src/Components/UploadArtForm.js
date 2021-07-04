@@ -93,7 +93,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
                   <input {...getInputProps()}/>    
                   Drop Zone
               </div> */}
-
+          <h4>upload your file to Raregifs</h4>
           <DropzoneArea onChange={onDrop} />
           <button onClick={onSubmit}>Submit</button>
           <ul>
@@ -140,13 +140,16 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
           <Form.Button>submit</Form.Button>
         </Form>
         <br></br>
+        <h4>draw something then save it</h4>
         <Embed icon="paint brush" url="https://kleki.com/" />
         <br></br>
+        <h4>drop the file into slides, duplicate and move it around then turn it into slideshow and download it as a pdf</h4>
         <Embed
           icon="file pdf"
           url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
         />
         <br></br>
+        <h4>convert it from a pdf to gif</h4>
         <Embed
           style={{ height: 2800 }}
           icon="stack exchange"
