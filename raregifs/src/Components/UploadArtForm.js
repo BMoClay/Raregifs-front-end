@@ -89,13 +89,29 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
     <div style={{margin: '0px 170px 0px 170px'}}>
       <Container >
         <>
+        <h4>draw something then save it</h4>
+        <Embed icon="paint brush" url="https://kleki.com/" />
+        <br></br>
+        <h4>drop the file into slides, duplicate and move it around then turn it into slideshow and download it as a pdf</h4>
+        <Embed
+          icon="file pdf"
+          url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
+        />
+        <br></br>
+        <h4>upload pfd file here and convert it from a pdf to gif</h4>
+        <Embed
+          style={{ height: 2800 }}
+          icon="stack exchange"
+          url="https://ezgif.com/pdf-to-gif"
+        />
           {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
                   <input {...getInputProps()}/>    
                   Drop Zone
               </div> */}
-          <h4>upload your file to Raregifs</h4>
+          <br></br>
+          <h4>drag and drop your file here then click 'upload to dropzone'</h4>
           <DropzoneArea onChange={onDrop} />
-          <button onClick={onSubmit}>Submit</button>
+          <button onClick={onSubmit}>upload to dropzone</button>
           <ul>
             {uploadedFiles.map((file) => (
               <li key={file.public_id}>
@@ -121,7 +137,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
                 <br></br>
                 <Form.Group widths="equal">
                   <Form.Input
-                    label="title"
+                    label="add a title here then click submit to upload it to Raregifs"
                     value={file.title || ""}
                     placeholder="title"
                     type="text"
@@ -137,10 +153,11 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
               </div>
             );
           })}
-          <Form.Button>submit</Form.Button>
+          <Form.Button>upload to Raregifs</Form.Button>
+          <br></br>
         </Form>
-        <br></br>
-        <h4>draw something then save it</h4>
+        {/* <br></br> */}
+        {/* <h4>draw something then save it</h4>
         <Embed icon="paint brush" url="https://kleki.com/" />
         <br></br>
         <h4>drop the file into slides, duplicate and move it around then turn it into slideshow and download it as a pdf</h4>
@@ -154,8 +171,8 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
           style={{ height: 2800 }}
           icon="stack exchange"
           url="https://ezgif.com/pdf-to-gif"
-        />
-        <br></br>
+        /> */}
+        {/* <br></br> */}
       </Container>
     </div>
   );
