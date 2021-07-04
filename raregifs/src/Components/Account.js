@@ -24,7 +24,7 @@ function Account({
     }
   
     return (
-        <div>
+        <div style={{margin: '0px 0px 20px 10px'}}>
             <h3>{name}</h3>
             <AccountUpdateForm 
                 currentUser={currentUser} 

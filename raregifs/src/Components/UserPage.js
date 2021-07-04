@@ -27,7 +27,7 @@ function UserPage({
         )
         
     return (
-        <div>
+        <div style={{margin: '0px 170px 0px 170px'}}>
          {aUser}
         </div>
     );

@@ -20,7 +20,7 @@ function ArtPage(
     })
     
     return(
-        <div className='art-container' >
+        <div style={{margin: '0px 120px 0px 120px'}} className='art-container'>
             {uArtwork}
         </div>
     )

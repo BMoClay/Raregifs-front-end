@@ -42,7 +42,7 @@ function StoragePage({
          
 
     return (
-      <div>
+      <div style={{margin: '0px 120px 0px 120px'}}>
         <Header 
             textAlign='center'
 
@@ -53,6 +53,7 @@ function StoragePage({
         <Header
           textAlign='center'
         >
+          <br></br>
         My Collection
         </Header>
         {uAcquisitionCard}

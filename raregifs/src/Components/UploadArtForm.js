@@ -86,73 +86,75 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
   }
 
   return (
-    <Container>
-      <>
-        {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
-                <input {...getInputProps()}/>    
-                Drop Zone
-            </div> */}
+    <div style={{margin: '0px 170px 0px 170px'}}>
+      <Container >
+        <>
+          {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
+                  <input {...getInputProps()}/>    
+                  Drop Zone
+              </div> */}
 
-        <DropzoneArea onChange={onDrop} />
-        <button onClick={onSubmit}>Submit</button>
-        <ul>
-          {uploadedFiles.map((file) => (
-            <li key={file.public_id}>
-              <Image
-                cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
-                publicId={file.public_id}
-                width="300"
-                crop="scale"
-              />
-            </li>
-          ))}
-        </ul>
-      </>
-      <br></br>
-      <Form onSubmit={handleSubmitNewArtwork}>
-        {files.map((file, index) => {
-          console.log(
-            "🚀 ~ file: UploadArtForm.js ~ line 105 ~ {files.map ~ file",
-            file
-          );
-          return (
-            <div>
-              <br></br>
-              <Form.Group widths="equal">
-                <Form.Input
-                  label="title"
-                  value={file.title || ""}
-                  placeholder="title"
-                  type="text"
-                  onChange={(e) => addTitle(e.target.value, index)}
+          <DropzoneArea onChange={onDrop} />
+          <button onClick={onSubmit}>Submit</button>
+          <ul>
+            {uploadedFiles.map((file) => (
+              <li key={file.public_id}>
+                <Image
+                  cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
+                  publicId={file.public_id}
+                  width="300"
+                  crop="scale"
                 />
-                {file.url && (
-                  <img
-                    src={file.url}
-                    style={{ width: "10em", height: "6em" }}
+              </li>
+            ))}
+          </ul>
+        </>
+        <br></br>
+        <Form onSubmit={handleSubmitNewArtwork}>
+          {files.map((file, index) => {
+            console.log(
+              "🚀 ~ file: UploadArtForm.js ~ line 105 ~ {files.map ~ file",
+              file
+            );
+            return (
+              <div>
+                <br></br>
+                <Form.Group widths="equal">
+                  <Form.Input
+                    label="title"
+                    value={file.title || ""}
+                    placeholder="title"
+                    type="text"
+                    onChange={(e) => addTitle(e.target.value, index)}
                   />
-                )}
-              </Form.Group>
-            </div>
-          );
-        })}
-        <Form.Button>submit</Form.Button>
-      </Form>
-      <br></br>
-      <Embed icon="paint brush" url="https://kleki.com/" />
-      <br></br>
-      <Embed
-        icon="file pdf"
-        url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
-      />
-      <br></br>
-      <Embed
-        style={{ height: 2800 }}
-        icon="stack exchange"
-        url="https://ezgif.com/pdf-to-gif"
-      />
-      <br></br>
-    </Container>
+                  {file.url && (
+                    <img
+                      src={file.url}
+                      style={{ width: "10em", height: "6em" }}
+                    />
+                  )}
+                </Form.Group>
+              </div>
+            );
+          })}
+          <Form.Button>submit</Form.Button>
+        </Form>
+        <br></br>
+        <Embed icon="paint brush" url="https://kleki.com/" />
+        <br></br>
+        <Embed
+          icon="file pdf"
+          url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
+        />
+        <br></br>
+        <Embed
+          style={{ height: 2800 }}
+          icon="stack exchange"
+          url="https://ezgif.com/pdf-to-gif"
+        />
+        <br></br>
+      </Container>
+    </div>
   );
 }
 

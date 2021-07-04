@@ -94,7 +94,7 @@ function UserList({
                         display: 'flex',
                         textAlign:'center',
                         justifyContent:'space-around',
-                        padding: '20px',
+                        padding: '0px 0px 10px 0px',
                     }}
                 >
                     <br></br>
@@ -128,14 +128,14 @@ function UserList({
                             style={{
                                 textAlign:'center',
                                 justifyContent:'space-around',
-                                padding: '10px',
+                                padding: '0px 0px 10px 0px',
                             }}
                         >
                             <Header
                                 inverted 
                                 style={{
                                     justifyContent: 'space-around',
-                                    padding: '20px'
+                                    padding: '30px 0px 0px 0px'
                                 }}
                             >
                                 Comments on {eachUser.name}'s collection

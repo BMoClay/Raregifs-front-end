@@ -43,11 +43,11 @@ function AccountUpdateForm({ currentUser, setCurrentUser }){
                 type="text"
                 name="password"
                 placeholder={password}
-                // value="password"
+                //value="password"
                 value={password}
                 onChange={handleFormChange}
             />
-            <button type="submit" value="AccountUpdateForm">Update Account</button>
+            <button style={{margin: '0px 0px 20px 10px'}} type="submit" value="AccountUpdateForm">Update Account</button>
         </form>
     )
 
