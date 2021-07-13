@@ -37,9 +37,11 @@ function NavBar({ currentUser }) {
                             <Dropdown.Item text="Collections" icon="university" as={Link} to='/users_collections'/>
                             <Dropdown.Item text="My Storage" icon="save" as={Link} to='/my_storage'/>
                             <Dropdown.Item text="Account" icon="sign-out alternate" as={Link} to="/account"/>
+                            <Dropdown.Item text="Demo Video" icon="play" as={Link} to='/demo'/>
                         </>
                     ) : (
                         <>  
+                            <Dropdown.Item text="Demo Video" icon="play" as={Link} to='/demo'/>
                             <Dropdown.Item text="Login" icon="sign-in" as={Link} to='/login'/>
                             <Dropdown.Item text="Signup" icon="signup" as={Link} to='/signup'/>
                         </>

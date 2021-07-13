@@ -9,6 +9,7 @@ import ArtPage from './ArtPage';
 import UserPage from './UserPage';
 import StoragePage from './StoragePage';
 import Account from './Account';
+import Demo from './Demo';
 
 function App() {
 
@@ -152,6 +153,9 @@ function App() {
                         onDeleteComment={handleDeleteComment}
                         />
                     </Route>
+                    <Route exact path="/demo">
+                      <Demo/>
+                    </Route>
                     </>
                   ) : (
                     <>
@@ -167,17 +171,9 @@ function App() {
                         artworks={artworks} 
                         onAcquireArtwork={handleAddAcquisition}/>
                     </Route>
-                    {/* <Route exact path="/users_collections">
-                      <UserPage 
-                        users={users}
-                        comments={comments}
-                        acquisitions={acquisitions} 
-                        currentUser={currentUser} 
-                        onAcquireArtwork={handleAddAcquisition}
-                        onAddComment={handleAddComment}
-                        onDeleteComment={handleDeleteComment}
-                        />
-                    </Route> */}
+                    <Route exact path="/demo">
+                      <Demo/>
+                    </Route>
                     </>
                   )}
                 </Switch>
