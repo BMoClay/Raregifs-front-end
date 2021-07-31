@@ -32,6 +32,7 @@ function Account({
             />
             <Button onClick={handleDeleteUserClick}>Delete Account</Button>
             <Button size="mini" onClick={logout} >logout</Button>  
+            <br></br>
         </div>
     )
 
