@@ -95,7 +95,8 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
         <h4>drop the file into slides, duplicate and move it around then turn it into slideshow and download it as a pdf</h4>
         <Embed
           icon="file pdf"
-          url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
+          // url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
+          url="https://docs.google.com/presentation/d/edit#slide=id.p"
         />
         <br></br>
         <h4>upload pfd file here and convert it from a pdf to gif</h4>

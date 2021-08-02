@@ -107,9 +107,7 @@ function App() {
       const updatedCommentsArray = comments.filter((comment) => comment.id !== id);
       setComments(updatedCommentsArray);
   } 
-
-  console.log(currentUser)
-      
+        
       return (
         <div className="app">
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
