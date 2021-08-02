@@ -13,6 +13,7 @@
     "dotenv": "^8.2.0",
     "dropzone": "^5.9.2",
     "firebase": "^8.3.3",
+    "is-wsl": "^2.2.0",
     "material-ui-dropzone": "^3.5.0",
     "next": "^11.0.1",
     "react": "^17.0.1",
@@ -48,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
