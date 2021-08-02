@@ -92,7 +92,7 @@ function Signup({ setCurrentUser }) {
             <GoogleLogin 
                 style={{margin: '10px'}}
                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                buttonText="Login"
+                buttonText="Signup"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
