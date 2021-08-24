@@ -96,8 +96,8 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
         <Embed
           icon="file pdf"
           // url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
-          // url="https://slides.google.com/create"
-          url="https://slides.google.com/presentation/u/0/create?usp=slides_home&ths=true"
+          url="https://slides.google.com/create"
+          //url="https://slides.google.com/presentation/u/0/create?usp=slides_home&ths=true"
         />
         <br></br>
         <h4>upload pfd file here and convert it from a pdf to gif</h4>
