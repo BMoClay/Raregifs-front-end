@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
     <Router>
       <App />
+      {/* <App>please wait it takes a minute to load sometimes</App> */}
     </Router>,  
   document.getElementById('root')
 );

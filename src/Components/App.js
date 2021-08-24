@@ -110,6 +110,7 @@ function App() {
         
       return (
         <div className="app">
+          {/* <h3>please wait this may take a minute to load the first time</h3> */}
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <Switch>
                   {currentUser ? (

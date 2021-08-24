@@ -80,7 +80,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
         })
         .then((response) => {
           onCreateArtwork(response.data);
-          // history.push("/");
+          history.push("/");
         });
     }
   }
