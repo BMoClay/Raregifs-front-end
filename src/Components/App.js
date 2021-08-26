@@ -10,14 +10,25 @@ import UserPage from './UserPage';
 import StoragePage from './StoragePage';
 import Account from './Account';
 import Demo from './Demo';
+//import DelayMessage from './DelayMessage';
 
 function App() {
+  
+  const [currentUser, setCurrentUser] = useState(null)
+  const [artworks, setArtworks] = useState([]);
+  const [users, setUsers] = useState([])
+  const [acquisitions, setAcquisitions] = useState([])
+  const [comments, setComments] = useState([])
+  
+  const [isReady, setReady] = useState(false)
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setReady(true)
+      }, 6000);
+      return () => clearTimeout(timer);
+    }, []);
 
-    const [currentUser, setCurrentUser] = useState(null)
-    const [artworks, setArtworks] = useState([]);
-    const [users, setUsers] = useState([])
-    const [acquisitions, setAcquisitions] = useState([])
-    const [comments, setComments] = useState([])
 
     useEffect(() => {
       axios.get("/me").then((response) => {
@@ -27,7 +38,6 @@ function App() {
    
     useEffect(() => {
       axios.get('/artworks')
-        // .then((res) => res.json())
         .then((response) => {
             setArtworks(response.data.reverse());
         });
@@ -109,8 +119,13 @@ function App() {
   } 
         
       return (
+        isReady === false ? (
+        <>
+        <h3>Warning! Sometimes this can take a minute to load :)</h3>
+        </>
+        ) : 
+        (
         <div className="app">
-          {/* <h3>please wait this may take a minute to load the first time</h3> */}
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <Switch>
                   {currentUser ? (
@@ -177,7 +192,7 @@ function App() {
                   )}
                 </Switch>
        </div>
-      );
+      ));
 }
 
 export default App;

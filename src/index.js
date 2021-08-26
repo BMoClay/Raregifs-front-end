@@ -6,12 +6,12 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
-
+// import DelayMessage from './Components/DelayMessage';
 
 ReactDOM.render(
     <Router>
+      {/* <DelayMessage delay="4000"/> */}
       <App />
-      {/* <App>please wait it takes a minute to load sometimes</App> */}
     </Router>,  
   document.getElementById('root')
 );
