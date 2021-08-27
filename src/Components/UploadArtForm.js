@@ -81,6 +81,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
         .then((response) => {
           onCreateArtwork(response.data);
           history.push("/");
+          window.scrollTo(0,0)
         });
     }
   }
@@ -89,39 +90,98 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
     <div style={{margin: '0px 170px 0px 170px'}}>
       <Container >
         <>
-        <h4>draw something then save it</h4>
-        <Embed icon="paint brush" url="https://kleki.com/" />
+        <h4>follow steps 1-13 to make something and upload it to raregifs</h4>
         <br></br>
-        <h4>drop the file into slides, duplicate and move it around then turn it into slideshow and download it as a pdf</h4>
-        <Embed
-          icon="file pdf"
-          // url="https://docs.google.com/presentation/d/1MXF9c1oGW3kR93imVzaFhlsm_-HYOzQZlsfwPv67BGs/edit#slide=id.p"
-          url="https://slides.google.com/create"
-          //url="https://slides.google.com/presentation/u/0/create?usp=slides_home&ths=true"
-        />
+        <h4>1. draw something below using the drawing pad</h4>
+        <h4>2. click the blue 'save' icon to download it locally on your computer or phone</h4>
+        <div 
+                className="video-responsive" 
+                // style={{
+                //         left: 0,
+                //         top: 0,
+                //         // height= 100%
+                //         // width= 100%
+                //         position: absolute,
+                //  }}
+                >
+                    <iframe src='https://kleki.com/'
+                    frameborder='0'
+                    allow='autoplay; encrypted-media'
+                    width="1000"
+                    height="560"
+                    allowfullscreen="true"
+                    title='video'
+                    />
+                </div>
+        {/* <Embed icon="paint brush" url="https://kleki.com/" /> */}
         <br></br>
-        <h4>upload pfd file here and convert it from a pdf to gif</h4>
-        <Embed
-          style={{ height: 2800 }}
-          icon="stack exchange"
-          url="https://ezgif.com/pdf-to-gif"
-        />
+        <h4>3. drag and drop the file you just saved below where it says 'Click to add title'</h4>
+        <h4>4. right click the slide in the left column and select 'Duplicate slide' repeatedly</h4>
+        <h4>5. move the images around in each slide by dragging them so that there are several slides w images in slightly different locations</h4>
+        <h4>6. go to File and click it, select download, and choose to download the file as a pdf file</h4>
+        {/* <Embed icon="file pdf" url="https://slides.google.com/create"/> */}
+        <div 
+                className="video-responsive" 
+                // style={{
+                //         left: 0,
+                //         top: 0,
+                //         // height= 100%
+                //         // width= 100%
+                //         position: absolute,
+                //  }}
+                >
+                    <iframe src='https://slides.google.com/create'
+                    frameborder='0'
+                    allow='autoplay; encrypted-media'
+                    width="1000"
+                    height="560"
+                    allowfullscreen="true"
+                    title='video'
+                    />
+                </div>
+        <br></br>
+        <h4>7. upload the pfd file you just saved by dragging it and dropping it directly on the 'Choose Files' button below</h4>
+        <h4>8. click the 'Upload!' button</h4>
+        <h4>9. check the 'Create animated GIF box' and click 'Convert to GIF'</h4>
+        <h4>10. scroll down a tiny bit and click the save icon, then scroll down to step 11</h4>
+        {/* <Embed style={{ height: 2800 }} icon="stack exchange" url="https://ezgif.com/pdf-to-gif"/> */}
           {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
                   <input {...getInputProps()}/>    
                   Drop Zone
               </div> */}
+        <div 
+        className="video-responsive" 
+        // style={{
+        //         left: 0,
+        //         top: 0,
+        //         // height= 100%
+        //         // width= 100%
+        //         position: absolute,
+        //  }}
+        >
+            <iframe src='https://ezgif.com/pdf-to-gif'
+            frameborder='0'
+            allow='autoplay; encrypted-media'
+            width="1000"
+            height="560"
+            allowfullscreen="true"
+            title='video'
+            />
+        </div>    
           <br></br>
-          <h4>drag and drop your file here then click 'upload to dropzone'</h4>
+          <h4>11. drag and drop the newly saved gif file below then click 'done'</h4>
           <DropzoneArea onChange={onDrop} />
-          <button onClick={onSubmit}>upload to dropzone</button>
+          <button onClick={onSubmit}>done</button>
           <ul>
             {uploadedFiles.map((file) => (
               <li key={file.public_id}>
                 <Image
                   cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
                   publicId={file.public_id}
-                  width="300"
                   crop="scale"
+                  frameborder='0'
+                  width="1000"
+                  allowfullscreen="true"
                 />
               </li>
             ))}
@@ -137,20 +197,29 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
             return (
               <div>
                 <br></br>
+                <h4>12. title your work and click submit then you're done</h4>
+                <h4>13. enjoy seeing your work up in the gallery</h4>
                 <Form.Group widths="equal">
-                  <Form.Input
-                    label="add a title here then click submit to upload it to Raregifs"
-                    value={file.title || ""}
-                    placeholder="title"
-                    type="text"
-                    onChange={(e) => addTitle(e.target.value, index)}
-                  />
                   {file.url && (
                     <img
                       src={file.url}
                       style={{ width: "10em", height: "6em" }}
                     />
                   )}
+                  <Form.Input
+                    // label="add a title here then click submit to upload it to Raregifs"
+                    value={file.title || ""}
+                    placeholder="title"
+                    type="text"
+                    length="20em"
+                    onChange={(e) => addTitle(e.target.value, index)}
+                  />
+                  {/* {file.url && (
+                    <img
+                      src={file.url}
+                      style={{ width: "10em", height: "6em" }}
+                    />
+                  )} */}
                 </Form.Group>
               </div>
             );

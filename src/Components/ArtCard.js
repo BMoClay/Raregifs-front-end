@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './App.css'
 import { 
   Grid,
   Image,
@@ -40,6 +41,7 @@ function ArtCard(
           }}
           >
             <Modal
+                className="art-modal"
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}

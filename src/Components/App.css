@@ -1,0 +1,14 @@
+/* .art-modal {
+    align-items: 1rem !important;
+    border: 1rem solid !important;
+    border-color: var(--black) !important;
+} */
+
+.art-modal {
+    height: 5rem;
+    border-radius: 50%;
+    box-shadow: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

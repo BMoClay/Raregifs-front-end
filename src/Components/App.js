@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import NavBar from './NavBar';
 import Signup from './Signup';
@@ -121,7 +121,8 @@ function App() {
       return (
         isReady === false ? (
         <>
-        <h3>Warning! Sometimes this can take a minute to load :)</h3>
+        <br></br>
+        <h4 style={{textAlign: 'center'}}>Please Wait... Sometimes this can take a minute to load everything :) If its your first time here checkout the demo video</h4>
         </>
         ) : 
         (
