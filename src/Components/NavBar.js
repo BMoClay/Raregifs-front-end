@@ -15,10 +15,10 @@ function NavBar({ currentUser }) {
         }}
         >
             <Dropdown
-                icon='null'
+                icon=''
                 text="Raregifs" 
-                // fluid 
-                // floating 
+                fluid 
+                floating 
                 style={{
                     width: '60px',
                     fontSize: '1.2em',

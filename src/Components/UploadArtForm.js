@@ -9,6 +9,13 @@ import { db, storage } from "../api/fireabse.config";
 import { SettingsCellSharp } from "@material-ui/icons";
 
 function UploadArtForm({ currentUser, onCreateArtwork }) {
+  
+  window.scrollTo({
+    top: 0, 
+    left: 0, 
+    behavior: 'smooth'
+  });
+
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const history = useHistory();
@@ -90,10 +97,12 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
     <div style={{margin: '0px 170px 0px 170px'}}>
       <Container >
         <>
-        <h4>follow steps 1-13 to make something and upload it to raregifs</h4>
+        {/* <a id="top"></a>
+        <a href="#top">Jump to top of page</a> */}
+        <h4>*please note to scroll up and down the page move the cursor to the right or left margins</h4>
         <br></br>
-        <h4>1. draw something below using the drawing pad</h4>
-        <h4>2. click the blue 'save' icon to download it locally on your computer or phone</h4>
+        <h4>1. draw something below using the drawing pad, courtesy of Kleki.com</h4>
+        <h4>2. When you're done click the blue 'Save Image' icon to the right to download it locally on your computer or phone</h4>
         <div 
                 className="video-responsive" 
                 // style={{
@@ -115,10 +124,10 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
                 </div>
         {/* <Embed icon="paint brush" url="https://kleki.com/" /> */}
         <br></br>
-        <h4>3. drag and drop the file you just saved below where it says 'Click to add title'</h4>
-        <h4>4. right click the slide in the left column and select 'Duplicate slide' repeatedly</h4>
-        <h4>5. move the images around in each slide by dragging them so that there are several slides w images in slightly different locations</h4>
-        <h4>6. go to File and click it, select download, and choose to download the file as a pdf file</h4>
+        <h4>3. drag the file you just saved and drop it directly into the google slides slide deck below where it says 'Click to add title'</h4>
+        <h4>4. after that right click the slide in the left column and select 'Duplicate slide' repeatedly</h4>
+        <h4>5. In each slide move the image (by dragging and dropping it) so none of the slides have the image in the same place</h4>
+        <h4>6. go to 'File' dropdown, click it and select download then choose to download the file as a pdf file</h4>
         {/* <Embed icon="file pdf" url="https://slides.google.com/create"/> */}
         <div 
                 className="video-responsive" 
@@ -140,10 +149,10 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
                     />
                 </div>
         <br></br>
-        <h4>7. upload the pfd file you just saved by dragging it and dropping it directly on the 'Choose Files' button below</h4>
+        <h4>7. now upload the pdf file to the EZGif converter by dragging it and dropping it directly on the 'Choose Files' button below</h4>
         <h4>8. click the 'Upload!' button</h4>
-        <h4>9. check the 'Create animated GIF box' and click 'Convert to GIF'</h4>
-        <h4>10. scroll down a tiny bit and click the save icon, then scroll down to step 11</h4>
+        <h4>9. directly below that will appear 'Options', check the 'Create animated GIF box' and click 'Convert to GIF'</h4>
+        <h4>10. scroll down a tiny bit and click the save icon, almost done</h4>
         {/* <Embed style={{ height: 2800 }} icon="stack exchange" url="https://ezgif.com/pdf-to-gif"/> */}
           {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
                   <input {...getInputProps()}/>    
@@ -197,8 +206,8 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
             return (
               <div>
                 <br></br>
-                <h4>12. title your work and click submit then you're done</h4>
-                <h4>13. enjoy seeing your work up in the gallery</h4>
+                <h4>12. title your work below</h4>
+                <h4>13. click upload to Raregifs and enjoy</h4>
                 <Form.Group widths="equal">
                   {file.url && (
                     <img
