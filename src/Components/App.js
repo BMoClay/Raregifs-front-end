@@ -122,7 +122,7 @@ function App() {
         isReady === false ? (
         <>
         <br></br>
-        <h4 style={{textAlign: 'center'}}>Please Wait... Sometimes this can take a minute to load everything :) If its your first time here checkout the demo video. Raregifs works best w Google Chrome</h4>
+        <h4 style={{textAlign: 'center'}}>Please Wait... Sometimes this can take a minute to load everything :) If it's your first time here checkout the demo video. Raregifs works best w Google Chrome</h4>
         </>
         ) : 
         (

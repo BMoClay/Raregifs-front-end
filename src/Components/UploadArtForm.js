@@ -10,11 +10,11 @@ import { SettingsCellSharp } from "@material-ui/icons";
 
 function UploadArtForm({ currentUser, onCreateArtwork }) {
   
-  window.scrollTo({
-    top: 0, 
-    left: 0, 
-    behavior: 'smooth'
-  });
+  // window.scrollTo({
+  //   top: 0, 
+  //   left: 0, 
+  //   behavior: 'smooth'
+  // });
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
@@ -94,15 +94,16 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
   }
 
   return (
-    <div style={{margin: '0px 170px 0px 170px'}}>
+    <div style={{margin: '0px 170px 0px 170px'}} >
       <Container >
         <>
         {/* <a id="top"></a>
         <a href="#top">Jump to top of page</a> */}
-        <h4>*please note to scroll up and down the page move the cursor to the right or left margins</h4>
+        {/* <h4>*to scroll up and down the page move the cursor to the right or left margins</h4> */}
         <br></br>
-        <h4>1. draw something below using the drawing pad, courtesy of Kleki.com</h4>
-        <h4>2. When you're done click the blue 'Save Image' icon to the right to download it locally on your computer or phone</h4>
+        <h4>1. draw something below using the drawing pad</h4>
+        <h4>2. When you're done click the blue 'Save Image' icon to the right</h4>
+        <h4>3. then click 'Save', this will save it as a PNG image file</h4>
         <div 
                 className="video-responsive" 
                 // style={{
@@ -124,10 +125,10 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
                 </div>
         {/* <Embed icon="paint brush" url="https://kleki.com/" /> */}
         <br></br>
-        <h4>3. drag the file you just saved and drop it directly into the google slides slide deck below where it says 'Click to add title'</h4>
-        <h4>4. after that right click the slide in the left column and select 'Duplicate slide' repeatedly</h4>
-        <h4>5. In each slide move the image (by dragging and dropping it) so none of the slides have the image in the same place</h4>
-        <h4>6. go to 'File' dropdown, click it and select download then choose to download the file as a pdf file</h4>
+        <h4>4. drag the file you just saved and drop it directly into the google slides slide deck below where it says 'Click to add title'</h4>
+        <h4>5. after that right click the slide in the left column and select 'Duplicate slide' repeatedly</h4>
+        <h4>6. In each slide move the image (by dragging and dropping it) so none of the slides have the image in the same place</h4>
+        <h4>7. go to the 'File' dropdown, click it and select download then choose to download the file as a pdf file</h4>
         {/* <Embed icon="file pdf" url="https://slides.google.com/create"/> */}
         <div 
                 className="video-responsive" 
@@ -149,10 +150,10 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
                     />
                 </div>
         <br></br>
-        <h4>7. now upload the pdf file to the EZGif converter by dragging it and dropping it directly on the 'Choose Files' button below</h4>
-        <h4>8. click the 'Upload!' button</h4>
-        <h4>9. directly below that will appear 'Options', check the 'Create animated GIF box' and click 'Convert to GIF'</h4>
-        <h4>10. scroll down a tiny bit and click the save icon, almost done</h4>
+        <h4>8. now upload the pdf file to the EZGif converter by dragging it and dropping it directly on the 'Choose Files' button below</h4>
+        <h4>9. click the 'Upload!' button</h4>
+        <h4>10. directly below that will appear 'Options', check the 'Create animated GIF box' and click 'Convert to GIF'</h4>
+        <h4>11. scroll down a tiny bit and click the save icon, almost done</h4>
         {/* <Embed style={{ height: 2800 }} icon="stack exchange" url="https://ezgif.com/pdf-to-gif"/> */}
           {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
                   <input {...getInputProps()}/>    
@@ -178,7 +179,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
             />
         </div>    
           <br></br>
-          <h4>11. drag and drop the newly saved gif file below then click 'done'</h4>
+          <h4>12. drag and drop the newly saved gif file below then click 'done'</h4>
           <DropzoneArea onChange={onDrop} />
           <button onClick={onSubmit}>done</button>
           <ul>
@@ -206,8 +207,8 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
             return (
               <div>
                 <br></br>
-                <h4>12. title your work below</h4>
-                <h4>13. click upload to Raregifs and enjoy</h4>
+                <h4>13. title your work below</h4>
+                <h4>14. click upload to Raregifs and enjoy</h4>
                 <Form.Group widths="equal">
                   {file.url && (
                     <img
