@@ -9,10 +9,9 @@ import { db, storage } from "../api/fireabse.config";
 import { SettingsCellSharp } from "@material-ui/icons";
 
 function UploadArtForm({ currentUser, onCreateArtwork }) {
-  
   // window.scrollTo({
-  //   top: 0, 
-  //   left: 0, 
+  //   top: 0,
+  //   left: 0,
   //   behavior: 'smooth'
   // });
 
@@ -78,108 +77,131 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
   function handleSubmitNewArtwork(e) {
     e.preventDefault();
     for (let index = 0; index < files.length; index++) {
-      const element = files[index];
-      axios
-        .post("/artworks", {
-          title: element.title,
-          image: element.url,
-          user_id: currentUser.id,
-        })
+      const { title, url } = files[index];
+      db.collection("artworks")
+        .add({ title, url, name: currentUser.name })
         .then((response) => {
-          onCreateArtwork(response.data);
+          onCreateArtwork({ title, url, name: currentUser.name });
           history.push("/");
-          window.scrollTo(0,0)
+          window.scrollTo(0, 0);
         });
     }
   }
 
   return (
-    <div style={{margin: '0px 170px 0px 170px'}} >
-      <Container >
+    <div style={{ margin: "0px 170px 0px 170px" }}>
+      <Container>
         <>
-        {/* <a id="top"></a>
+          {/* <a id="top"></a>
         <a href="#top">Jump to top of page</a> */}
-        {/* <h4>*to scroll up and down the page move the cursor to the right or left margins</h4> */}
-        <br></br>
-        <h4>1. draw something below using the drawing pad</h4>
-        <h4>2. When you're done click the blue 'Save Image' icon to the right</h4>
-        <h4>3. then click 'Save', this will save it as a PNG image file</h4>
-        <div 
-                className="video-responsive" 
-                // style={{
-                //         left: 0,
-                //         top: 0,
-                //         // height= 100%
-                //         // width= 100%
-                //         position: absolute,
-                //  }}
-                >
-                    <iframe src='https://kleki.com/'
-                    frameborder='0'
-                    allow='autoplay; encrypted-media'
-                    width="1000"
-                    height="560"
-                    allowfullscreen="true"
-                    title='video'
-                    />
-                </div>
-        {/* <Embed icon="paint brush" url="https://kleki.com/" /> */}
-        <br></br>
-        <h4>4. drag the file you just saved and drop it directly into the google slides slide deck below where it says 'Click to add title'</h4>
-        <h4>5. after that right click the slide in the left column and select 'Duplicate slide' repeatedly</h4>
-        <h4>6. In each slide move the image (by dragging and dropping it) so none of the slides have the image in the same place</h4>
-        <h4>7. go to the 'File' dropdown, click it and select download then choose to download the file as a pdf file</h4>
-        {/* <Embed icon="file pdf" url="https://slides.google.com/create"/> */}
-        <div 
-                className="video-responsive" 
-                // style={{
-                //         left: 0,
-                //         top: 0,
-                //         // height= 100%
-                //         // width= 100%
-                //         position: absolute,
-                //  }}
-                >
-                    <iframe src='https://slides.google.com/create'
-                    frameborder='0'
-                    allow='autoplay; encrypted-media'
-                    width="1000"
-                    height="560"
-                    allowfullscreen="true"
-                    title='video'
-                    />
-                </div>
-        <br></br>
-        <h4>8. now upload the pdf file to the EZGif converter by dragging it and dropping it directly on the 'Choose Files' button below</h4>
-        <h4>9. click the 'Upload!' button</h4>
-        <h4>10. directly below that will appear 'Options', check the 'Create animated GIF box' and click 'Convert to GIF'</h4>
-        <h4>11. scroll down a tiny bit and click the save icon, almost done</h4>
-        {/* <Embed style={{ height: 2800 }} icon="stack exchange" url="https://ezgif.com/pdf-to-gif"/> */}
+          {/* <h4>*to scroll up and down the page move the cursor to the right or left margins</h4> */}
+          <br></br>
+          <h4>1. draw something below using the drawing pad</h4>
+          <h4>
+            2. When you're done click the blue 'Save Image' icon to the right
+          </h4>
+          <h4>3. then click 'Save', this will save it as a PNG image file</h4>
+          <div
+            className="video-responsive"
+            // style={{
+            //         left: 0,
+            //         top: 0,
+            //         // height= 100%
+            //         // width= 100%
+            //         position: absolute,
+            //  }}
+          >
+            <iframe
+              src="https://kleki.com/"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              width="1000"
+              height="560"
+              allowfullscreen="true"
+              title="video"
+            />
+          </div>
+          {/* <Embed icon="paint brush" url="https://kleki.com/" /> */}
+          <br></br>
+          <h4>
+            4. drag the file you just saved and drop it directly into the google
+            slides slide deck below where it says 'Click to add title'
+          </h4>
+          <h4>
+            5. after that right click the slide in the left column and select
+            'Duplicate slide' repeatedly
+          </h4>
+          <h4>
+            6. In each slide move the image (by dragging and dropping it) so
+            none of the slides have the image in the same place
+          </h4>
+          <h4>
+            7. go to the 'File' dropdown, click it and select download then
+            choose to download the file as a pdf file
+          </h4>
+          {/* <Embed icon="file pdf" url="https://slides.google.com/create"/> */}
+          <div
+            className="video-responsive"
+            // style={{
+            //         left: 0,
+            //         top: 0,
+            //         // height= 100%
+            //         // width= 100%
+            //         position: absolute,
+            //  }}
+          >
+            <iframe
+              src="https://slides.google.com/create"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              width="1000"
+              height="560"
+              allowfullscreen="true"
+              title="video"
+            />
+          </div>
+          <br></br>
+          <h4>
+            8. now upload the pdf file to the EZGif converter by dragging it and
+            dropping it directly on the 'Choose Files' button below
+          </h4>
+          <h4>9. click the 'Upload!' button</h4>
+          <h4>
+            10. directly below that will appear 'Options', check the 'Create
+            animated GIF box' and click 'Convert to GIF'
+          </h4>
+          <h4>
+            11. scroll down a tiny bit and click the save icon, almost done
+          </h4>
+          {/* <Embed style={{ height: 2800 }} icon="stack exchange" url="https://ezgif.com/pdf-to-gif"/> */}
           {/* <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
                   <input {...getInputProps()}/>    
                   Drop Zone
               </div> */}
-        <div 
-        className="video-responsive" 
-        // style={{
-        //         left: 0,
-        //         top: 0,
-        //         // height= 100%
-        //         // width= 100%
-        //         position: absolute,
-        //  }}
-        >
-            <iframe src='https://ezgif.com/pdf-to-gif'
-            frameborder='0'
-            allow='autoplay; encrypted-media'
-            width="1000"
-            height="560"
-            allowfullscreen="true"
-            title='video'
+          <div
+            className="video-responsive"
+            // style={{
+            //         left: 0,
+            //         top: 0,
+            //         // height= 100%
+            //         // width= 100%
+            //         position: absolute,
+            //  }}
+          >
+            <iframe
+              src="https://ezgif.com/pdf-to-gif"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              width="1000"
+              height="560"
+              allowfullscreen="true"
+              title="video"
             />
-        </div>    
+          </div>
           <br></br>
-          <h4>12. drag and drop the newly saved gif file below then click 'done'</h4>
+          <h4>
+            12. drag and drop the newly saved gif file below then click 'done'
+          </h4>
           <DropzoneArea onChange={onDrop} />
           <button onClick={onSubmit}>done</button>
           <ul>
@@ -189,7 +211,7 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
                   cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
                   publicId={file.public_id}
                   crop="scale"
-                  frameborder='0'
+                  frameborder="0"
                   width="1000"
                   allowfullscreen="true"
                 />
