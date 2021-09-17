@@ -78,10 +78,15 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
     e.preventDefault();
     for (let index = 0; index < files.length; index++) {
       const { title, url } = files[index];
-      db.collection("artworks")
-        .add({ title, url, name: currentUser.name })
-        .then((response) => {
-          onCreateArtwork({ title, url, name: currentUser.name });
+      axios
+        .post("/artworks", {
+          title,
+          image: url,
+          user_id: currentUser.id,
+        })
+        .then(async (response) => {
+         await db.collection("artworks").add(response.data);
+          onCreateArtwork(response.data);
           history.push("/");
           window.scrollTo(0, 0);
         });
@@ -222,10 +227,6 @@ function UploadArtForm({ currentUser, onCreateArtwork }) {
         <br></br>
         <Form onSubmit={handleSubmitNewArtwork}>
           {files.map((file, index) => {
-            console.log(
-              "🚀 ~ file: UploadArtForm.js ~ line 105 ~ {files.map ~ file",
-              file
-            );
             return (
               <div>
                 <br></br>

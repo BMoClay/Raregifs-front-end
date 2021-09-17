@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 import { Grid, Image, Button, Header, Modal } from "semantic-ui-react";
-import { getStorage, ref, deleteObject } from "../api/fireabse.config";
+
 function ArtCard({ artwork, currentUser, onAcquireArtwork }) {
   const [open, setOpen] = React.useState(false);
-  const { title, name, url } = artwork;
+  const { title, image, user } = artwork;
 
   function handleAcquireArtworkClick(e) {
     e.preventDefault();
@@ -19,7 +19,7 @@ function ArtCard({ artwork, currentUser, onAcquireArtwork }) {
 
   function onAcquireClick(e) {
     e.preventDefault();
-    // handleAcquireArtworkClick(e);
+    handleAcquireArtworkClick(e);
     setOpen(false);
   }
 
@@ -37,13 +37,13 @@ function ArtCard({ artwork, currentUser, onAcquireArtwork }) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Image size="large" src={url} />}
+        trigger={<Image size="large" src={image} />}
       >
         <Modal.Content image>
-          <Image wrapped size="large" src={url} />
+          <Image wrapped size="large" src={image} />
           <Modal.Description>
             <Header>{title}</Header>
-            <p>{name}</p>
+            <p>{user.name}</p>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>

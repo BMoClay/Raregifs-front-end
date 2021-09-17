@@ -15,7 +15,6 @@ import Demo from "./Demo";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  console.log("🚀 ~ file: App.js ~ line 18 ~ App ~ currentUser", currentUser)
   const [artworks, setArtworks] = useState([]);
   const [users, setUsers] = useState([]);
   const [acquisitions, setAcquisitions] = useState([]);
@@ -38,14 +37,13 @@ function App() {
 
   useEffect(() => {
     // axios.get("/artworks").then((response) => {
-    //   console.log("🚀 ~ file: App.js ~ line 39 ~ axios.get ~ response", response)
     //   setArtworks(response.data.reverse());
     // });
     let artArray = [];
     db.collection("artworks")
       .get()
       .then((res) => {
-        res.forEach((item) => artArray.push({ ...item.data(), id: item.id }));
+        res.forEach((item) => artArray.push(item.data()));
         setArtworks(artArray);
       });
     //

@@ -2,9 +2,8 @@ import React from "react";
 import ArtCard from "./ArtCard";
 
 function ArtPage({ currentUser, artworks, onAcquireArtwork }) {
-  console.log("🚀 ~ file: ArtPage.js ~ line 5 ~ ArtPage ~ artworks", artworks);
   const uArtwork =
-    artworks.length &&
+    !!artworks.length &&
     artworks.map((artwork) => {
       return (
         <ArtCard
